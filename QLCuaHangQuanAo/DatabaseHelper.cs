@@ -58,6 +58,24 @@ namespace QLCuaHangQuanAo
                 }
             }
         }
+        public int ExecuteProcNonQuery(string query, SqlParameter[] parameters = null)
+        {
+            using (SqlConnection conn = GetConnection())
+            {
+                using (SqlCommand cmd = new SqlCommand(query, conn))
+                {
+                    cmd.CommandType = CommandType.StoredProcedure; // Thêm dòng này để chỉ định rằng query là stored procedure
+
+                    if (parameters != null)
+                    {
+                        cmd.Parameters.AddRange(parameters);
+                    }
+
+                    conn.Open();
+                    return cmd.ExecuteNonQuery();
+                }
+            }
+        }
 
         public object ExecuteScalar(string query, SqlParameter[] parameters = null)
         {

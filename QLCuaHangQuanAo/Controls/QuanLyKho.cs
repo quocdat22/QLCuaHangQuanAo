@@ -1,16 +1,18 @@
-﻿using Guna.UI2.WinForms;
+﻿using QLCuaHangQuanAo;
+using QLCuaHangQuanAo.Models;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
-using System.Data.Entity.Core.Common.CommandTrees.ExpressionBuilder;
+using System.Data.SqlClient;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
-using System.Data.Entity;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using System.Windows.Media.Media3D;
+using System.Xml.Linq;
+//using System.Windows.Media.Media3D;
 
 namespace QLCuaHangQuanAo.UserCotrols
 {
@@ -18,16 +20,16 @@ namespace QLCuaHangQuanAo.UserCotrols
      {
         string path;
         int masp;
-   
         DataTable dt;
-        QuanLyCuaHangQuanAo2Entities ql = new QuanLyCuaHangQuanAo2Entities();
-        List<SanPham> sanPhamList=new List<SanPham>(); 
+        List<SanPham> sanPhamList = new List<SanPham>();
         private List<SanPham> deletedSanPhamList = new List<SanPham>();
-        List<SanPham>add_sp=new List<SanPham>();
+        List<SanPham> add_sp = new List<SanPham>();
 
+        DatabaseHelper db;
         public QuanLyKho()
         {
             InitializeComponent();
+            db = new DatabaseHelper();
         }
 
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
@@ -37,14 +39,91 @@ namespace QLCuaHangQuanAo.UserCotrols
 
         private void QuanLyKho_Load(object sender, EventArgs e)
         {
-
+            
             btn_xoa.Enabled = false;
-            loaddata();
+            loadData();
             btn_Huy.Enabled = false;
             btn_Luu.Enabled = false;
+            btn_Luu.Visible = false;
             btn_clear.Enabled = false;
             btn_sua.Enabled = false;
 
+        }
+
+        public void loadData()
+        {
+            loadDataGridView();
+            loadComboBoxLoai();
+            loadComboBoxSize();
+            loadComboBoxMauSac();
+        }
+
+        void loadComboBoxMauSac()
+        {
+            DataTable dt = db.ExecuteQuery("SELECT DISTINCT MauSac FROM SanPham");
+            var mauSacSanPham = dt.AsEnumerable().Select(row => row.Field<string>("MauSac")).ToList();
+            cbo_mau.Items.Clear();
+            cbo_mau.Items.Insert(0, "");
+            foreach (var mau in mauSacSanPham)
+            {
+                cbo_mau.Items.Add(mau);
+            }
+            cbo_mau.SelectedIndex = 0;
+        }
+            void loadComboBoxLoai()
+        {
+            DataTable dt = db.ExecuteQuery("SELECT DISTINCT MaLoai, TenLoai FROM LoaiSanPham");
+            var loaiSanPham = dt.AsEnumerable().Select(row => new
+            {
+                MaLoai = row.Field<int>("MaLoai"),
+                TenLoai = row.Field<string>("TenLoai")
+            }).ToList();
+
+            cbo_loai.DataSource = loaiSanPham;
+            cbo_loai.DisplayMember = "TenLoai";
+            cbo_loai.ValueMember = "MaLoai";
+            cbo_loai.SelectedIndex = -1;
+        }
+        void loadComboBoxSize()
+        {
+            DataTable dt = db.ExecuteQuery("SELECT DISTINCT Size FROM SanPham");
+            var sizeSanPham = dt.AsEnumerable().Select(row => row.Field<string>("Size")).ToList();
+
+            cbo_Size.Items.Clear();
+            cbo_Size.Items.Insert(0, "");
+            foreach (var size in sizeSanPham)
+            {
+                cbo_Size.Items.Add(size);
+            }
+            cbo_Size.SelectedIndex = 0;
+        }
+
+        private void loadDataGridView()
+        {
+           
+            string query = "SELECT * FROM SanPham";
+            DataTable dt = db.ExecuteQuery(query);
+
+            sanPhamList = new List<SanPham>();
+
+            foreach (DataRow row in dt.Rows)
+            {
+                SanPham sanPham = new SanPham
+                {
+                    MaSanPham = Convert.ToInt32(row["MaSanPham"]),
+                    TenSanPham = row["TenSanPham"].ToString(),
+                    MaLoai = Convert.ToInt32(row["MaLoai"]),
+                    MoTa = row["MoTa"].ToString(),
+                    Size = row["Size"].ToString(),
+                    MauSac = row["MauSac"].ToString(),
+                    Gia = Convert.ToDecimal(row["Gia"]),
+                    SoLuongTonKho = Convert.ToInt32(row["SoLuongTonKho"]),
+                    HinhAnh = row["HinhAnh"].ToString()
+                };
+                sanPhamList.Add(sanPham);
+            }
+
+            dataGridView1.DataSource = sanPhamList;
         }
 
         private void uiLabel5_Click(object sender, EventArgs e)
@@ -52,155 +131,172 @@ namespace QLCuaHangQuanAo.UserCotrols
 
         }
 
+        //them
         private void uiButton1_Click(object sender, EventArgs e)
         {
-            SanPham s=new SanPham();
-            s.TenSanPham = txt_Ten.Text;
-            s.MauSac=cbo_mau.SelectedItem.ToString();
-            s.Gia=decimal.Parse(txt_Gia.Text);
+            SanPham s = new SanPham
+            {
+                TenSanPham = txt_Ten.Text,
+                MauSac = cbo_mau.SelectedItem.ToString(),
+                Gia = decimal.Parse(txt_Gia.Text),
+                MaLoai = int.Parse(cbo_loai.SelectedValue.ToString()),
+                SoLuongTonKho = 0,
+                MoTa = txt_MoTa.Text,
+                Size = cbo_Size.SelectedItem.ToString(),
+                HinhAnh = path
+            };
 
-            s.MaLoai= int.Parse(cbo_loai.SelectedValue.ToString());
-            
-            s.SoLuongTonKho=int.Parse(txt_SoLuong.Text);
-            s.MoTa=txt_MoTa.Text;
-            s.Size=cbo_Size.SelectedItem.ToString();
-            s.HinhAnh=path;
-            SanPham x = new SanPham();
-            x.TenSanPham = s.TenSanPham;
-            x.MauSac = s.MauSac;
-            x.MaLoai = s.MaLoai;
-            x.Size = s.Size;
-            x.SoLuongTonKho = s.SoLuongTonKho;
-            x.Gia = s.Gia;
-            x.HinhAnh = s.HinhAnh;
-            sanPhamList = ql.SanPhams.ToList();
-            
-            sanPhamList.Add(s);
-            add_sp.Add(x);
-            sanPhamList[sanPhamList.Count - 1].MaSanPham = sanPhamList[sanPhamList.Count - 2].MaSanPham+1;
-          
+            SqlParameter[] parameters = {
+                new SqlParameter("@TenSanPham", s.TenSanPham),
+                new SqlParameter("@MaLoai", s.MaLoai),
+                new SqlParameter("@MoTa", s.MoTa),
+                new SqlParameter("@Size", s.Size),
+                new SqlParameter("@MauSac", s.MauSac),
+                new SqlParameter("@HinhAnh", s.HinhAnh),
+                new SqlParameter("@Gia", s.Gia),
+                new SqlParameter("@SoLuongTonKho", s.SoLuongTonKho)
+            };
 
-            dataGridView1.DataSource = null;
-            dataGridView1.DataSource=sanPhamList;
-           
-
+            db.ExecuteProcNonQuery("AddSanPham", parameters);
+            loadDataGridView();
         }
 
 
 
         private void dataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-
-
             if (e.RowIndex >= 0 && e.ColumnIndex >= 0)
             {
                 int index = e.RowIndex;
                 DataGridViewRow row = dataGridView1.Rows[e.RowIndex];
-                masp = int.Parse(row.Cells[0].Value.ToString());
-                txt_Ten.Text = row.Cells[1].Value.ToString();
-                cbo_loai.SelectedValue = int.Parse(row.Cells[2].Value.ToString());
+                masp = int.Parse(row.Cells["MaSanPham"].Value.ToString());
+                txt_Ten.Text = row.Cells["TenSanPham"].Value.ToString();
+                cbo_loai.SelectedValue = int.Parse(row.Cells["MaLoai"].Value.ToString());
+                cbo_mau.SelectedItem = row.Cells["MauSac"].Value.ToString();
+                cbo_Size.SelectedItem = row.Cells["Size"].Value.ToString();
+                txt_SoLuong.Text = row.Cells["SoLuongTonKho"].Value.ToString();
+                txt_Gia.Text = row.Cells["Gia"].Value.ToString();
+                txt_MoTa.Text = row.Cells["MoTa"].Value?.ToString();
 
-                cbo_mau.SelectedItem = row.Cells[5].Value.ToString();
-                cbo_Size.SelectedItem = row.Cells[4].Value.ToString();
-                txt_SoLuong.Text = row.Cells[8].Value.ToString();
-                txt_Gia.Text = row.Cells[7].Value.ToString();
-                txt_MoTa.Text = row.Cells[3].Value?.ToString();
-                if (!string.IsNullOrEmpty(row.Cells[6].Value?.ToString()))
-                    AnhSP.Image = Image.FromFile(row.Cells[6].Value.ToString());
-             
+                if (!string.IsNullOrEmpty(row.Cells["HinhAnh"].Value?.ToString()))
+                {
+                    string imagePath = Path.GetFullPath(Path.Combine(Application.StartupPath, "../..", "Images", row.Cells["HinhAnh"].Value.ToString()));
+                    AnhSP.Image = Image.FromFile(imagePath);
+                    
+                }
+                path = row.Cells["HinhAnh"].Value.ToString();
+
                 btn_xoa.Enabled = true;
                 btn_Huy.Enabled = true;
                 btn_Luu.Enabled = true;
                 btn_clear.Enabled = true;
                 btn_sua.Enabled = true;
             }
-            else
-            { 
-                
-
-            }
-            
         }
 
+        //update
         private void uiButton3_Click(object sender, EventArgs e)
         {
-            SanPham s = sanPhamList.Find(t=>t.MaSanPham==masp);
-            
+            //lay thong tin da sua
+            SanPham s = new SanPham();
+            s.MaSanPham = masp;
             s.TenSanPham = txt_Ten.Text;
-            s.MauSac = cbo_mau.SelectedItem.ToString();
-            s.Gia = decimal.Parse(txt_Gia.Text);
-
             s.MaLoai = int.Parse(cbo_loai.SelectedValue.ToString());
-
-            s.SoLuongTonKho = int.Parse(txt_SoLuong.Text);
             s.MoTa = txt_MoTa.Text;
             s.Size = cbo_Size.SelectedItem.ToString();
-            s.HinhAnh=path;
-            sanPhamList = ql.SanPhams.ToList();
-      
+            s.MauSac = cbo_mau.SelectedItem.ToString();
+            s.Gia = decimal.Parse(txt_Gia.Text);
+            s.SoLuongTonKho = int.Parse(txt_SoLuong.Text);
+            s.HinhAnh = path;
+
+            SqlParameter[] parameters = {
+                new SqlParameter("@MaSanPham", s.MaSanPham),
+                new SqlParameter("@TenSanPham", s.TenSanPham),
+                new SqlParameter("@MaLoai", s.MaLoai),
+                new SqlParameter("@MoTa", s.MoTa),
+                new SqlParameter("@Size", s.Size),
+                new SqlParameter("@MauSac", s.MauSac),
+                new SqlParameter("@HinhAnh", s.HinhAnh),
+                new SqlParameter("@Gia", s.Gia),
+                new SqlParameter("@SoLuongTonKho", s.SoLuongTonKho)
+            };
+
+            db.ExecuteProcNonQuery("UpdateSanPham", parameters);
+            loadDataGridView();
+
             
 
-            dataGridView1.DataSource = null;
-            dataGridView1.DataSource = sanPhamList;
         }
 
-        
+
         private void btn_Luu_Click(object sender, EventArgs e)
         {
-            foreach (SanPham i in sanPhamList)
-            {
+            //foreach (SanPham i in sanPhamList)
+            //{
                 
                 
-                    SanPham existingProduct = ql.SanPhams.FirstOrDefault(t=>t.MaSanPham==i.MaSanPham);
-                if (existingProduct != null)
-                {
-                    existingProduct.TenSanPham = i.TenSanPham;
-                    existingProduct.MauSac = i.MauSac;
-                    existingProduct.MaLoai = i.MaLoai;
-                    existingProduct.Size = i.Size;
-                    existingProduct.SoLuongTonKho = i.SoLuongTonKho;
-                    existingProduct.Gia = i.Gia;
-                    existingProduct.HinhAnh = i.HinhAnh;
+            //        SanPham existingProduct = ql.SanPhams.FirstOrDefault(t=>t.MaSanPham==i.MaSanPham);
+            //    if (existingProduct != null)
+            //    {
+            //        existingProduct.TenSanPham = i.TenSanPham;
+            //        existingProduct.MauSac = i.MauSac;
+            //        existingProduct.MaLoai = i.MaLoai;
+            //        existingProduct.Size = i.Size;
+            //        existingProduct.SoLuongTonKho = i.SoLuongTonKho;
+            //        existingProduct.Gia = i.Gia;
+            //        existingProduct.HinhAnh = i.HinhAnh;
 
-                }
+            //    }
                
                 
-            }
-            foreach(SanPham x in add_sp)
-            {
-                ql.SanPhams.Add(x);
-            }    
-            add_sp = new List<SanPham>();
-            foreach (SanPham deletedItem in deletedSanPhamList)
-            {
-                var i = ql.SanPhams.FirstOrDefault(t => t.MaSanPham ==deletedItem.MaSanPham );
-                ql.SanPhams.Remove(i);
-            }
-            deletedSanPhamList = new List<SanPham>();
-            ql.SaveChanges();
-            btn_xoa.Enabled = false;
-            btn_Huy.Enabled = false;
-            btn_Luu.Enabled = false;
-            btn_clear.Enabled = false;
-            btn_sua.Enabled = false;
+            //}
+            //foreach(SanPham x in add_sp)
+            //{
+            //    ql.SanPhams.Add(x);
+            //}    
+            //add_sp = new List<SanPham>();
+            //foreach (SanPham deletedItem in deletedSanPhamList)
+            //{
+            //    var i = ql.SanPhams.FirstOrDefault(t => t.MaSanPham ==deletedItem.MaSanPham );
+            //    ql.SanPhams.Remove(i);
+            //}
+            //deletedSanPhamList = new List<SanPham>();
+            //ql.SaveChanges();
+            //btn_xoa.Enabled = false;
+            //btn_Huy.Enabled = false;
+            //btn_Luu.Enabled = false;
+            //btn_clear.Enabled = false;
+            //btn_sua.Enabled = false;
         }
 
         private void btn_ChonAnh_Click(object sender, EventArgs e)
         {
             OpenFileDialog a = new OpenFileDialog();
             a.Title = "Chọn ảnh";
-            a.Filter = "anh Files(*.JPG; *.JPG; *.jpG; *.PnG; *.JPG)|*.JPG; *.JPG; *.jpG; *.PnG; *.JPG";
+            a.Filter = "anh Files(*.JPG; *.PNG)|*.JPG;*.PNG";
+
             if (a.ShowDialog() == DialogResult.OK)
             {
-                 path = a.FileName;
-                AnhSP.Image = Image.FromFile(a.FileName);
+                string imageName = Path.GetFileName(a.FileName); // Tên file ảnh
+                string destinationPath = Path.Combine(Application.StartupPath, "../..", "Images", imageName);
 
+                try
+                {
+                    File.Copy(a.FileName, destinationPath, true); // Sao chép file vào thư mục Images
+                    path = imageName; // Chỉ lưu tên file
+                    AnhSP.Image = Image.FromFile(destinationPath); // Hiển thị ảnh trong PictureBox
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Lỗi khi sao chép ảnh: " + ex.Message, "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
             }
         }
 
+
         private void btn_Huy_Click(object sender, EventArgs e)
         {
-            loaddata();
+            loadData();
             btn_xoa.Enabled=false;
             btn_Huy.Enabled = false;
             btn_Luu.Enabled = false;
@@ -208,92 +304,71 @@ namespace QLCuaHangQuanAo.UserCotrols
             btn_sua.Enabled = false;
         }
 
-        private void loaddata()
-        {
-            using (QuanLyCuaHangQuanAo2Entities ql = new QuanLyCuaHangQuanAo2Entities())
-            {
-                try
-                {
-             
-                    var loaiSanPham = ql.LoaiSanPhams.Select(l => new { l.MaLoai, l.TenLoai }).ToList();
-                    var sizeSanPham = ql.SanPhams.Select(s => s.Size).ToList();
-                    var mauSacSanPham = ql.SanPhams.Select(s => s.MauSac).ToList();
 
-
-                    cbo_loai.DataSource = loaiSanPham;
-                    cbo_loai.DisplayMember = "TenLoai";
-                    cbo_loai.ValueMember = "MaLoai";
-
-                    cbo_loai.SelectedValue = 1;
-
-                   
-                    cbo_mau.Items.Clear();
-               
-                    foreach (var color in mauSacSanPham)
-                    {
-                        cbo_mau.Items.Add(color);
-                    }
-                    cbo_mau.SelectedIndex = 0;
-
-                    
-                    cbo_Size.Items.Clear();
-                   
-                    foreach (var size in sizeSanPham)
-                    {
-                        cbo_Size.Items.Add(size);
-                    }
-                    cbo_Size.SelectedIndex = 0;
-
-                 
-                    sanPhamList = ql.SanPhams.ToList();
-                    dataGridView1.DataSource = sanPhamList;
-
-                }
-                catch (Exception ex)
-                {
-                    MessageBox.Show("Đã xảy ra lỗi: " + ex.Message, "Thông báo");
-                }
-            }
-        }
-
+        //detele=========================
         private void uiButton2_Click(object sender, EventArgs e)
         {
+            DatabaseHelper db = new DatabaseHelper();
+
             foreach (DataGridViewRow row in dataGridView1.SelectedRows)
             {
-               
                 int masp = int.Parse(row.Cells["MaSanPham"].Value.ToString());
+                SanPham i = sanPhamList.FirstOrDefault(t => t.MaSanPham == masp);
 
-                
-                SanPham i = sanPhamList.FirstOrDefault(t=>t.MaSanPham == masp);
-
-               
                 if (i != null)
                 {
-                    sanPhamList.Remove(i);
-                    deletedSanPhamList.Add(i); 
+                    // Xóa sản phẩm từ cơ sở dữ liệu
+                    SqlParameter[] parameters = {
+                        new SqlParameter("@MaSanPham", masp)
+                    };
+                    int rowsAffected = db.ExecuteProcNonQuery("DeleteSanPhamByID", parameters);
+
+                    if(rowsAffected > 0)
+                    {
+                        // Xóa sản phẩm từ danh sách
+                        sanPhamList.Remove(i);
+                        deletedSanPhamList.Add(i);
+
+                        // Cập nhật DataGridView
+                        dataGridView1.DataSource = null;
+                        dataGridView1.DataSource = sanPhamList;
+                        MessageBox.Show("Xóa sản phẩm thành công", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        clearInput();
+                        clearButton();
+
+                    }
+
                 }
             }
-            dataGridView1.DataSource=null;
-            dataGridView1.DataSource=sanPhamList;
+
+            dataGridView1.DataSource = null;
+            dataGridView1.DataSource = sanPhamList;
         }
 
         private void btn_clear_Click(object sender, EventArgs e)
         {
-           txt_Ten.Clear();
-             
-           txt_Gia.Clear();
 
-
-            txt_SoLuong.Clear();
-            txt_MoTa.Clear();
-          
-            AnhSP.Image=null;
-
+            clearInput();
+            clearButton();
+        }
+        void clearButton()
+        {
             btn_Huy.Enabled = false;
             btn_Luu.Enabled = false;
             btn_clear.Enabled = false;
             btn_sua.Enabled = false;
+        }
 
+        void clearInput()
+        {
+            txt_Ten.Clear();
+            txt_Gia.Clear();
+            txt_SoLuong.Clear();
+            txt_MoTa.Clear();
+            cbo_loai.SelectedIndex = -1;
+            cbo_mau.SelectedIndex = -1;
+            cbo_Size.SelectedIndex = -1;
+            AnhSP.Image = null;
         }
 
         private void textBox1_TextChanged(object sender, EventArgs e)
@@ -303,9 +378,14 @@ namespace QLCuaHangQuanAo.UserCotrols
 
         private void uiButton4_Click(object sender, EventArgs e)
         {
+            
             string ten = textBox1.Text;
-            dataGridView1.DataSource = null;
-           dataGridView1.DataSource=  ql.SanPhams.Where(t => t.TenSanPham.Contains(ten)).ToList();
+            DatabaseHelper db = new DatabaseHelper();
+            SqlParameter[] parameters = {
+                new SqlParameter("@TenSanPham", ten)
+            };
+            dt = db.ExecuteStoredProcedure("SearchSanPhamByName", parameters);
+            dataGridView1.DataSource = dt;
 
         }
     }

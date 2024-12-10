@@ -4,6 +4,7 @@ using System.ComponentModel;
 using System.Data;
 using System.Data.SqlClient;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -69,7 +70,10 @@ namespace QLCuaHangQuanAo
                 };
                 DataTable chiTietData = db.ExecuteStoredProcedure("GetChiTietHoaDon", chiTietParameters);
 
-                reportViewer1.LocalReport.ReportPath = "Report2.rdlc"; // Đảm bảo đường dẫn đúng
+                //reportViewer1.LocalReport.ReportPath = "Report2.rdlc"; // Đảm bảo đường dẫn đúng
+                reportViewer1.LocalReport.ReportPath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "..", "..", "Reports", "Report2.rdlc");
+
+
 
                 // Xóa các dữ liệu cũ trong báo cáo
                 reportViewer1.LocalReport.DataSources.Clear();

@@ -1,4 +1,4 @@
-﻿namespace DOAN.UserCotrols
+﻿namespace QLCuaHangQuanAo.UserCotrols
 {
     partial class QuanLyKho
     {
@@ -75,46 +75,46 @@
             // uiLabel1
             // 
             this.uiLabel1.Font = new System.Drawing.Font("Microsoft YaHei", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.uiLabel1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(48)))), ((int)(((byte)(48)))), ((int)(((byte)(48)))));
             this.uiLabel1.Location = new System.Drawing.Point(16, 16);
             this.uiLabel1.Name = "uiLabel1";
             this.uiLabel1.Size = new System.Drawing.Size(147, 23);
             this.uiLabel1.TabIndex = 1;
             this.uiLabel1.Text = "Tên sản phẩm";
             this.uiLabel1.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.uiLabel1.ZoomScaleRect = new System.Drawing.Rectangle(0, 0, 0, 0);
             // 
             // uiLabel2
             // 
             this.uiLabel2.Font = new System.Drawing.Font("Microsoft YaHei", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.uiLabel2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(48)))), ((int)(((byte)(48)))), ((int)(((byte)(48)))));
             this.uiLabel2.Location = new System.Drawing.Point(21, 55);
             this.uiLabel2.Name = "uiLabel2";
             this.uiLabel2.Size = new System.Drawing.Size(100, 23);
             this.uiLabel2.TabIndex = 2;
             this.uiLabel2.Text = "Loại";
             this.uiLabel2.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.uiLabel2.ZoomScaleRect = new System.Drawing.Rectangle(0, 0, 0, 0);
             // 
             // uiLabel3
             // 
             this.uiLabel3.Font = new System.Drawing.Font("Microsoft YaHei", 12F);
+            this.uiLabel3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(48)))), ((int)(((byte)(48)))), ((int)(((byte)(48)))));
             this.uiLabel3.Location = new System.Drawing.Point(411, 16);
             this.uiLabel3.Name = "uiLabel3";
             this.uiLabel3.Size = new System.Drawing.Size(100, 23);
             this.uiLabel3.TabIndex = 3;
             this.uiLabel3.Text = "Màu sắc";
             this.uiLabel3.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.uiLabel3.ZoomScaleRect = new System.Drawing.Rectangle(0, 0, 0, 0);
             // 
             // uiLabel5
             // 
             this.uiLabel5.Font = new System.Drawing.Font("Microsoft YaHei", 12F);
+            this.uiLabel5.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(48)))), ((int)(((byte)(48)))), ((int)(((byte)(48)))));
             this.uiLabel5.Location = new System.Drawing.Point(658, 55);
             this.uiLabel5.Name = "uiLabel5";
             this.uiLabel5.Size = new System.Drawing.Size(153, 23);
             this.uiLabel5.TabIndex = 5;
             this.uiLabel5.Text = "Giá ";
             this.uiLabel5.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.uiLabel5.ZoomScaleRect = new System.Drawing.Rectangle(0, 0, 0, 0);
             this.uiLabel5.Click += new System.EventHandler(this.uiLabel5_Click);
             // 
             // txt_Ten
@@ -125,32 +125,34 @@
             this.txt_Ten.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.txt_Ten.MinimumSize = new System.Drawing.Size(1, 16);
             this.txt_Ten.Name = "txt_Ten";
+            this.txt_Ten.Padding = new System.Windows.Forms.Padding(5);
             this.txt_Ten.ShowText = false;
-            this.txt_Ten.Size = new System.Drawing.Size(150, 29);
+            this.txt_Ten.Size = new System.Drawing.Size(225, 29);
             this.txt_Ten.TabIndex = 6;
             this.txt_Ten.TextAlignment = System.Drawing.ContentAlignment.MiddleLeft;
-            this.txt_Ten.ZoomScaleRect = new System.Drawing.Rectangle(0, 0, 0, 0);
+            this.txt_Ten.Watermark = "";
             // 
             // txt_Gia
             // 
             this.txt_Gia.Cursor = System.Windows.Forms.Cursors.IBeam;
             this.txt_Gia.Font = new System.Drawing.Font("Microsoft YaHei", 12F);
-            this.txt_Gia.Location = new System.Drawing.Point(803, 54);
+            this.txt_Gia.Location = new System.Drawing.Point(800, 54);
             this.txt_Gia.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.txt_Gia.MinimumSize = new System.Drawing.Size(1, 16);
             this.txt_Gia.Name = "txt_Gia";
+            this.txt_Gia.Padding = new System.Windows.Forms.Padding(5);
             this.txt_Gia.ShowText = false;
-            this.txt_Gia.Size = new System.Drawing.Size(150, 29);
+            this.txt_Gia.Size = new System.Drawing.Size(153, 29);
             this.txt_Gia.TabIndex = 7;
             this.txt_Gia.TextAlignment = System.Drawing.ContentAlignment.MiddleLeft;
-            this.txt_Gia.ZoomScaleRect = new System.Drawing.Rectangle(0, 0, 0, 0);
+            this.txt_Gia.Watermark = "";
             // 
             // cbo_loai
             // 
             this.cbo_loai.FormattingEnabled = true;
             this.cbo_loai.Location = new System.Drawing.Point(170, 59);
             this.cbo_loai.Name = "cbo_loai";
-            this.cbo_loai.Size = new System.Drawing.Size(121, 24);
+            this.cbo_loai.Size = new System.Drawing.Size(225, 24);
             this.cbo_loai.TabIndex = 9;
             // 
             // btn_them
@@ -163,7 +165,7 @@
             this.btn_them.Size = new System.Drawing.Size(100, 35);
             this.btn_them.TabIndex = 11;
             this.btn_them.Text = "Thêm";
-            this.btn_them.ZoomScaleRect = new System.Drawing.Rectangle(0, 0, 0, 0);
+            this.btn_them.TipsFont = new System.Drawing.Font("Microsoft Sans Serif", 9F);
             this.btn_them.Click += new System.EventHandler(this.uiButton1_Click);
             // 
             // btn_xoa
@@ -176,7 +178,7 @@
             this.btn_xoa.Size = new System.Drawing.Size(100, 35);
             this.btn_xoa.TabIndex = 12;
             this.btn_xoa.Text = "Xoá ";
-            this.btn_xoa.ZoomScaleRect = new System.Drawing.Rectangle(0, 0, 0, 0);
+            this.btn_xoa.TipsFont = new System.Drawing.Font("Microsoft Sans Serif", 9F);
             this.btn_xoa.Click += new System.EventHandler(this.uiButton2_Click);
             // 
             // btn_sua
@@ -189,7 +191,7 @@
             this.btn_sua.Size = new System.Drawing.Size(100, 35);
             this.btn_sua.TabIndex = 13;
             this.btn_sua.Text = "Sửa";
-            this.btn_sua.ZoomScaleRect = new System.Drawing.Rectangle(0, 0, 0, 0);
+            this.btn_sua.TipsFont = new System.Drawing.Font("Microsoft Sans Serif", 9F);
             this.btn_sua.Click += new System.EventHandler(this.uiButton3_Click);
             // 
             // uiButton4
@@ -202,7 +204,7 @@
             this.uiButton4.Size = new System.Drawing.Size(100, 35);
             this.uiButton4.TabIndex = 14;
             this.uiButton4.Text = "Tìm kiếm";
-            this.uiButton4.ZoomScaleRect = new System.Drawing.Rectangle(0, 0, 0, 0);
+            this.uiButton4.TipsFont = new System.Drawing.Font("Microsoft Sans Serif", 9F);
             this.uiButton4.Click += new System.EventHandler(this.uiButton4_Click);
             // 
             // cbo_mau
@@ -210,7 +212,7 @@
             this.cbo_mau.FormattingEnabled = true;
             this.cbo_mau.Location = new System.Drawing.Point(517, 16);
             this.cbo_mau.Name = "cbo_mau";
-            this.cbo_mau.Size = new System.Drawing.Size(121, 24);
+            this.cbo_mau.Size = new System.Drawing.Size(172, 24);
             this.cbo_mau.TabIndex = 15;
             // 
             // btn_Luu
@@ -223,19 +225,19 @@
             this.btn_Luu.Size = new System.Drawing.Size(100, 35);
             this.btn_Luu.TabIndex = 16;
             this.btn_Luu.Text = "Lưu";
-            this.btn_Luu.ZoomScaleRect = new System.Drawing.Rectangle(0, 0, 0, 0);
+            this.btn_Luu.TipsFont = new System.Drawing.Font("Microsoft Sans Serif", 9F);
             this.btn_Luu.Click += new System.EventHandler(this.btn_Luu_Click);
             // 
             // uiLabel4
             // 
             this.uiLabel4.Font = new System.Drawing.Font("Microsoft YaHei", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.uiLabel4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(48)))), ((int)(((byte)(48)))), ((int)(((byte)(48)))));
             this.uiLabel4.Location = new System.Drawing.Point(695, 17);
             this.uiLabel4.Name = "uiLabel4";
             this.uiLabel4.Size = new System.Drawing.Size(147, 23);
             this.uiLabel4.TabIndex = 17;
             this.uiLabel4.Text = "Số lượng";
             this.uiLabel4.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.uiLabel4.ZoomScaleRect = new System.Drawing.Rectangle(0, 0, 0, 0);
             // 
             // txt_SoLuong
             // 
@@ -245,11 +247,12 @@
             this.txt_SoLuong.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.txt_SoLuong.MinimumSize = new System.Drawing.Size(1, 16);
             this.txt_SoLuong.Name = "txt_SoLuong";
+            this.txt_SoLuong.Padding = new System.Windows.Forms.Padding(5);
             this.txt_SoLuong.ShowText = false;
             this.txt_SoLuong.Size = new System.Drawing.Size(150, 29);
             this.txt_SoLuong.TabIndex = 18;
             this.txt_SoLuong.TextAlignment = System.Drawing.ContentAlignment.MiddleLeft;
-            this.txt_SoLuong.ZoomScaleRect = new System.Drawing.Rectangle(0, 0, 0, 0);
+            this.txt_SoLuong.Watermark = "";
             // 
             // AnhSP
             // 
@@ -289,19 +292,19 @@
             this.cbo_Size.FormattingEnabled = true;
             this.cbo_Size.Location = new System.Drawing.Point(517, 54);
             this.cbo_Size.Name = "cbo_Size";
-            this.cbo_Size.Size = new System.Drawing.Size(121, 24);
+            this.cbo_Size.Size = new System.Drawing.Size(172, 24);
             this.cbo_Size.TabIndex = 57;
             // 
             // lal
             // 
             this.lal.Font = new System.Drawing.Font("Microsoft YaHei", 12F);
+            this.lal.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(48)))), ((int)(((byte)(48)))), ((int)(((byte)(48)))));
             this.lal.Location = new System.Drawing.Point(411, 54);
             this.lal.Name = "lal";
             this.lal.Size = new System.Drawing.Size(100, 23);
             this.lal.TabIndex = 56;
             this.lal.Text = "Size";
             this.lal.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.lal.ZoomScaleRect = new System.Drawing.Rectangle(0, 0, 0, 0);
             // 
             // txt_MoTa
             // 
@@ -311,22 +314,23 @@
             this.txt_MoTa.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.txt_MoTa.MinimumSize = new System.Drawing.Size(1, 16);
             this.txt_MoTa.Name = "txt_MoTa";
+            this.txt_MoTa.Padding = new System.Windows.Forms.Padding(5);
             this.txt_MoTa.ShowText = false;
-            this.txt_MoTa.Size = new System.Drawing.Size(484, 47);
+            this.txt_MoTa.Size = new System.Drawing.Size(780, 47);
             this.txt_MoTa.TabIndex = 59;
             this.txt_MoTa.TextAlignment = System.Drawing.ContentAlignment.MiddleLeft;
-            this.txt_MoTa.ZoomScaleRect = new System.Drawing.Rectangle(0, 0, 0, 0);
+            this.txt_MoTa.Watermark = "";
             // 
             // uiLabel6
             // 
             this.uiLabel6.Font = new System.Drawing.Font("Microsoft YaHei", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.uiLabel6.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(48)))), ((int)(((byte)(48)))), ((int)(((byte)(48)))));
             this.uiLabel6.Location = new System.Drawing.Point(21, 98);
             this.uiLabel6.Name = "uiLabel6";
             this.uiLabel6.Size = new System.Drawing.Size(147, 23);
             this.uiLabel6.TabIndex = 58;
             this.uiLabel6.Text = "Mô tả";
             this.uiLabel6.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.uiLabel6.ZoomScaleRect = new System.Drawing.Rectangle(0, 0, 0, 0);
             // 
             // btn_clear
             // 
@@ -338,7 +342,7 @@
             this.btn_clear.Size = new System.Drawing.Size(100, 35);
             this.btn_clear.TabIndex = 60;
             this.btn_clear.Text = "Clear";
-            this.btn_clear.ZoomScaleRect = new System.Drawing.Rectangle(0, 0, 0, 0);
+            this.btn_clear.TipsFont = new System.Drawing.Font("Microsoft Sans Serif", 9F);
             this.btn_clear.Click += new System.EventHandler(this.btn_clear_Click);
             // 
             // btn_Huy
@@ -351,7 +355,7 @@
             this.btn_Huy.Size = new System.Drawing.Size(100, 35);
             this.btn_Huy.TabIndex = 61;
             this.btn_Huy.Text = "Huỷ";
-            this.btn_Huy.ZoomScaleRect = new System.Drawing.Rectangle(0, 0, 0, 0);
+            this.btn_Huy.TipsFont = new System.Drawing.Font("Microsoft Sans Serif", 9F);
             this.btn_Huy.Click += new System.EventHandler(this.btn_Huy_Click);
             // 
             // QuanLyKho
