@@ -104,6 +104,12 @@
     <Compile Include="Controls\QuanLyKho.Designer.cs">
       <DependentUpon>QuanLyKho.cs</DependentUpon>
     </Compile>
+    <Compile Include="Controls\QLTaiKhoan.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controls\QLTaiKhoan.Designer.cs">
+      <DependentUpon>QLTaiKhoan.cs</DependentUpon>
+    </Compile>
     <Compile Include="Controls\TrangChu.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -141,6 +147,7 @@
     <Compile Include="Forms\InHoaDon.Designer.cs">
       <DependentUpon>InHoaDon.cs</DependentUpon>
     </Compile>
+    <Compile Include="Models\ComboBoxItem.cs" />
     <Compile Include="Models\KhachHang.cs" />
     <Compile Include="Models\NhanVien.cs" />
     <Compile Include="Models\SanPham.cs" />
@@ -161,6 +168,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Controls\QuanLyKho.resx">
       <DependentUpon>QuanLyKho.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controls\QLTaiKhoan.resx">
+      <DependentUpon>QLTaiKhoan.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Controls\TrangChu.resx">
       <DependentUpon>TrangChu.cs</DependentUpon>

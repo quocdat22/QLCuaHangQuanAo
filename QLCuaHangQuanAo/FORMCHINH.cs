@@ -106,7 +106,7 @@ namespace QLCuaHangQuanAo
         {
             if(id_quyen == 1)
             {
-                TaiKhoan taiKhoan = new TaiKhoan();
+                QLTaiKhoan taiKhoan = new QLTaiKhoan();
                 AddUserControl(taiKhoan);
             }
             else
