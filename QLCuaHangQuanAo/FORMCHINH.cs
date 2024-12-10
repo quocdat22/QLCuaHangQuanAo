@@ -110,16 +110,24 @@ namespace QLCuaHangQuanAo
 
         private void button8_Click_1(object sender, EventArgs e)
         {
-            //QLHoaDon hoaDon = new QLHoaDon();
-            //AddUserControl(hoaDon);
+            QLHoaDon hoaDon = new QLHoaDon();
+            AddUserControl(hoaDon);
         }
 
         
 
         private void button5_Click_1(object sender, EventArgs e)
         {
-            //QLKhachHang qLKhachHang = new QLKhachHang();
-            //AddUserControl(qLKhachHang);
+            if(id_quyen == 1)
+            {
+                QLKhachHang qLKhachHang = new QLKhachHang();
+                AddUserControl(qLKhachHang);
+            }
+            else
+            {
+                MessageBox.Show("Bạn không có quyền truy cập chức năng này");
+            }
+            
         }
 
         private void button4_Click_1(object sender, EventArgs e)

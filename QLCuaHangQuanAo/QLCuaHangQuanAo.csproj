@@ -80,6 +80,18 @@
     <Compile Include="Controls\BanHang.Designer.cs">
       <DependentUpon>BanHang.cs</DependentUpon>
     </Compile>
+    <Compile Include="Controls\QLHoaDon.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controls\QLHoaDon.Designer.cs">
+      <DependentUpon>QLHoaDon.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\QLKhachHang.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controls\QLKhachHang.Designer.cs">
+      <DependentUpon>QLKhachHang.cs</DependentUpon>
+    </Compile>
     <Compile Include="Controls\QLNhanVien.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -129,6 +141,7 @@
     <Compile Include="Forms\InHoaDon.Designer.cs">
       <DependentUpon>InHoaDon.cs</DependentUpon>
     </Compile>
+    <Compile Include="Models\KhachHang.cs" />
     <Compile Include="Models\NhanVien.cs" />
     <Compile Include="Models\SanPham.cs" />
     <Compile Include="Program.cs" />
@@ -136,6 +149,12 @@
     <Compile Include="SqlServerTypes\Loader.cs" />
     <EmbeddedResource Include="Controls\BanHang.resx">
       <DependentUpon>BanHang.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controls\QLHoaDon.resx">
+      <DependentUpon>QLHoaDon.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controls\QLKhachHang.resx">
+      <DependentUpon>QLKhachHang.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Controls\QLNhanVien.resx">
       <DependentUpon>QLNhanVien.cs</DependentUpon>
