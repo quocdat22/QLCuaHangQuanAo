@@ -76,6 +76,7 @@ namespace QLCuaHangQuanAo
                 }
             }
         }
+        
 
         public object ExecuteScalar(string query, SqlParameter[] parameters = null)
         {
@@ -90,6 +91,32 @@ namespace QLCuaHangQuanAo
                     }
 
                     return command.ExecuteScalar();
+                }
+            }
+        }
+        public int ExecuteProcValueQuery(string procedureName, SqlParameter[] parameters = null)
+        {
+            using (SqlConnection conn = GetConnection())
+            {
+                using (SqlCommand cmd = new SqlCommand(procedureName, conn))
+                {
+                    cmd.CommandType = CommandType.StoredProcedure;
+
+                    if (parameters != null)
+                    {
+                        cmd.Parameters.AddRange(parameters);
+                    }
+
+                    // Add a parameter to capture the return value
+                    SqlParameter returnParam = new SqlParameter("@ReturnVal", SqlDbType.Int);
+                    returnParam.Direction = ParameterDirection.ReturnValue;
+                    cmd.Parameters.Add(returnParam);
+
+                    conn.Open();
+                    cmd.ExecuteNonQuery();
+
+                    int result = (int)returnParam.Value;
+                    return result;
                 }
             }
         }

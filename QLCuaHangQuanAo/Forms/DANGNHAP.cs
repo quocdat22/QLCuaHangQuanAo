@@ -14,8 +14,9 @@ namespace QLCuaHangQuanAo
 {
     public partial class DANGNHAP : Form
     {
-        public string username;
-        public int id;
+        //public string username;
+        //public int id;
+        //public int id_quyen;
         private DatabaseHelper db;
         public DANGNHAP()
         {
@@ -48,7 +49,9 @@ namespace QLCuaHangQuanAo
             {
                 string user = dt.Rows[0]["HoTen"].ToString();
                 int id = (int)dt.Rows[0]["MaNhanVien"];
-                FORMCHINH f = new FORMCHINH(id,user);
+                int id_quyen = (int)dt.Rows[0]["Quyen"];
+                string chucVu = layTenChucVu(id);
+                FORMCHINH f = new FORMCHINH(id,user,id_quyen,chucVu);
                 this.Hide();
                 f.Show();
             }
@@ -58,6 +61,20 @@ namespace QLCuaHangQuanAo
                 txt_PassWord.Clear();
             }
 
+        }
+
+        public string layTenChucVu(int id)
+        {
+            string chucVu;
+            string query = "SELECT ChucVu FROM NhanVien WHERE MaNhanVien = @MaNhanVien";
+            SqlParameter[] parameters = new SqlParameter[]
+            {
+                new SqlParameter("@MaNhanVien", id)
+            };
+            DataTable dt = db.ExecuteQuery(query, parameters);
+            chucVu = dt.Rows[0]["ChucVu"].ToString();
+
+            return chucVu;
         }
 
         private void Btn_DangKy_Click(object sender, EventArgs e)

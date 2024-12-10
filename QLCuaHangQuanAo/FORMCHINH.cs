@@ -10,6 +10,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Windows.Forms.VisualStyles;
 
 namespace QLCuaHangQuanAo
 {
@@ -20,23 +21,30 @@ namespace QLCuaHangQuanAo
         private int timeElapsed; // Thời gian đã trôi qua (giây)
         public string username;
         public int id;
-        
+        public int id_quyen;
+        public string chucVu;
+
         public Point point;
-        public FORMCHINH(int id,string username)
+        public FORMCHINH(int id,string username, int id_quyen, string chucVu)
         {
             
             InitializeComponent();
             InitializeLoginTimer();
 
-            loadNhanVien(id, username);
+            loadNhanVien(id, username, id_quyen, chucVu);
         }
 
-        void loadNhanVien(int id,string username)
+        void loadNhanVien(int id,string username, int id_quyen, string chucVu)
         {
             this.id = id;
+            this.id_quyen = id_quyen;
+            this.chucVu = chucVu;
             TenNV.Text = username;
+            TenNV.Text += " - " + chucVu;
+
         }
 
+        
         
 
         private void AddUserControl(UserControl userControl)
@@ -116,8 +124,16 @@ namespace QLCuaHangQuanAo
 
         private void button4_Click_1(object sender, EventArgs e)
         {
-            //QLNhanVien taiKhoan = new QLNhanVien();
-            //AddUserControl(taiKhoan);
+            if(id_quyen == 1)
+            {
+                QLNhanVien taiKhoan = new QLNhanVien();
+                AddUserControl(taiKhoan);
+            }
+            else
+            {
+                MessageBox.Show("Bạn không có quyền truy cập chức năng này");
+            }
+            
         }
 
         

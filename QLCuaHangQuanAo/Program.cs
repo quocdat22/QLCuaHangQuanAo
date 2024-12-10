@@ -16,8 +16,8 @@ namespace QLCuaHangQuanAo
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new FORMCHINH(1,"dat"));
-            //Application.Run(new DANGNHAP());
+            //Application.Run(new FORMCHINH(1,"dat"));
+            Application.Run(new DANGNHAP());
         }
     }
 }
