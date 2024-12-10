@@ -104,8 +104,16 @@ namespace QLCuaHangQuanAo
 
         private void button9_Click_1(object sender, EventArgs e)
         {
-            //TaiKhoan taiKhoan = new TaiKhoan();
-            //AddUserControl(taiKhoan);
+            if(id_quyen == 1)
+            {
+                TaiKhoan taiKhoan = new TaiKhoan();
+                AddUserControl(taiKhoan);
+            }
+            else
+            {
+                MessageBox.Show("Bạn không có quyền truy cập chức năng này");
+            }
+            
         }
 
         private void button8_Click_1(object sender, EventArgs e)
