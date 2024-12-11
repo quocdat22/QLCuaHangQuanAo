@@ -12,6 +12,7 @@ using System.Windows.Forms;
 
 //using System.Data.Entity;
 using QLCuaHangQuanAo;
+using QLCuaHangQuanAo.Forms.MiniForms;
 
 namespace QLCuaHangQuanAo.UserCotrols
 {
@@ -200,14 +201,15 @@ namespace QLCuaHangQuanAo.UserCotrols
                 HinhAnh = row.Field<string>("HinhAnh"),
                 Gia = row.Field<decimal>("Gia"),
                 Size = row.Field<string>("Size"),
-                MauSac = row.Field<string>("MauSac")
+                MauSac = row.Field<string>("MauSac"),
+                SoLuong = row.Field<int>("SoLuongTonKho")
             }).ToList();
 
             flowLayoutPanel1.Controls.Clear();
             foreach (var sp in list)
             {
                 ItemBanHang item = new ItemBanHang();
-                item.SetSP(sp.TenSanPham, sp.HinhAnh, sp.Gia.ToString(), sp.Size, sp.MauSac);
+                item.SetSP(sp.TenSanPham, sp.HinhAnh, sp.Gia.ToString(), sp.Size, sp.MauSac, sp.SoLuong);
                 item.OnAddItemHD += ItemControl_OnAddItemHD;
                 flowLayoutPanel1.Controls.Add(item);
             }
@@ -356,8 +358,15 @@ namespace QLCuaHangQuanAo.UserCotrols
         }
 
 
+
         #endregion
 
-        
+        private void button1_Click_1(object sender, EventArgs e)
+        {
+            ThemNhaCungCap themNhaCungCap = new ThemNhaCungCap();
+            themNhaCungCap.ShowDialog();
+
+            LoadNhaCungCap();
+        }
     }
 }

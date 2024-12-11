@@ -49,6 +49,7 @@
             this.panel4 = new System.Windows.Forms.Panel();
             this.btn_ThanhToan = new System.Windows.Forms.Button();
             this.panel6 = new System.Windows.Forms.Panel();
+            this.button1 = new System.Windows.Forms.Button();
             this.cb_NhaCC = new System.Windows.Forms.ComboBox();
             this.label12 = new System.Windows.Forms.Label();
             this.txt_TongTien = new System.Windows.Forms.TextBox();
@@ -263,15 +264,16 @@
             this.btn_ThanhToan.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(80)))), ((int)(((byte)(160)))), ((int)(((byte)(255)))));
             this.btn_ThanhToan.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(80)))), ((int)(((byte)(160)))), ((int)(((byte)(255)))));
             this.btn_ThanhToan.Image = global::QLCuaHangQuanAo.Properties.Resources.icons8_banknotes_16;
-            this.btn_ThanhToan.Location = new System.Drawing.Point(81, 127);
+            this.btn_ThanhToan.Location = new System.Drawing.Point(29, 127);
             this.btn_ThanhToan.Name = "btn_ThanhToan";
-            this.btn_ThanhToan.Size = new System.Drawing.Size(160, 42);
+            this.btn_ThanhToan.Size = new System.Drawing.Size(263, 42);
             this.btn_ThanhToan.TabIndex = 3;
             this.btn_ThanhToan.UseVisualStyleBackColor = false;
             this.btn_ThanhToan.Click += new System.EventHandler(this.btn_ThanhToan_Click);
             // 
             // panel6
             // 
+            this.panel6.Controls.Add(this.button1);
             this.panel6.Controls.Add(this.cb_NhaCC);
             this.panel6.Controls.Add(this.label12);
             this.panel6.Controls.Add(this.txt_TongTien);
@@ -281,18 +283,28 @@
             this.panel6.Size = new System.Drawing.Size(309, 115);
             this.panel6.TabIndex = 0;
             // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(148, 39);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(129, 23);
+            this.button1.TabIndex = 11;
+            this.button1.Text = "Thêm nhà cung cấp";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click_1);
+            // 
             // cb_NhaCC
             // 
             this.cb_NhaCC.FormattingEnabled = true;
-            this.cb_NhaCC.Location = new System.Drawing.Point(96, 39);
+            this.cb_NhaCC.Location = new System.Drawing.Point(12, 68);
             this.cb_NhaCC.Name = "cb_NhaCC";
-            this.cb_NhaCC.Size = new System.Drawing.Size(183, 24);
+            this.cb_NhaCC.Size = new System.Drawing.Size(265, 24);
             this.cb_NhaCC.TabIndex = 10;
             // 
             // label12
             // 
             this.label12.AutoSize = true;
-            this.label12.Location = new System.Drawing.Point(2, 42);
+            this.label12.Location = new System.Drawing.Point(9, 40);
             this.label12.Name = "label12";
             this.label12.Size = new System.Drawing.Size(94, 16);
             this.label12.TabIndex = 8;
@@ -378,5 +390,6 @@
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.ComboBox cbo_Loai;
         private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Button button1;
     }
 }

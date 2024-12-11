@@ -79,11 +79,11 @@ namespace QLCuaHangQuanAo
 
         private void Btn_DangKy_Click(object sender, EventArgs e)
         {
-            //DANGKY DangKy = new DANGKY();
-       
-            //DangKy.Show();
-            //this.Hide();
-            
+            DANGKY DangKy = new DANGKY();
+
+            DangKy.Show();
+            this.Hide();
+
         }
 
         private void linkLabel1_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)

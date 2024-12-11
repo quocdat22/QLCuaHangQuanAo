@@ -49,7 +49,7 @@ namespace QLCuaHangQuanAo.UserCotrols
 
         void LoadThanhToan()
         {
-            txtTienThoi.Enabled = false;
+            //txtTienThoi.Enabled = false;
         }
 
         private void LoadSanPhamList()
@@ -61,14 +61,15 @@ namespace QLCuaHangQuanAo.UserCotrols
                 HinhAnh = row.Field<string>("HinhAnh"),
                 Gia = row.Field<decimal>("Gia"),
                 Size = row.Field<string>("Size"),
-                MauSac = row.Field<string>("MauSac")
+                MauSac = row.Field<string>("MauSac"),
+                SoLuong = row.Field<int>("SoLuongTonKho")
             }).ToList();
 
             flowLayoutPanel1.Controls.Clear();
             foreach (var sp in sanPhamList)
             {
                 ItemBanHang item = new ItemBanHang();
-                item.SetSP(sp.TenSanPham, sp.HinhAnh, sp.Gia.ToString(), sp.Size, sp.MauSac);
+                item.SetSP(sp.TenSanPham, sp.HinhAnh, sp.Gia.ToString(), sp.Size, sp.MauSac, sp.SoLuong);
                 item.OnAddItemHD += ItemControl_OnAddItemHD;
                 flowLayoutPanel1.Controls.Add(item);
             }
@@ -175,6 +176,18 @@ namespace QLCuaHangQuanAo.UserCotrols
         private void RemoveItemHoaDon(object sender, EventArgs e)
         {
             itemHD itemHD = sender as itemHD;
+
+            // Tìm lại ItemBanHang và phục hồi số lượng tồn
+            foreach (var control in flowLayoutPanel1.Controls)
+            {
+                ItemBanHang item = control as ItemBanHang;
+                if (item != null && item.name == itemHD.NameCTHD && item.SizeSP1 == itemHD.SizeCt && item.color == itemHD.ColorCt)
+                {
+                    item.SoLuongTon += itemHD.soluong; // Phục hồi số lượng tồn
+                    break;
+                }
+            }
+            
             TongTienHang -= itemHD.ThanhTien;
             txt_TongTien.Clear();
             txt_TongTien.Text += TongTienHang.ToString();
@@ -205,14 +218,15 @@ namespace QLCuaHangQuanAo.UserCotrols
                 HinhAnh = row.Field<string>("HinhAnh"),
                 Gia = row.Field<decimal>("Gia"),
                 Size = row.Field<string>("Size"),
-                MauSac = row.Field<string>("MauSac")
+                MauSac = row.Field<string>("MauSac"),
+                SoLuong = row.Field<int>("SoLuongTonKho")
             }).ToList();
 
             flowLayoutPanel1.Controls.Clear();
             foreach (var sp in list)
             {
                 ItemBanHang item = new ItemBanHang();
-                item.SetSP(sp.TenSanPham, sp.HinhAnh, sp.Gia.ToString(), sp.Size, sp.MauSac);
+                item.SetSP(sp.TenSanPham, sp.HinhAnh, sp.Gia.ToString(), sp.Size, sp.MauSac, sp.SoLuong);
                 item.OnAddItemHD += ItemControl_OnAddItemHD;
                 flowLayoutPanel1.Controls.Add(item);
             }
@@ -250,7 +264,7 @@ namespace QLCuaHangQuanAo.UserCotrols
             DataTable dt = db.ExecuteStoredProcedure("InsertHoaDon", parameters);
 
             int maHoaDon = Convert.ToInt32(dt.Rows[0]["MaHoaDon"]);
-            decimal chietKhau = 0;
+            decimal chietKhau = decimal.Parse(txt_ChietKhau.Text);
             
             foreach (var con in flowLayoutPanel3.Controls)
             {
@@ -263,7 +277,7 @@ namespace QLCuaHangQuanAo.UserCotrols
                     new SqlParameter("@DonGia", i.gia),
                 
                     new SqlParameter("@ChietKhau", chietKhau),
-                    //new SqlParameter("@GiaSauChietKhau", (decimal)i.ThanhTien)
+                   
                 };
 
                 
@@ -453,8 +467,30 @@ namespace QLCuaHangQuanAo.UserCotrols
         }
 
 
+
         #endregion
 
-        
+        private void label5_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void txt_ChietKhau_TextChanged(object sender, EventArgs e)
+        {
+            //cap nhat lai tong tien
+            if (string.IsNullOrEmpty(txt_ChietKhau.Text))
+            {
+                txt_TongTien.Text = TongTienHang.ToString();
+                return;
+            }
+            else
+            {
+
+                float phanTramChietKhau = float.Parse(txt_ChietKhau.Text);
+                float giaChietKhau = TongTienHang * phanTramChietKhau / 100;
+                float tongTien = TongTienHang - giaChietKhau;
+                txt_TongTien.Text = tongTien.ToString();
+            }
+        }
     }
 }

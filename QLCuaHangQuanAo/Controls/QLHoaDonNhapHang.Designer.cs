@@ -1,6 +1,6 @@
 ﻿namespace QLCuaHangQuanAo.UserCotrols
 {
-    partial class QLHoaDon
+    partial class QLHoaDonNhapHang
     {
         /// <summary> 
         /// Required designer variable.
@@ -31,8 +31,7 @@
             this.uiTextBox1 = new Sunny.UI.UITextBox();
             this.uiLabel1 = new Sunny.UI.UILabel();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.uiButton1 = new Sunny.UI.UIButton();
-            this.txt_TìmKiem = new Sunny.UI.UITextBox();
+            this.txt_TimKiem = new Sunny.UI.UITextBox();
             this.btn_Seacrh = new Sunny.UI.UIButton();
             this.uiButton2 = new Sunny.UI.UIButton();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
@@ -75,39 +74,26 @@
             this.dataGridView1.TabIndex = 28;
             this.dataGridView1.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellClick);
             // 
-            // uiButton1
+            // txt_TimKiem
             // 
-            this.uiButton1.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.uiButton1.Font = new System.Drawing.Font("Microsoft YaHei", 12F);
-            this.uiButton1.Location = new System.Drawing.Point(110, 10);
-            this.uiButton1.MinimumSize = new System.Drawing.Size(1, 1);
-            this.uiButton1.Name = "uiButton1";
-            this.uiButton1.Size = new System.Drawing.Size(245, 35);
-            this.uiButton1.TabIndex = 31;
-            this.uiButton1.Text = "Xem chi tiết hoá đơn";
-            this.uiButton1.TipsFont = new System.Drawing.Font("Microsoft Sans Serif", 9F);
-            this.uiButton1.Click += new System.EventHandler(this.uiButton1_Click);
-            // 
-            // txt_TìmKiem
-            // 
-            this.txt_TìmKiem.Cursor = System.Windows.Forms.Cursors.IBeam;
-            this.txt_TìmKiem.Font = new System.Drawing.Font("Microsoft YaHei", 12F);
-            this.txt_TìmKiem.Location = new System.Drawing.Point(528, 16);
-            this.txt_TìmKiem.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.txt_TìmKiem.MinimumSize = new System.Drawing.Size(1, 16);
-            this.txt_TìmKiem.Name = "txt_TìmKiem";
-            this.txt_TìmKiem.Padding = new System.Windows.Forms.Padding(5);
-            this.txt_TìmKiem.ShowText = false;
-            this.txt_TìmKiem.Size = new System.Drawing.Size(263, 29);
-            this.txt_TìmKiem.TabIndex = 32;
-            this.txt_TìmKiem.TextAlignment = System.Drawing.ContentAlignment.MiddleLeft;
-            this.txt_TìmKiem.Watermark = "";
+            this.txt_TimKiem.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.txt_TimKiem.Font = new System.Drawing.Font("Microsoft YaHei", 12F);
+            this.txt_TimKiem.Location = new System.Drawing.Point(528, 16);
+            this.txt_TimKiem.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.txt_TimKiem.MinimumSize = new System.Drawing.Size(1, 16);
+            this.txt_TimKiem.Name = "txt_TimKiem";
+            this.txt_TimKiem.Padding = new System.Windows.Forms.Padding(5);
+            this.txt_TimKiem.ShowText = false;
+            this.txt_TimKiem.Size = new System.Drawing.Size(263, 29);
+            this.txt_TimKiem.TabIndex = 32;
+            this.txt_TimKiem.TextAlignment = System.Drawing.ContentAlignment.MiddleLeft;
+            this.txt_TimKiem.Watermark = "";
             // 
             // btn_Seacrh
             // 
             this.btn_Seacrh.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btn_Seacrh.Font = new System.Drawing.Font("Microsoft YaHei", 12F);
-            this.btn_Seacrh.Location = new System.Drawing.Point(811, 9);
+            this.btn_Seacrh.Location = new System.Drawing.Point(811, 11);
             this.btn_Seacrh.MinimumSize = new System.Drawing.Size(1, 1);
             this.btn_Seacrh.Name = "btn_Seacrh";
             this.btn_Seacrh.Size = new System.Drawing.Size(109, 35);
@@ -120,7 +106,7 @@
             // 
             this.uiButton2.Cursor = System.Windows.Forms.Cursors.Hand;
             this.uiButton2.Font = new System.Drawing.Font("Microsoft YaHei", 12F);
-            this.uiButton2.Location = new System.Drawing.Point(1087, 10);
+            this.uiButton2.Location = new System.Drawing.Point(1087, 13);
             this.uiButton2.MinimumSize = new System.Drawing.Size(1, 1);
             this.uiButton2.Name = "uiButton2";
             this.uiButton2.Size = new System.Drawing.Size(96, 35);
@@ -129,18 +115,17 @@
             this.uiButton2.TipsFont = new System.Drawing.Font("Microsoft Sans Serif", 9F);
             this.uiButton2.Click += new System.EventHandler(this.uiButton2_Click);
             // 
-            // QLHoaDon
+            // QLHoaDonNhapHang
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.uiButton2);
             this.Controls.Add(this.btn_Seacrh);
-            this.Controls.Add(this.txt_TìmKiem);
-            this.Controls.Add(this.uiButton1);
+            this.Controls.Add(this.txt_TimKiem);
             this.Controls.Add(this.uiTextBox1);
             this.Controls.Add(this.uiLabel1);
             this.Controls.Add(this.dataGridView1);
-            this.Name = "QLHoaDon";
+            this.Name = "QLHoaDonNhapHang";
             this.Size = new System.Drawing.Size(1375, 662);
             this.Load += new System.EventHandler(this.QLHoaDon_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
@@ -152,8 +137,7 @@
         private Sunny.UI.UITextBox uiTextBox1;
         private Sunny.UI.UILabel uiLabel1;
         private System.Windows.Forms.DataGridView dataGridView1;
-        private Sunny.UI.UIButton uiButton1;
-        private Sunny.UI.UITextBox txt_TìmKiem;
+        private Sunny.UI.UITextBox txt_TimKiem;
         private Sunny.UI.UIButton btn_Seacrh;
         private Sunny.UI.UIButton uiButton2;
     }

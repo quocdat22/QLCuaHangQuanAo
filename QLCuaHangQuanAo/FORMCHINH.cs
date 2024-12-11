@@ -1,4 +1,5 @@
-﻿using QLCuaHangQuanAo.UserCotrols;
+﻿using QLCuaHangQuanAo.Controls;
+using QLCuaHangQuanAo.UserCotrols;
 
 using Sunny.UI.Win32;
 using System;
@@ -345,6 +346,18 @@ namespace QLCuaHangQuanAo
         {
             NhapHang nhapHang = new NhapHang();
             AddUserControl(nhapHang);
+        }
+
+        private void buttonPN_Click_1(object sender, EventArgs e)
+        {
+            QLHoaDonNhapHang hoaDonNhapHang = new QLHoaDonNhapHang();
+            AddUserControl(hoaDonNhapHang);
+        }
+
+        private void btn_SaoLuu_Click(object sender, EventArgs e)
+        {
+            Backup backup = new Backup();
+            AddUserControl(backup);
         }
     }
 }

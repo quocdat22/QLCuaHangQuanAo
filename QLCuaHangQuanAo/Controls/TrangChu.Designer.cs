@@ -34,16 +34,18 @@
             System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea2 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
             System.Windows.Forms.DataVisualization.Charting.Legend legend2 = new System.Windows.Forms.DataVisualization.Charting.Legend();
             System.Windows.Forms.DataVisualization.Charting.Series series2 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea3 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend3 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series3 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea4 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend4 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series4 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea5 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend5 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series5 = new System.Windows.Forms.DataVisualization.Charting.Series();
             this.panel1 = new System.Windows.Forms.Panel();
             this.panel3 = new System.Windows.Forms.Panel();
             this.panel5 = new System.Windows.Forms.Panel();
-            this.chartDoanhThu = new System.Windows.Forms.DataVisualization.Charting.Chart();
-            this.cbo1 = new System.Windows.Forms.ComboBox();
-            this.uiSmoothLabel1 = new Sunny.UI.UISmoothLabel();
-            this.panel4 = new System.Windows.Forms.Panel();
-            this.uiSmoothLabel2 = new Sunny.UI.UISmoothLabel();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
-            this.chart1 = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.panel2 = new System.Windows.Forms.Panel();
             this.button4 = new System.Windows.Forms.Button();
             this.DoanThu = new System.Windows.Forms.Label();
@@ -51,13 +53,22 @@
             this.button3 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
+            this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
+            this.chart1 = new System.Windows.Forms.DataVisualization.Charting.Chart();
+            this.chartDoanhThu = new System.Windows.Forms.DataVisualization.Charting.Chart();
+            this.chartSLTonKho = new System.Windows.Forms.DataVisualization.Charting.Chart();
+            this.chartTopNhanVien = new System.Windows.Forms.DataVisualization.Charting.Chart();
+            this.chartDoanhThuVaNhapHang = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.panel1.SuspendLayout();
             this.panel3.SuspendLayout();
             this.panel5.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.chartDoanhThu)).BeginInit();
-            this.panel4.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.chart1)).BeginInit();
             this.panel2.SuspendLayout();
+            this.flowLayoutPanel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.chart1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.chartDoanhThu)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.chartSLTonKho)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.chartTopNhanVien)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.chartDoanhThuVaNhapHang)).BeginInit();
             this.SuspendLayout();
             // 
             // panel1
@@ -74,7 +85,6 @@
             // panel3
             // 
             this.panel3.Controls.Add(this.panel5);
-            this.panel3.Controls.Add(this.panel4);
             this.panel3.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel3.Location = new System.Drawing.Point(0, 194);
             this.panel3.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
@@ -84,101 +94,13 @@
             // 
             // panel5
             // 
-            this.panel5.Controls.Add(this.chartDoanhThu);
-            this.panel5.Controls.Add(this.cbo1);
-            this.panel5.Controls.Add(this.uiSmoothLabel1);
+            this.panel5.Controls.Add(this.flowLayoutPanel1);
             this.panel5.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel5.Location = new System.Drawing.Point(673, 0);
+            this.panel5.Location = new System.Drawing.Point(0, 0);
             this.panel5.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.panel5.Name = "panel5";
-            this.panel5.Size = new System.Drawing.Size(676, 583);
+            this.panel5.Size = new System.Drawing.Size(1349, 583);
             this.panel5.TabIndex = 1;
-            // 
-            // chartDoanhThu
-            // 
-            chartArea1.Name = "ChartArea1";
-            this.chartDoanhThu.ChartAreas.Add(chartArea1);
-            legend1.Name = "Legend1";
-            this.chartDoanhThu.Legends.Add(legend1);
-            this.chartDoanhThu.Location = new System.Drawing.Point(29, 169);
-            this.chartDoanhThu.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.chartDoanhThu.Name = "chartDoanhThu";
-            series1.ChartArea = "ChartArea1";
-            series1.Legend = "Legend1";
-            series1.Name = "Series1";
-            this.chartDoanhThu.Series.Add(series1);
-            this.chartDoanhThu.Size = new System.Drawing.Size(587, 366);
-            this.chartDoanhThu.TabIndex = 4;
-            this.chartDoanhThu.Text = "chart2";
-            // 
-            // cbo1
-            // 
-            this.cbo1.FormattingEnabled = true;
-            this.cbo1.Location = new System.Drawing.Point(540, 66);
-            this.cbo1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.cbo1.Name = "cbo1";
-            this.cbo1.Size = new System.Drawing.Size(121, 24);
-            this.cbo1.TabIndex = 3;
-            // 
-            // uiSmoothLabel1
-            // 
-            this.uiSmoothLabel1.Font = new System.Drawing.Font("Microsoft YaHei", 19.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.uiSmoothLabel1.Location = new System.Drawing.Point(21, 50);
-            this.uiSmoothLabel1.Name = "uiSmoothLabel1";
-            this.uiSmoothLabel1.Size = new System.Drawing.Size(344, 74);
-            this.uiSmoothLabel1.TabIndex = 2;
-            this.uiSmoothLabel1.Text = "Biểu đồ doanh thu";
-            // 
-            // panel4
-            // 
-            this.panel4.Controls.Add(this.uiSmoothLabel2);
-            this.panel4.Controls.Add(this.comboBox1);
-            this.panel4.Controls.Add(this.chart1);
-            this.panel4.Dock = System.Windows.Forms.DockStyle.Left;
-            this.panel4.Font = new System.Drawing.Font("Monotype Corsiva", 16.2F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.panel4.Location = new System.Drawing.Point(0, 0);
-            this.panel4.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(673, 583);
-            this.panel4.TabIndex = 0;
-            this.panel4.Paint += new System.Windows.Forms.PaintEventHandler(this.panel4_Paint_1);
-            // 
-            // uiSmoothLabel2
-            // 
-            this.uiSmoothLabel2.Font = new System.Drawing.Font("Microsoft YaHei", 19.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.uiSmoothLabel2.Location = new System.Drawing.Point(3, 44);
-            this.uiSmoothLabel2.Name = "uiSmoothLabel2";
-            this.uiSmoothLabel2.Size = new System.Drawing.Size(639, 74);
-            this.uiSmoothLabel2.TabIndex = 3;
-            this.uiSmoothLabel2.Text = "Biểu đồ các sản phẩm bán chạy nhất";
-            this.uiSmoothLabel2.Click += new System.EventHandler(this.uiSmoothLabel2_Click);
-            // 
-            // comboBox1
-            // 
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.ItemHeight = 33;
-            this.comboBox1.Location = new System.Drawing.Point(531, 50);
-            this.comboBox1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(11, 41);
-            this.comboBox1.TabIndex = 2;
-            // 
-            // chart1
-            // 
-            chartArea2.Name = "ChartArea1";
-            this.chart1.ChartAreas.Add(chartArea2);
-            legend2.Name = "Legend1";
-            this.chart1.Legends.Add(legend2);
-            this.chart1.Location = new System.Drawing.Point(3, 169);
-            this.chart1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.chart1.Name = "chart1";
-            series2.ChartArea = "ChartArea1";
-            series2.Legend = "Legend1";
-            series2.Name = "Series1";
-            this.chart1.Series.Add(series2);
-            this.chart1.Size = new System.Drawing.Size(664, 284);
-            this.chart1.TabIndex = 0;
-            this.chart1.Text = "chart1";
             // 
             // panel2
             // 
@@ -273,23 +195,120 @@
             this.button1.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.button1.UseVisualStyleBackColor = true;
             // 
+            // flowLayoutPanel1
+            // 
+            this.flowLayoutPanel1.AutoScroll = true;
+            this.flowLayoutPanel1.Controls.Add(this.chart1);
+            this.flowLayoutPanel1.Controls.Add(this.chartDoanhThu);
+            this.flowLayoutPanel1.Controls.Add(this.chartSLTonKho);
+            this.flowLayoutPanel1.Controls.Add(this.chartTopNhanVien);
+            this.flowLayoutPanel1.Controls.Add(this.chartDoanhThuVaNhapHang);
+            this.flowLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.flowLayoutPanel1.Location = new System.Drawing.Point(0, 0);
+            this.flowLayoutPanel1.Name = "flowLayoutPanel1";
+            this.flowLayoutPanel1.Size = new System.Drawing.Size(1349, 583);
+            this.flowLayoutPanel1.TabIndex = 0;
+            // 
+            // chart1
+            // 
+            chartArea1.Name = "ChartArea1";
+            this.chart1.ChartAreas.Add(chartArea1);
+            legend1.Name = "Legend1";
+            this.chart1.Legends.Add(legend1);
+            this.chart1.Location = new System.Drawing.Point(3, 3);
+            this.chart1.Name = "chart1";
+            series1.ChartArea = "ChartArea1";
+            series1.Legend = "Legend1";
+            series1.Name = "Series1";
+            this.chart1.Series.Add(series1);
+            this.chart1.Size = new System.Drawing.Size(643, 355);
+            this.chart1.TabIndex = 0;
+            this.chart1.Text = "chart1";
+            // 
+            // chartDoanhThu
+            // 
+            chartArea2.Name = "ChartArea1";
+            this.chartDoanhThu.ChartAreas.Add(chartArea2);
+            legend2.Name = "Legend1";
+            this.chartDoanhThu.Legends.Add(legend2);
+            this.chartDoanhThu.Location = new System.Drawing.Point(652, 3);
+            this.chartDoanhThu.Name = "chartDoanhThu";
+            series2.ChartArea = "ChartArea1";
+            series2.Legend = "Legend1";
+            series2.Name = "Series1";
+            this.chartDoanhThu.Series.Add(series2);
+            this.chartDoanhThu.Size = new System.Drawing.Size(644, 355);
+            this.chartDoanhThu.TabIndex = 1;
+            this.chartDoanhThu.Text = "chartDoanhThu";
+            // 
+            // chartSLTonKho
+            // 
+            chartArea3.Name = "ChartArea1";
+            this.chartSLTonKho.ChartAreas.Add(chartArea3);
+            legend3.Name = "Legend1";
+            this.chartSLTonKho.Legends.Add(legend3);
+            this.chartSLTonKho.Location = new System.Drawing.Point(3, 364);
+            this.chartSLTonKho.Name = "chartSLTonKho";
+            series3.ChartArea = "ChartArea1";
+            series3.Legend = "Legend1";
+            series3.Name = "Series1";
+            this.chartSLTonKho.Series.Add(series3);
+            this.chartSLTonKho.Size = new System.Drawing.Size(752, 300);
+            this.chartSLTonKho.TabIndex = 2;
+            this.chartSLTonKho.Text = "chart2";
+            // 
+            // chartTopNhanVien
+            // 
+            chartArea4.Name = "ChartArea1";
+            this.chartTopNhanVien.ChartAreas.Add(chartArea4);
+            legend4.Name = "Legend1";
+            this.chartTopNhanVien.Legends.Add(legend4);
+            this.chartTopNhanVien.Location = new System.Drawing.Point(761, 364);
+            this.chartTopNhanVien.Name = "chartTopNhanVien";
+            series4.ChartArea = "ChartArea1";
+            series4.Legend = "Legend1";
+            series4.Name = "Series1";
+            this.chartTopNhanVien.Series.Add(series4);
+            this.chartTopNhanVien.Size = new System.Drawing.Size(535, 300);
+            this.chartTopNhanVien.TabIndex = 2;
+            this.chartTopNhanVien.Text = "chart2";
+            // 
+            // chartDoanhThuVaNhapHang
+            // 
+            chartArea5.Name = "ChartArea1";
+            this.chartDoanhThuVaNhapHang.ChartAreas.Add(chartArea5);
+            legend5.Name = "Legend1";
+            this.chartDoanhThuVaNhapHang.Legends.Add(legend5);
+            this.chartDoanhThuVaNhapHang.Location = new System.Drawing.Point(3, 670);
+            this.chartDoanhThuVaNhapHang.Name = "chartDoanhThuVaNhapHang";
+            series5.ChartArea = "ChartArea1";
+            series5.Legend = "Legend1";
+            series5.Name = "Series1";
+            this.chartDoanhThuVaNhapHang.Series.Add(series5);
+            this.chartDoanhThuVaNhapHang.Size = new System.Drawing.Size(1293, 300);
+            this.chartDoanhThuVaNhapHang.TabIndex = 2;
+            this.chartDoanhThuVaNhapHang.Text = "chart2";
+            // 
             // TrangChu
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.panel1);
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "TrangChu";
             this.Size = new System.Drawing.Size(1349, 777);
             this.Load += new System.EventHandler(this.TrangChu_Load);
             this.panel1.ResumeLayout(false);
             this.panel3.ResumeLayout(false);
             this.panel5.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.chartDoanhThu)).EndInit();
-            this.panel4.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.chart1)).EndInit();
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
+            this.flowLayoutPanel1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.chart1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.chartDoanhThu)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.chartSLTonKho)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.chartTopNhanVien)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.chartDoanhThuVaNhapHang)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -299,19 +318,18 @@
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Panel panel3;
         private System.Windows.Forms.Panel panel5;
-        private System.Windows.Forms.Panel panel4;
         private System.Windows.Forms.Panel panel2;
-        private System.Windows.Forms.DataVisualization.Charting.Chart chart1;
-        private System.Windows.Forms.ComboBox cbo1;
-        private Sunny.UI.UISmoothLabel uiSmoothLabel1;
-        private System.Windows.Forms.ComboBox comboBox1;
-        private System.Windows.Forms.DataVisualization.Charting.Chart chartDoanhThu;
         private System.Windows.Forms.Button button3;
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Label SoDon;
         private System.Windows.Forms.Label DoanThu;
-        private Sunny.UI.UISmoothLabel uiSmoothLabel2;
         private System.Windows.Forms.Button button4;
+        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel1;
+        private System.Windows.Forms.DataVisualization.Charting.Chart chart1;
+        private System.Windows.Forms.DataVisualization.Charting.Chart chartDoanhThu;
+        private System.Windows.Forms.DataVisualization.Charting.Chart chartSLTonKho;
+        private System.Windows.Forms.DataVisualization.Charting.Chart chartTopNhanVien;
+        private System.Windows.Forms.DataVisualization.Charting.Chart chartDoanhThuVaNhapHang;
     }
 }

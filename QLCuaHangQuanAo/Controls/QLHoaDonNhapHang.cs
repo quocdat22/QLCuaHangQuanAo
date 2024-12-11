@@ -11,12 +11,12 @@ using System.Windows.Forms;
 
 namespace QLCuaHangQuanAo.UserCotrols
 {
-    public partial class QLHoaDon : UserControl
+    public partial class QLHoaDonNhapHang : UserControl
     {
         int ma;
         DatabaseHelper db;
 
-        public QLHoaDon()
+        public QLHoaDonNhapHang()
         {
             InitializeComponent();
             db = new DatabaseHelper();
@@ -29,20 +29,14 @@ namespace QLCuaHangQuanAo.UserCotrols
 
         private void load_data()
         {
-            DataTable dt = db.ExecuteStoredProcedure("GetHoaDonKHNV");
+            DataTable dt = db.ExecuteStoredProcedure("layPhieuNhapHang");
             dataGridView1.DataSource = dt;
-            dataGridView1.Columns[5].Width = 150;
+            dataGridView1.Columns[1].Width = 150;
         }
 
         private void uiButton1_Click(object sender, EventArgs e)
         {
-            SqlParameter[] parameters = new SqlParameter[]
-            {
-                new SqlParameter("@MaHoaDon", ma)
-            };
-
-            DataTable dt = db.ExecuteStoredProcedure("GetChiTietHoaDonByMaHoaDon", parameters);
-            dataGridView1.DataSource = dt;
+            
         }
 
         private void dataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
@@ -57,10 +51,28 @@ namespace QLCuaHangQuanAo.UserCotrols
         private void uiButton2_Click(object sender, EventArgs e)
         {
             load_data();
+            txt_TimKiem.Text = "";
         }
 
         private void btn_Seacrh_Click(object sender, EventArgs e)
         {
+
+            string search = txt_TimKiem.Text;
+
+            if(search != "")
+            {
+                SqlParameter[] parameters = new SqlParameter[]
+                {
+                    new SqlParameter("@MaPhieuNhap", search)
+                };
+
+                DataTable dt = db.ExecuteStoredProcedure("timKiemPhieuNhapHang", parameters);
+
+                dataGridView1.DataSource = dt;
+            }
+
+
+            
 
         }
     }

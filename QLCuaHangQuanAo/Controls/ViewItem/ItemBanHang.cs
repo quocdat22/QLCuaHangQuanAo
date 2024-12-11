@@ -21,7 +21,7 @@ namespace QLCuaHangQuanAo.UserCotrols
         public string SizeSP1;
         public string color;
         public event EventHandler Selected =null;
-      
+        public int SoLuongTon { get; set; }
         public ItemBanHang()
         {
             InitializeComponent();
@@ -32,14 +32,17 @@ namespace QLCuaHangQuanAo.UserCotrols
           
         }
 
-        public void SetSP(string ten, string anh, string gia,string size,string color)
+        public void SetSP(string ten, string anh, string gia, string size, string color, int soLuongTon)
         {
             this.SizeSP1 = size;
             this.color = color;
            this.name = ten;
             this.price = gia;
             this.Imagess =anh;
+
+            this.SoLuongTon = soLuongTon;
             txt_SoLuong.Text = "0";
+
 
             //string imagePath = Path.Combine(Application.StartupPath, "Images", anh);
             string imagePath = Path.GetFullPath(Path.Combine(Application.StartupPath, "../..", "Images", anh));
@@ -68,6 +71,11 @@ namespace QLCuaHangQuanAo.UserCotrols
 
         private void btn_Them_Click(object sender, EventArgs e)
         {
+            if (Count + 1 > SoLuongTon) // Kiểm tra nếu số lượng thêm vượt quá tồn kho
+            {
+                MessageBox.Show("Số lượng không đủ trong kho", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
             Count++;
             txt_SoLuong.Text = Count.ToString();
         }

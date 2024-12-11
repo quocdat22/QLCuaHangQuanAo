@@ -74,6 +74,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Controls\Backup.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controls\Backup.Designer.cs">
+      <DependentUpon>Backup.cs</DependentUpon>
+    </Compile>
     <Compile Include="Controls\BanHang.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -91,6 +97,12 @@
     </Compile>
     <Compile Include="Controls\QLHoaDon.Designer.cs">
       <DependentUpon>QLHoaDon.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\QLHoaDonNhapHang.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controls\QLHoaDonNhapHang.Designer.cs">
+      <DependentUpon>QLHoaDonNhapHang.cs</DependentUpon>
     </Compile>
     <Compile Include="Controls\QLKhachHang.cs">
       <SubType>UserControl</SubType>
@@ -121,6 +133,12 @@
     </Compile>
     <Compile Include="Controls\TrangChu.Designer.cs">
       <DependentUpon>TrangChu.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\ViewItem\Backup.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controls\ViewItem\Backup.Designer.cs">
+      <DependentUpon>Backup.cs</DependentUpon>
     </Compile>
     <Compile Include="Controls\ViewItem\ItemBanHang.cs">
       <SubType>UserControl</SubType>
@@ -153,6 +171,12 @@
     <Compile Include="FORMCHINH.Designer.cs">
       <DependentUpon>FORMCHINH.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\DANGKY.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\DANGKY.Designer.cs">
+      <DependentUpon>DANGKY.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\DANGNHAP.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -171,6 +195,12 @@
     <Compile Include="Forms\MiniForms\InputForm.Designer.cs">
       <DependentUpon>InputForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\MiniForms\ThemNhaCungCap.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\MiniForms\ThemNhaCungCap.Designer.cs">
+      <DependentUpon>ThemNhaCungCap.cs</DependentUpon>
+    </Compile>
     <Compile Include="Models\ComboBoxItem.cs" />
     <Compile Include="Models\KhachHang.cs" />
     <Compile Include="Models\NhanVien.cs" />
@@ -178,6 +208,9 @@
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SqlServerTypes\Loader.cs" />
+    <EmbeddedResource Include="Controls\Backup.resx">
+      <DependentUpon>Backup.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Controls\BanHang.resx">
       <DependentUpon>BanHang.cs</DependentUpon>
     </EmbeddedResource>
@@ -186,6 +219,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Controls\QLHoaDon.resx">
       <DependentUpon>QLHoaDon.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controls\QLHoaDonNhapHang.resx">
+      <DependentUpon>QLHoaDonNhapHang.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Controls\QLKhachHang.resx">
       <DependentUpon>QLKhachHang.cs</DependentUpon>
@@ -202,6 +238,9 @@
     <EmbeddedResource Include="Controls\TrangChu.resx">
       <DependentUpon>TrangChu.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Controls\ViewItem\Backup.resx">
+      <DependentUpon>Backup.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Controls\ViewItem\ItemBanHang.resx">
       <DependentUpon>ItemBanHang.cs</DependentUpon>
     </EmbeddedResource>
@@ -216,6 +255,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="FORMCHINH.resx">
       <DependentUpon>FORMCHINH.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\DANGKY.resx">
+      <DependentUpon>DANGKY.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\DANGNHAP.resx">
       <DependentUpon>DANGNHAP.cs</DependentUpon>
