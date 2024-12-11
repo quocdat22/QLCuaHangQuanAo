@@ -55,6 +55,7 @@
             this.uiLabel6 = new Sunny.UI.UILabel();
             this.btn_clear = new Sunny.UI.UIButton();
             this.btn_Huy = new Sunny.UI.UIButton();
+            this.btnThemLoai = new Sunny.UI.UIButton();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.AnhSP)).BeginInit();
             this.SuspendLayout();
@@ -98,7 +99,7 @@
             // 
             this.uiLabel3.Font = new System.Drawing.Font("Microsoft YaHei", 12F);
             this.uiLabel3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(48)))), ((int)(((byte)(48)))), ((int)(((byte)(48)))));
-            this.uiLabel3.Location = new System.Drawing.Point(411, 16);
+            this.uiLabel3.Location = new System.Drawing.Point(448, 16);
             this.uiLabel3.Name = "uiLabel3";
             this.uiLabel3.Size = new System.Drawing.Size(100, 23);
             this.uiLabel3.TabIndex = 3;
@@ -109,7 +110,7 @@
             // 
             this.uiLabel5.Font = new System.Drawing.Font("Microsoft YaHei", 12F);
             this.uiLabel5.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(48)))), ((int)(((byte)(48)))), ((int)(((byte)(48)))));
-            this.uiLabel5.Location = new System.Drawing.Point(658, 55);
+            this.uiLabel5.Location = new System.Drawing.Point(710, 55);
             this.uiLabel5.Name = "uiLabel5";
             this.uiLabel5.Size = new System.Drawing.Size(153, 23);
             this.uiLabel5.TabIndex = 5;
@@ -136,7 +137,7 @@
             // 
             this.txt_Gia.Cursor = System.Windows.Forms.Cursors.IBeam;
             this.txt_Gia.Font = new System.Drawing.Font("Microsoft YaHei", 12F);
-            this.txt_Gia.Location = new System.Drawing.Point(800, 54);
+            this.txt_Gia.Location = new System.Drawing.Point(852, 54);
             this.txt_Gia.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.txt_Gia.MinimumSize = new System.Drawing.Size(1, 16);
             this.txt_Gia.Name = "txt_Gia";
@@ -152,7 +153,7 @@
             this.cbo_loai.FormattingEnabled = true;
             this.cbo_loai.Location = new System.Drawing.Point(170, 59);
             this.cbo_loai.Name = "cbo_loai";
-            this.cbo_loai.Size = new System.Drawing.Size(225, 24);
+            this.cbo_loai.Size = new System.Drawing.Size(119, 24);
             this.cbo_loai.TabIndex = 9;
             // 
             // btn_them
@@ -210,7 +211,7 @@
             // cbo_mau
             // 
             this.cbo_mau.FormattingEnabled = true;
-            this.cbo_mau.Location = new System.Drawing.Point(517, 16);
+            this.cbo_mau.Location = new System.Drawing.Point(554, 16);
             this.cbo_mau.Name = "cbo_mau";
             this.cbo_mau.Size = new System.Drawing.Size(172, 24);
             this.cbo_mau.TabIndex = 15;
@@ -232,7 +233,7 @@
             // 
             this.uiLabel4.Font = new System.Drawing.Font("Microsoft YaHei", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.uiLabel4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(48)))), ((int)(((byte)(48)))), ((int)(((byte)(48)))));
-            this.uiLabel4.Location = new System.Drawing.Point(695, 17);
+            this.uiLabel4.Location = new System.Drawing.Point(747, 17);
             this.uiLabel4.Name = "uiLabel4";
             this.uiLabel4.Size = new System.Drawing.Size(147, 23);
             this.uiLabel4.TabIndex = 17;
@@ -243,7 +244,7 @@
             // 
             this.txt_SoLuong.Cursor = System.Windows.Forms.Cursors.IBeam;
             this.txt_SoLuong.Font = new System.Drawing.Font("Microsoft YaHei", 12F);
-            this.txt_SoLuong.Location = new System.Drawing.Point(800, 17);
+            this.txt_SoLuong.Location = new System.Drawing.Point(852, 17);
             this.txt_SoLuong.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.txt_SoLuong.MinimumSize = new System.Drawing.Size(1, 16);
             this.txt_SoLuong.Name = "txt_SoLuong";
@@ -256,7 +257,7 @@
             // 
             // AnhSP
             // 
-            this.AnhSP.Location = new System.Drawing.Point(1072, 9);
+            this.AnhSP.Location = new System.Drawing.Point(1135, 9);
             this.AnhSP.Name = "AnhSP";
             this.AnhSP.Size = new System.Drawing.Size(140, 124);
             this.AnhSP.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -265,9 +266,9 @@
             // 
             // btn_ChonAnh
             // 
-            this.btn_ChonAnh.Location = new System.Drawing.Point(979, 23);
+            this.btn_ChonAnh.Location = new System.Drawing.Point(1014, 9);
             this.btn_ChonAnh.Name = "btn_ChonAnh";
-            this.btn_ChonAnh.Size = new System.Drawing.Size(75, 23);
+            this.btn_ChonAnh.Size = new System.Drawing.Size(115, 23);
             this.btn_ChonAnh.TabIndex = 52;
             this.btn_ChonAnh.Text = "Chọn ảnh";
             this.btn_ChonAnh.UseVisualStyleBackColor = true;
@@ -290,7 +291,7 @@
             // cbo_Size
             // 
             this.cbo_Size.FormattingEnabled = true;
-            this.cbo_Size.Location = new System.Drawing.Point(517, 54);
+            this.cbo_Size.Location = new System.Drawing.Point(554, 54);
             this.cbo_Size.Name = "cbo_Size";
             this.cbo_Size.Size = new System.Drawing.Size(172, 24);
             this.cbo_Size.TabIndex = 57;
@@ -299,7 +300,7 @@
             // 
             this.lal.Font = new System.Drawing.Font("Microsoft YaHei", 12F);
             this.lal.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(48)))), ((int)(((byte)(48)))), ((int)(((byte)(48)))));
-            this.lal.Location = new System.Drawing.Point(411, 54);
+            this.lal.Location = new System.Drawing.Point(448, 54);
             this.lal.Name = "lal";
             this.lal.Size = new System.Drawing.Size(100, 23);
             this.lal.TabIndex = 56;
@@ -358,6 +359,19 @@
             this.btn_Huy.TipsFont = new System.Drawing.Font("Microsoft Sans Serif", 9F);
             this.btn_Huy.Click += new System.EventHandler(this.btn_Huy_Click);
             // 
+            // btnThemLoai
+            // 
+            this.btnThemLoai.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnThemLoai.Font = new System.Drawing.Font("Microsoft YaHei", 12F);
+            this.btnThemLoai.Location = new System.Drawing.Point(309, 59);
+            this.btnThemLoai.MinimumSize = new System.Drawing.Size(1, 1);
+            this.btnThemLoai.Name = "btnThemLoai";
+            this.btnThemLoai.Size = new System.Drawing.Size(86, 24);
+            this.btnThemLoai.TabIndex = 11;
+            this.btnThemLoai.Text = "Thêm Loại";
+            this.btnThemLoai.TipsFont = new System.Drawing.Font("Microsoft Sans Serif", 9F);
+            this.btnThemLoai.Click += new System.EventHandler(this.uiButtonThemLoai_Click);
+            // 
             // QuanLyKho
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -378,6 +392,7 @@
             this.Controls.Add(this.uiButton4);
             this.Controls.Add(this.btn_sua);
             this.Controls.Add(this.btn_xoa);
+            this.Controls.Add(this.btnThemLoai);
             this.Controls.Add(this.btn_them);
             this.Controls.Add(this.cbo_loai);
             this.Controls.Add(this.txt_Gia);
@@ -425,5 +440,6 @@
         private Sunny.UI.UILabel uiLabel6;
         private Sunny.UI.UIButton btn_clear;
         private Sunny.UI.UIButton btn_Huy;
+        private Sunny.UI.UIButton btnThemLoai;
     }
 }

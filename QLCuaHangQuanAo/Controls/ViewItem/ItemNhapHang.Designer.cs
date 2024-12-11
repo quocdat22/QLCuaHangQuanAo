@@ -1,6 +1,6 @@
 ﻿namespace QLCuaHangQuanAo.UserCotrols
 {
-    partial class Item
+    partial class ItemNhapHang
     {
         /// <summary> 
         /// Required designer variable.
@@ -29,7 +29,6 @@
         private void InitializeComponent()
         {
             this.NameSP = new System.Windows.Forms.Label();
-            this.GiaSP = new System.Windows.Forms.Label();
             this.btn_Them = new System.Windows.Forms.Button();
             this.btn_Giam = new System.Windows.Forms.Button();
             this.txt_SoLuong = new System.Windows.Forms.TextBox();
@@ -39,6 +38,8 @@
             this.label2 = new System.Windows.Forms.Label();
             this.SizeSP = new System.Windows.Forms.Label();
             this.ColorSP = new System.Windows.Forms.Label();
+            this.txt_GiaNhap = new System.Windows.Forms.TextBox();
+            this.label3 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.ImageSP)).BeginInit();
             this.SuspendLayout();
             // 
@@ -52,19 +53,9 @@
             this.NameSP.TabIndex = 1;
             this.NameSP.Text = "Name";
             // 
-            // GiaSP
-            // 
-            this.GiaSP.AutoSize = true;
-            this.GiaSP.Location = new System.Drawing.Point(116, 254);
-            this.GiaSP.Name = "GiaSP";
-            this.GiaSP.Size = new System.Drawing.Size(35, 16);
-            this.GiaSP.TabIndex = 2;
-            this.GiaSP.Text = "200$";
-            this.GiaSP.Click += new System.EventHandler(this.GiaSP_Click);
-            // 
             // btn_Them
             // 
-            this.btn_Them.Location = new System.Drawing.Point(66, 271);
+            this.btn_Them.Location = new System.Drawing.Point(66, 277);
             this.btn_Them.Name = "btn_Them";
             this.btn_Them.Size = new System.Drawing.Size(32, 23);
             this.btn_Them.TabIndex = 3;
@@ -74,7 +65,7 @@
             // 
             // btn_Giam
             // 
-            this.btn_Giam.Location = new System.Drawing.Point(166, 271);
+            this.btn_Giam.Location = new System.Drawing.Point(166, 277);
             this.btn_Giam.Name = "btn_Giam";
             this.btn_Giam.Size = new System.Drawing.Size(28, 23);
             this.btn_Giam.TabIndex = 4;
@@ -85,7 +76,7 @@
             // txt_SoLuong
             // 
             this.txt_SoLuong.Enabled = false;
-            this.txt_SoLuong.Location = new System.Drawing.Point(115, 273);
+            this.txt_SoLuong.Location = new System.Drawing.Point(115, 279);
             this.txt_SoLuong.Name = "txt_SoLuong";
             this.txt_SoLuong.Size = new System.Drawing.Size(36, 22);
             this.txt_SoLuong.TabIndex = 5;
@@ -103,7 +94,7 @@
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(93, 299);
+            this.button1.Location = new System.Drawing.Point(93, 305);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(75, 23);
             this.button1.TabIndex = 6;
@@ -149,11 +140,30 @@
             this.ColorSP.TabIndex = 10;
             this.ColorSP.Text = "label4";
             // 
-            // Item
+            // txt_GiaNhap
+            // 
+            this.txt_GiaNhap.Location = new System.Drawing.Point(100, 251);
+            this.txt_GiaNhap.Name = "txt_GiaNhap";
+            this.txt_GiaNhap.Size = new System.Drawing.Size(100, 22);
+            this.txt_GiaNhap.TabIndex = 11;
+            this.txt_GiaNhap.TextChanged += new System.EventHandler(this.GiaSP_TextChanged);
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(34, 253);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(61, 16);
+            this.label3.TabIndex = 12;
+            this.label3.Text = "Giá nhập";
+            // 
+            // ItemNhapHang
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.Controls.Add(this.label3);
+            this.Controls.Add(this.txt_GiaNhap);
             this.Controls.Add(this.ColorSP);
             this.Controls.Add(this.SizeSP);
             this.Controls.Add(this.label2);
@@ -162,10 +172,9 @@
             this.Controls.Add(this.txt_SoLuong);
             this.Controls.Add(this.btn_Giam);
             this.Controls.Add(this.btn_Them);
-            this.Controls.Add(this.GiaSP);
             this.Controls.Add(this.NameSP);
             this.Controls.Add(this.ImageSP);
-            this.Name = "Item";
+            this.Name = "ItemNhapHang";
             this.Size = new System.Drawing.Size(296, 339);
             this.Load += new System.EventHandler(this.Item_Load);
             this.Click += new System.EventHandler(this.Item_Click);
@@ -179,7 +188,6 @@
 
         private System.Windows.Forms.PictureBox ImageSP;
         private System.Windows.Forms.Label NameSP;
-        private System.Windows.Forms.Label GiaSP;
         private System.Windows.Forms.Button btn_Them;
         private System.Windows.Forms.Button btn_Giam;
         private System.Windows.Forms.TextBox txt_SoLuong;
@@ -188,5 +196,7 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label SizeSP;
         private System.Windows.Forms.Label ColorSP;
+        private System.Windows.Forms.TextBox txt_GiaNhap;
+        private System.Windows.Forms.Label label3;
     }
 }

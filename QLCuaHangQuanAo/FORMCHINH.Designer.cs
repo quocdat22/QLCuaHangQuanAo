@@ -33,15 +33,6 @@
             this.panel1 = new System.Windows.Forms.Panel();
             this.PanelContainer = new System.Windows.Forms.Panel();
             this.panel3 = new System.Windows.Forms.Panel();
-            this.panel2 = new System.Windows.Forms.Panel();
-            this.hhhh = new System.Windows.Forms.Label();
-            this.button7 = new System.Windows.Forms.Button();
-            this.panel5 = new System.Windows.Forms.Panel();
-            this.uiSmoothLabel1 = new Sunny.UI.UISmoothLabel();
-            this.lb_time = new System.Windows.Forms.Label();
-            this.uiButton1 = new Sunny.UI.UIButton();
-            this.TenNV = new System.Windows.Forms.Label();
-            this.panel4 = new System.Windows.Forms.Panel();
             this.button9 = new System.Windows.Forms.Button();
             this.button8 = new System.Windows.Forms.Button();
             this.button6 = new System.Windows.Forms.Button();
@@ -50,15 +41,26 @@
             this.button3 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.panel2 = new System.Windows.Forms.Panel();
+            this.panel4 = new System.Windows.Forms.Panel();
             this.btn_dangxuat = new System.Windows.Forms.Panel();
+            this.TenNV = new System.Windows.Forms.Label();
+            this.panel5 = new System.Windows.Forms.Panel();
+            this.uiButton1 = new Sunny.UI.UIButton();
+            this.lb_time = new System.Windows.Forms.Label();
+            this.uiSmoothLabel1 = new Sunny.UI.UISmoothLabel();
+            this.button7 = new System.Windows.Forms.Button();
+            this.hhhh = new System.Windows.Forms.Label();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.btnNhapHang = new System.Windows.Forms.Button();
+            this.btn_PhieuNhap = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.panel3.SuspendLayout();
             this.panel2.SuspendLayout();
-            this.panel5.SuspendLayout();
             this.panel4.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.btn_dangxuat.SuspendLayout();
+            this.panel5.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // timer1
@@ -90,10 +92,12 @@
             // 
             this.panel3.BackColor = System.Drawing.Color.SkyBlue;
             this.panel3.Controls.Add(this.button9);
+            this.panel3.Controls.Add(this.btn_PhieuNhap);
             this.panel3.Controls.Add(this.button8);
             this.panel3.Controls.Add(this.button6);
             this.panel3.Controls.Add(this.button5);
             this.panel3.Controls.Add(this.button4);
+            this.panel3.Controls.Add(this.btnNhapHang);
             this.panel3.Controls.Add(this.button3);
             this.panel3.Controls.Add(this.button2);
             this.panel3.Controls.Add(this.button1);
@@ -103,115 +107,6 @@
             this.panel3.Size = new System.Drawing.Size(156, 780);
             this.panel3.TabIndex = 1;
             this.panel3.Paint += new System.Windows.Forms.PaintEventHandler(this.panel3_Paint);
-            // 
-            // panel2
-            // 
-            this.panel2.Controls.Add(this.panel4);
-            this.panel2.Controls.Add(this.pictureBox1);
-            this.panel2.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel2.Location = new System.Drawing.Point(0, 0);
-            this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(1500, 120);
-            this.panel2.TabIndex = 0;
-            this.panel2.Paint += new System.Windows.Forms.PaintEventHandler(this.panel2_Paint);
-            // 
-            // hhhh
-            // 
-            this.hhhh.AutoSize = true;
-            this.hhhh.BackColor = System.Drawing.Color.AliceBlue;
-            this.hhhh.ForeColor = System.Drawing.Color.MediumSlateBlue;
-            this.hhhh.Location = new System.Drawing.Point(897, 13);
-            this.hhhh.Name = "hhhh";
-            this.hhhh.Size = new System.Drawing.Size(77, 16);
-            this.hhhh.TabIndex = 1;
-            this.hhhh.Text = "1234123324";
-            // 
-            // button7
-            // 
-            this.button7.Location = new System.Drawing.Point(1233, 12);
-            this.button7.Name = "button7";
-            this.button7.Size = new System.Drawing.Size(75, 23);
-            this.button7.TabIndex = 2;
-            this.button7.Text = "button7";
-            this.button7.UseVisualStyleBackColor = true;
-            // 
-            // panel5
-            // 
-            this.panel5.BackColor = System.Drawing.Color.SkyBlue;
-            this.panel5.Controls.Add(this.uiButton1);
-            this.panel5.Controls.Add(this.lb_time);
-            this.panel5.Controls.Add(this.uiSmoothLabel1);
-            this.panel5.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel5.Location = new System.Drawing.Point(0, 0);
-            this.panel5.Name = "panel5";
-            this.panel5.Size = new System.Drawing.Size(1347, 55);
-            this.panel5.TabIndex = 3;
-            this.panel5.MouseDown += new System.Windows.Forms.MouseEventHandler(this.panel5_MouseDown);
-            this.panel5.MouseMove += new System.Windows.Forms.MouseEventHandler(this.panel5_MouseMove);
-            // 
-            // uiSmoothLabel1
-            // 
-            this.uiSmoothLabel1.Font = new System.Drawing.Font("Bookman Old Style", 22.2F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.uiSmoothLabel1.ForeColor = System.Drawing.Color.Honeydew;
-            this.uiSmoothLabel1.Location = new System.Drawing.Point(6, 3);
-            this.uiSmoothLabel1.Name = "uiSmoothLabel1";
-            this.uiSmoothLabel1.RectColor = System.Drawing.Color.BlueViolet;
-            this.uiSmoothLabel1.Size = new System.Drawing.Size(813, 52);
-            this.uiSmoothLabel1.Style = Sunny.UI.UIStyle.Custom;
-            this.uiSmoothLabel1.TabIndex = 1;
-            this.uiSmoothLabel1.Text = "Quản lý cửa hàng quần áo";
-            // 
-            // lb_time
-            // 
-            this.lb_time.AutoSize = true;
-            this.lb_time.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lb_time.ForeColor = System.Drawing.Color.LightCyan;
-            this.lb_time.Location = new System.Drawing.Point(1122, 13);
-            this.lb_time.Name = "lb_time";
-            this.lb_time.Size = new System.Drawing.Size(59, 20);
-            this.lb_time.TabIndex = 2;
-            this.lb_time.Text = "label1";
-            // 
-            // uiButton1
-            // 
-            this.uiButton1.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.uiButton1.Font = new System.Drawing.Font("Microsoft YaHei", 12F);
-            this.uiButton1.Location = new System.Drawing.Point(1215, 12);
-            this.uiButton1.MinimumSize = new System.Drawing.Size(1, 1);
-            this.uiButton1.Name = "uiButton1";
-            this.uiButton1.Radius = 23;
-            this.uiButton1.Size = new System.Drawing.Size(118, 37);
-            this.uiButton1.TabIndex = 3;
-            this.uiButton1.Text = "Đăng xuất";
-            this.uiButton1.TipsFont = new System.Drawing.Font("Microsoft Sans Serif", 9F);
-            this.uiButton1.Click += new System.EventHandler(this.uiButton1_Click);
-            // 
-            // TenNV
-            // 
-            this.TenNV.AutoSize = true;
-            this.TenNV.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.TenNV.ForeColor = System.Drawing.Color.MidnightBlue;
-            this.TenNV.Location = new System.Drawing.Point(8, 15);
-            this.TenNV.Name = "TenNV";
-            this.TenNV.Size = new System.Drawing.Size(86, 31);
-            this.TenNV.TabIndex = 2;
-            this.TenNV.Text = "label1";
-            this.TenNV.Click += new System.EventHandler(this.TenNV_Click);
-            // 
-            // panel4
-            // 
-            this.panel4.BackColor = System.Drawing.Color.DeepSkyBlue;
-            this.panel4.Controls.Add(this.btn_dangxuat);
-            this.panel4.Controls.Add(this.panel5);
-            this.panel4.Controls.Add(this.button7);
-            this.panel4.Controls.Add(this.hhhh);
-            this.panel4.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel4.ForeColor = System.Drawing.Color.DeepSkyBlue;
-            this.panel4.Location = new System.Drawing.Point(153, 0);
-            this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(1347, 120);
-            this.panel4.TabIndex = 1;
-            this.panel4.Paint += new System.Windows.Forms.PaintEventHandler(this.panel4_Paint);
             // 
             // button9
             // 
@@ -349,6 +244,127 @@
             this.button1.UseVisualStyleBackColor = false;
             this.button1.Click += new System.EventHandler(this.button1_Click_2);
             // 
+            // panel2
+            // 
+            this.panel2.Controls.Add(this.panel4);
+            this.panel2.Controls.Add(this.pictureBox1);
+            this.panel2.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panel2.Location = new System.Drawing.Point(0, 0);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(1500, 120);
+            this.panel2.TabIndex = 0;
+            this.panel2.Paint += new System.Windows.Forms.PaintEventHandler(this.panel2_Paint);
+            // 
+            // panel4
+            // 
+            this.panel4.BackColor = System.Drawing.Color.DeepSkyBlue;
+            this.panel4.Controls.Add(this.btn_dangxuat);
+            this.panel4.Controls.Add(this.panel5);
+            this.panel4.Controls.Add(this.button7);
+            this.panel4.Controls.Add(this.hhhh);
+            this.panel4.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel4.ForeColor = System.Drawing.Color.DeepSkyBlue;
+            this.panel4.Location = new System.Drawing.Point(153, 0);
+            this.panel4.Name = "panel4";
+            this.panel4.Size = new System.Drawing.Size(1347, 120);
+            this.panel4.TabIndex = 1;
+            this.panel4.Paint += new System.Windows.Forms.PaintEventHandler(this.panel4_Paint);
+            // 
+            // btn_dangxuat
+            // 
+            this.btn_dangxuat.BackColor = System.Drawing.Color.SkyBlue;
+            this.btn_dangxuat.Controls.Add(this.TenNV);
+            this.btn_dangxuat.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.btn_dangxuat.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_dangxuat.ForeColor = System.Drawing.Color.Navy;
+            this.btn_dangxuat.Location = new System.Drawing.Point(0, 55);
+            this.btn_dangxuat.Name = "btn_dangxuat";
+            this.btn_dangxuat.Size = new System.Drawing.Size(1347, 65);
+            this.btn_dangxuat.TabIndex = 4;
+            // 
+            // TenNV
+            // 
+            this.TenNV.AutoSize = true;
+            this.TenNV.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.TenNV.ForeColor = System.Drawing.Color.MidnightBlue;
+            this.TenNV.Location = new System.Drawing.Point(8, 15);
+            this.TenNV.Name = "TenNV";
+            this.TenNV.Size = new System.Drawing.Size(86, 31);
+            this.TenNV.TabIndex = 2;
+            this.TenNV.Text = "label1";
+            this.TenNV.Click += new System.EventHandler(this.TenNV_Click);
+            // 
+            // panel5
+            // 
+            this.panel5.BackColor = System.Drawing.Color.SkyBlue;
+            this.panel5.Controls.Add(this.uiButton1);
+            this.panel5.Controls.Add(this.lb_time);
+            this.panel5.Controls.Add(this.uiSmoothLabel1);
+            this.panel5.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panel5.Location = new System.Drawing.Point(0, 0);
+            this.panel5.Name = "panel5";
+            this.panel5.Size = new System.Drawing.Size(1347, 55);
+            this.panel5.TabIndex = 3;
+            this.panel5.MouseDown += new System.Windows.Forms.MouseEventHandler(this.panel5_MouseDown);
+            this.panel5.MouseMove += new System.Windows.Forms.MouseEventHandler(this.panel5_MouseMove);
+            // 
+            // uiButton1
+            // 
+            this.uiButton1.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.uiButton1.Font = new System.Drawing.Font("Microsoft YaHei", 12F);
+            this.uiButton1.Location = new System.Drawing.Point(1215, 12);
+            this.uiButton1.MinimumSize = new System.Drawing.Size(1, 1);
+            this.uiButton1.Name = "uiButton1";
+            this.uiButton1.Radius = 23;
+            this.uiButton1.Size = new System.Drawing.Size(118, 37);
+            this.uiButton1.TabIndex = 3;
+            this.uiButton1.Text = "Đăng xuất";
+            this.uiButton1.TipsFont = new System.Drawing.Font("Microsoft Sans Serif", 9F);
+            this.uiButton1.Click += new System.EventHandler(this.uiButton1_Click);
+            // 
+            // lb_time
+            // 
+            this.lb_time.AutoSize = true;
+            this.lb_time.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lb_time.ForeColor = System.Drawing.Color.LightCyan;
+            this.lb_time.Location = new System.Drawing.Point(1122, 13);
+            this.lb_time.Name = "lb_time";
+            this.lb_time.Size = new System.Drawing.Size(59, 20);
+            this.lb_time.TabIndex = 2;
+            this.lb_time.Text = "label1";
+            // 
+            // uiSmoothLabel1
+            // 
+            this.uiSmoothLabel1.Font = new System.Drawing.Font("Bookman Old Style", 22.2F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.uiSmoothLabel1.ForeColor = System.Drawing.Color.Honeydew;
+            this.uiSmoothLabel1.Location = new System.Drawing.Point(6, 3);
+            this.uiSmoothLabel1.Name = "uiSmoothLabel1";
+            this.uiSmoothLabel1.RectColor = System.Drawing.Color.BlueViolet;
+            this.uiSmoothLabel1.Size = new System.Drawing.Size(813, 52);
+            this.uiSmoothLabel1.Style = Sunny.UI.UIStyle.Custom;
+            this.uiSmoothLabel1.TabIndex = 1;
+            this.uiSmoothLabel1.Text = "Quản lý cửa hàng quần áo";
+            // 
+            // button7
+            // 
+            this.button7.Location = new System.Drawing.Point(1233, 12);
+            this.button7.Name = "button7";
+            this.button7.Size = new System.Drawing.Size(75, 23);
+            this.button7.TabIndex = 2;
+            this.button7.Text = "button7";
+            this.button7.UseVisualStyleBackColor = true;
+            // 
+            // hhhh
+            // 
+            this.hhhh.AutoSize = true;
+            this.hhhh.BackColor = System.Drawing.Color.AliceBlue;
+            this.hhhh.ForeColor = System.Drawing.Color.MediumSlateBlue;
+            this.hhhh.Location = new System.Drawing.Point(897, 13);
+            this.hhhh.Name = "hhhh";
+            this.hhhh.Size = new System.Drawing.Size(77, 16);
+            this.hhhh.TabIndex = 1;
+            this.hhhh.Text = "1234123324";
+            // 
             // pictureBox1
             // 
             this.pictureBox1.BackColor = System.Drawing.Color.SkyBlue;
@@ -362,17 +378,39 @@
             this.pictureBox1.TabStop = false;
             this.pictureBox1.Click += new System.EventHandler(this.pictureBox1_Click);
             // 
-            // btn_dangxuat
+            // btnNhapHang
             // 
-            this.btn_dangxuat.BackColor = System.Drawing.Color.SkyBlue;
-            this.btn_dangxuat.Controls.Add(this.TenNV);
-            this.btn_dangxuat.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.btn_dangxuat.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_dangxuat.ForeColor = System.Drawing.Color.Navy;
-            this.btn_dangxuat.Location = new System.Drawing.Point(0, 55);
-            this.btn_dangxuat.Name = "btn_dangxuat";
-            this.btn_dangxuat.Size = new System.Drawing.Size(1347, 65);
-            this.btn_dangxuat.TabIndex = 4;
+            this.btnNhapHang.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.btnNhapHang.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnNhapHang.ForeColor = System.Drawing.Color.Black;
+            this.btnNhapHang.Image = global::QLCuaHangQuanAo.Properties.Resources.icons8_product_16__1_;
+            this.btnNhapHang.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnNhapHang.Location = new System.Drawing.Point(0, 372);
+            this.btnNhapHang.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btnNhapHang.Name = "btnNhapHang";
+            this.btnNhapHang.Size = new System.Drawing.Size(153, 46);
+            this.btnNhapHang.TabIndex = 23;
+            this.btnNhapHang.Text = "Nhập hàng";
+            this.btnNhapHang.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnNhapHang.UseVisualStyleBackColor = false;
+            this.btnNhapHang.Click += new System.EventHandler(this.buttonNhapHang_Click_1);
+            // 
+            // btn_PhieuNhap
+            // 
+            this.btn_PhieuNhap.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.btn_PhieuNhap.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_PhieuNhap.ForeColor = System.Drawing.Color.Black;
+            this.btn_PhieuNhap.Image = global::QLCuaHangQuanAo.Properties.Resources.icons8_bill_16__1_;
+            this.btn_PhieuNhap.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btn_PhieuNhap.Location = new System.Drawing.Point(0, 422);
+            this.btn_PhieuNhap.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btn_PhieuNhap.Name = "btn_PhieuNhap";
+            this.btn_PhieuNhap.Size = new System.Drawing.Size(153, 41);
+            this.btn_PhieuNhap.TabIndex = 27;
+            this.btn_PhieuNhap.Text = "Phiếu nhập";
+            this.btn_PhieuNhap.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btn_PhieuNhap.UseVisualStyleBackColor = false;
+            this.btn_PhieuNhap.Click += new System.EventHandler(this.button8_Click_1);
             // 
             // FORMCHINH
             // 
@@ -389,13 +427,13 @@
             this.panel1.ResumeLayout(false);
             this.panel3.ResumeLayout(false);
             this.panel2.ResumeLayout(false);
-            this.panel5.ResumeLayout(false);
-            this.panel5.PerformLayout();
             this.panel4.ResumeLayout(false);
             this.panel4.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.btn_dangxuat.ResumeLayout(false);
             this.btn_dangxuat.PerformLayout();
+            this.panel5.ResumeLayout(false);
+            this.panel5.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -424,5 +462,7 @@
         private System.Windows.Forms.Button button7;
         private System.Windows.Forms.Label hhhh;
         private System.Windows.Forms.Panel btn_dangxuat;
+        private System.Windows.Forms.Button btn_PhieuNhap;
+        private System.Windows.Forms.Button btnNhapHang;
     }
 }

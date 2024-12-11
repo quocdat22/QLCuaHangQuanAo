@@ -1,4 +1,5 @@
 ﻿using QLCuaHangQuanAo;
+using QLCuaHangQuanAo.Forms.MiniForms;
 using QLCuaHangQuanAo.Models;
 using System;
 using System.Collections.Generic;
@@ -386,6 +387,20 @@ namespace QLCuaHangQuanAo.UserCotrols
             };
             dt = db.ExecuteStoredProcedure("SearchSanPhamByName", parameters);
             dataGridView1.DataSource = dt;
+
+        }
+
+        private void uiButtonThemLoai_Click(object sender, EventArgs e)
+        {
+            InputForm inputForm = new InputForm();
+            inputForm.ShowDialog();
+
+            string tenLoaiSanPhamMoi =  inputForm.InputValue;
+            SqlParameter[] parameters = {
+                new SqlParameter("@TEN_LOAI_SP", tenLoaiSanPhamMoi)
+            };
+            db.ExecuteProcNonQuery("ThemLoaiSanPham", parameters);
+            loadComboBoxLoai();
 
         }
     }

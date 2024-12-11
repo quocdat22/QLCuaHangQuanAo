@@ -15,7 +15,7 @@ using QLCuaHangQuanAo;
 
 namespace QLCuaHangQuanAo.UserCotrols
 {
-    public partial class BanHang : UserControl
+    public partial class NhapHang : UserControl
     {
         public float TongTienHang=0;
         public string TenNhanVien;
@@ -24,7 +24,7 @@ namespace QLCuaHangQuanAo.UserCotrols
 
         DatabaseHelper db;
     
-        public BanHang()
+        public NhapHang()
         {
             InitializeComponent();
 
@@ -39,17 +39,17 @@ namespace QLCuaHangQuanAo.UserCotrols
             LoadSizeSanPham();
             LoadMauSacSanPham();
             LoadLoaiSanPham();
-            LoadDanhSachKhachHang();
+            LoadNhaCungCap();
 
-            LoadThanhToan();
+            LoadNhapHang();
         }
 
         //==================================//
         #region LOAD 
 
-        void LoadThanhToan()
+        void LoadNhapHang()
         {
-            txtTienThoi.Enabled = false;
+            
         }
 
         private void LoadSanPhamList()
@@ -59,7 +59,7 @@ namespace QLCuaHangQuanAo.UserCotrols
             {
                 TenSanPham = row.Field<string>("TenSanPham"),
                 HinhAnh = row.Field<string>("HinhAnh"),
-                Gia = row.Field<decimal>("Gia"),
+                
                 Size = row.Field<string>("Size"),
                 MauSac = row.Field<string>("MauSac")
             }).ToList();
@@ -67,8 +67,8 @@ namespace QLCuaHangQuanAo.UserCotrols
             flowLayoutPanel1.Controls.Clear();
             foreach (var sp in sanPhamList)
             {
-                ItemBanHang item = new ItemBanHang();
-                item.SetSP(sp.TenSanPham, sp.HinhAnh, sp.Gia.ToString(), sp.Size, sp.MauSac);
+                ItemNhapHang item = new ItemNhapHang();
+                item.SetSP(sp.TenSanPham, sp.HinhAnh, sp.Size, sp.MauSac);
                 item.OnAddItemHD += ItemControl_OnAddItemHD;
                 flowLayoutPanel1.Controls.Add(item);
             }
@@ -117,24 +117,22 @@ namespace QLCuaHangQuanAo.UserCotrols
             cbo_Mau.SelectedIndex = 0;
         }
 
-        private void LoadDanhSachKhachHang()
+        private void LoadNhaCungCap()
         {
-            DataTable dt = db.ExecuteQuery("SELECT MaKhachHang, HoTen FROM KhachHang");
-
-            var danhSachKH = dt.AsEnumerable().Select(row => new
+            DataTable dt = db.ExecuteQuery("select distinct MaNhaCungCap, TenNhaCungCap from NhaCungCap;");
+            var dsNCC = dt.AsEnumerable().Select(row => new
             {
-                MaKhachHang = row.Field<int>("MaKhachHang"),
-                HoTen = row.Field<string>("HoTen")
+                MaNCC = row.Field<int>("MaNhaCungCap"),
+                TenNCC = row.Field<string>("TenNhaCungCap")
             }).ToList();
 
-            cb_KhachHangHD.Items.Clear();
-            cb_KhachHangHD.DataSource = danhSachKH;
-
-            cb_KhachHangHD.DisplayMember = "HoTen";
-            cb_KhachHangHD.ValueMember = "MaKhachHang";
-            cb_KhachHangHD.SelectedIndex = -1;
-
+            cb_NhaCC.DataSource = dsNCC;
+            cb_NhaCC.DisplayMember = "TenNCC";
+            cb_NhaCC.ValueMember = "MaNCC";
+            cb_NhaCC.SelectedIndex = 0; // Ensure no item is selected by default
         }
+
+        
         #endregion
 
 
@@ -142,34 +140,31 @@ namespace QLCuaHangQuanAo.UserCotrols
         private void ItemControl_OnAddItemHD(object sender, EventArgs e)
         {
 
-            itemHD newItemHD = new itemHD();
-
-            ItemBanHang item = sender as ItemBanHang;
+            itemHDNhapHang newItemHDNhapHang = new itemHDNhapHang();
+            ItemNhapHang item = sender as ItemNhapHang;
 
             if (item != null && item.Count > 0)
             {
-                newItemHD.getItem(item.name, item.price, item.Imagess, item.Count, item.SizeSP1, item.color);
-                if (kiemTra(newItemHD))
+                newItemHDNhapHang.getItem(item.name, item.price, item.Imagess, item.Count, item.SizeSP1, item.color);
+                if (kiemTra(newItemHDNhapHang))
                 {
-                    flowLayoutPanel3.Controls.Add(newItemHD);
+                    flowLayoutPanel3.Controls.Add(newItemHDNhapHang);
 
-                    newItemHD.Remove += RemoveItemHoaDon;
-                    TongTienHang += newItemHD.ThanhTien;
+                    newItemHDNhapHang.Remove += RemoveItemHoaDon;
+                    TongTienHang += newItemHDNhapHang.ThanhTien;
                     txt_TongTien.Text = TongTienHang.ToString();
                 }
-
             }
         }
-        private bool kiemTra(itemHD itemHD)
+        private bool kiemTra(itemHDNhapHang itemHD)
         {
             foreach (var con in flowLayoutPanel3.Controls)
             {
-                itemHD i = con as itemHD;
+                itemHDNhapHang i = con as itemHDNhapHang;
                 if (i.NameCTHD == itemHD.NameCTHD && i.SizeCt == itemHD.SizeCt && i.ColorCt == itemHD.ColorCt)
                     return false;
             }
             return true;
-
         }
 
         private void RemoveItemHoaDon(object sender, EventArgs e)
@@ -222,131 +217,37 @@ namespace QLCuaHangQuanAo.UserCotrols
 
         private void btn_ThanhToan_Click(object sender, EventArgs e)
         {
-            int maKhachHang;
-            if (cbx_KhachHangHD.Checked)
-                maKhachHang = -1;
-            else
+            int maNCC = (int)cb_NhaCC.SelectedValue;
+            
+            SqlParameter[] parameters =
             {
-                // Kiểm tra nếu không chọn khách hàng
-                if (cb_KhachHangHD.SelectedValue == null || string.IsNullOrEmpty(cb_KhachHangHD.Text))
-                {
-                    MessageBox.Show("Bổ sung thông tin khách hàng", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                    return; // Dừng xử lý khi thông tin khách hàng không hợp lệ
-                }
-
-                maKhachHang = (int)cb_KhachHangHD.SelectedValue;
-
-            }
-
-            SqlParameter[] parameters = new SqlParameter[]
-            {
-                new SqlParameter("@TrangThaiThanhToan", "Đã thanh toán"),
-                new SqlParameter("@MaNhanVien", IdNhanVien),
-                new SqlParameter("@MaKhachHang", maKhachHang),
-                new SqlParameter("@TongTien", decimal.Parse(txt_TongTien.Text)),
-                new SqlParameter("@NgayMuaHang", DateTime.Now)
+                new SqlParameter("@MaNhaCungCap", maNCC),
+                new SqlParameter("@NgayNhapHang", DateTime.Now),
+                new SqlParameter("@TongTien",decimal.Parse(txt_TongTien.Text))
             };
 
-            DataTable dt = db.ExecuteStoredProcedure("InsertHoaDon", parameters);
+            DataTable dt = db.ExecuteStoredProcedure("ThemPhieuNhapHang", parameters);
 
-            int maHoaDon = Convert.ToInt32(dt.Rows[0]["MaHoaDon"]);
-            decimal chietKhau = 0;
-            
-            foreach (var con in flowLayoutPanel3.Controls)
+            int maPhieuNhap = Convert.ToInt32(dt.Rows[0]["PhieuNhapHang"]);
+
+            foreach(var item in flowLayoutPanel3.Controls)
             {
-                itemHD i = con as itemHD;
-                SqlParameter[] ctParameters = new SqlParameter[]
+                itemHDNhapHang i = item as itemHDNhapHang;
+                SqlParameter[] parameters1 =
                 {
-                    new SqlParameter("@MaHoaDon", maHoaDon),
-                    new SqlParameter("@MaSanPham", GetMaSanPham(i.NameCTHD)),
+                    new SqlParameter("@MaPhieuNhap", maPhieuNhap),
+                    new SqlParameter("@MaSanPham",  GetMaSanPham(i.NameCTHD)),
                     new SqlParameter("@SoLuong", i.soluong),
-                    new SqlParameter("@DonGia", i.gia),
-                
-                    new SqlParameter("@ChietKhau", chietKhau),
-                    //new SqlParameter("@GiaSauChietKhau", (decimal)i.ThanhTien)
+                    new SqlParameter("@DonGia", i.gia)
                 };
-
-                
-                db.ExecuteStoredProcedure("InsertChiTietHoaDon", ctParameters);
+                db.ExecuteStoredProcedure("ThemChiTietPhieuNhapHang", parameters1);
             }
 
-            DialogResult result = MessageBox.Show("Bạn có muốn in hoa đơn không?", "Xác nhận", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-            if (result == DialogResult.Yes)
-            {
-                InHoaDon inHoaDon = new InHoaDon();
-                inHoaDon.Show();
-                inHoaDon.tenNv = TenNhanVien;
-                inHoaDon.tenKhach = GetTenKhachHangByMa(maKhachHang);
-                inHoaDon.tongTien = decimal.Parse(txt_TongTien.Text);
-                inHoaDon.tienKhach = decimal.Parse(txt_TienKhach.Text);
-                inHoaDon.tienThua = decimal.Parse(txtTienThoi.Text);
-                inHoaDon.ngayLap = DateTime.Now;
-                inHoaDon.ShowInvoiceReport(maHoaDon);
+            MessageBox.Show("Nhập hàng thành công");
 
-                ResetDS();
-            }
-            else
-            {
-                ResetDS();
-            }
-
-
-            
+            ResetDS();
 
         }
-
-        void ResetDS()
-        {
-            flowLayoutPanel3.Controls.Clear();
-            txt_TongTien.Clear();
-            txt_TienKhach.Clear();
-            txtTienThoi.Clear();
-            
-            cb_KhachHangHD.SelectedValue = -1;
-            cb_KhachHangHD.Text = "";
-        }
-
-        string GetTenKhachHangByMa(int MaKH)
-        {
-            SqlParameter[] parameters = new SqlParameter[]
-            {
-                new SqlParameter("@MaKhachHang", MaKH)
-            };
-
-            string tenKhachHang = db.ExecuteScalar("SELECT HoTen FROM KhachHang WHERE MaKhachHang = @MaKhachHang", parameters).ToString();
-
-            return tenKhachHang;
-        }
-
-        private void KhachHanhTuDo()
-        {
-            if (cbx_KhachHangHD.Checked)
-            {
-                cb_KhachHangHD.SelectedIndex = -1; // Bỏ chọn bất kỳ giá trị nào
-                cb_KhachHangHD.Text = ""; // Xóa nội dung hiển thị
-                cb_KhachHangHD.Enabled = false; // Vô hiệu hóa ComboBox
-            }
-            else
-            {
-                cb_KhachHangHD.Enabled = true; // Kích hoạt lại ComboBox
-            }
-        }
-
-        private void cbx_KhachHangHD_CheckedChanged(object sender, EventArgs e)
-        {
-            KhachHanhTuDo();
-        }
-
-
-        //private int GetMaNhanVien()
-        //{
-        //    SqlParameter[] parameters = new SqlParameter[]
-        //    {
-        //        new SqlParameter("@TaiKhoan", this.TaiKhoan)
-        //    };
-
-        //    return (int)db.ExecuteScalar("SELECT dbo.GetMaNhanVienByTaiKhoan(@TaiKhoan)", parameters);
-        //}
 
         private int GetMaSanPham(string tenSanPham)
         {
@@ -358,26 +259,28 @@ namespace QLCuaHangQuanAo.UserCotrols
             return (int)db.ExecuteScalar("SELECT MaSanPham FROM SanPham WHERE TenSanPham = @TenSanPham", parameters);
         }
 
-        private string GetTenNhanVien(int maHoaDon)
+        void ResetDS()
         {
-            SqlParameter[] parameters = new SqlParameter[]
-            {
-                new SqlParameter("@MaHoaDon", maHoaDon)
-            };
+            flowLayoutPanel3.Controls.Clear();
+            txt_TongTien.Clear();
+           
+            
+            cb_NhaCC.SelectedValue = -1;
+            //cb_NhaCC.Text = "";
+        }
 
-            return db.ExecuteScalar("SELECT nv.HoTen FROM NhanVien nv JOIN HoaDon hd ON nv.MaNhanVien = hd.MaNhanVien WHERE hd.MaHoaDon = @MaHoaDon", parameters).ToString();
+       
+
+        
+
+        private void cbx_KhachHangHD_CheckedChanged(object sender, EventArgs e)
+        {
+            
         }
 
         private void txt_TienKhach_TextChanged(object sender, EventArgs e)
         {
-            if (string.IsNullOrEmpty(txt_TienKhach.Text))
-            {
-                txtTienThoi.Text = "0";
-                return;
-            }
-
-            long tienthoi = long.Parse(txt_TienKhach.Text) - long.Parse(txt_TongTien.Text);
-            txtTienThoi.Text = tienthoi <= 0 ? "0" : tienthoi.ToString();
+           
         }
 
 

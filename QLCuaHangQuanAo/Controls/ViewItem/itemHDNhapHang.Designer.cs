@@ -1,6 +1,6 @@
 ﻿namespace QLCuaHangQuanAo.UserCotrols
 {
-    partial class itemHD
+    partial class itemHDNhapHang
     {
         /// <summary> 
         /// Required designer variable.
@@ -40,7 +40,6 @@
             this.label3 = new System.Windows.Forms.Label();
             this.SizeSP = new System.Windows.Forms.Label();
             this.ColorSP = new System.Windows.Forms.Label();
-            this.button1 = new System.Windows.Forms.Button();
             this.AnhSP = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.AnhSP)).BeginInit();
             this.SuspendLayout();
@@ -157,16 +156,6 @@
             this.ColorSP.Text = "label5";
             this.ColorSP.Click += new System.EventHandler(this.ColorSP_Click);
             // 
-            // button1
-            // 
-            this.button1.Image = global::QLCuaHangQuanAo.Properties.Resources.icons8_close_16;
-            this.button1.Location = new System.Drawing.Point(293, 7);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(24, 23);
-            this.button1.TabIndex = 9;
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
-            // 
             // AnhSP
             // 
             this.AnhSP.Location = new System.Drawing.Point(15, 4);
@@ -176,7 +165,7 @@
             this.AnhSP.TabIndex = 0;
             this.AnhSP.TabStop = false;
             // 
-            // itemHD1
+            // itemHDNhapHang
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -184,7 +173,6 @@
             this.Controls.Add(this.SizeSP);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
-            this.Controls.Add(this.button1);
             this.Controls.Add(this.lb_TongTien);
             this.Controls.Add(this.lb_Gia);
             this.Controls.Add(this.lb_SL);
@@ -194,7 +182,7 @@
             this.Controls.Add(this.SoLuong);
             this.Controls.Add(this.Name1);
             this.Controls.Add(this.AnhSP);
-            this.Name = "itemHD1";
+            this.Name = "itemHDNhapHang";
             this.Size = new System.Drawing.Size(349, 150);
             this.Load += new System.EventHandler(this.itemHD_Load);
             ((System.ComponentModel.ISupportInitialize)(this.AnhSP)).EndInit();
@@ -214,7 +202,6 @@
         private System.Windows.Forms.Label lb_SL;
         private System.Windows.Forms.Label lb_Gia;
         private System.Windows.Forms.Label lb_TongTien;
-        private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label SizeSP;

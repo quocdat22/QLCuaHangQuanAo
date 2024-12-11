@@ -80,6 +80,12 @@
     <Compile Include="Controls\BanHang.Designer.cs">
       <DependentUpon>BanHang.cs</DependentUpon>
     </Compile>
+    <Compile Include="Controls\NhapHang.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controls\NhapHang.Designer.cs">
+      <DependentUpon>NhapHang.cs</DependentUpon>
+    </Compile>
     <Compile Include="Controls\QLHoaDon.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -116,11 +122,23 @@
     <Compile Include="Controls\TrangChu.Designer.cs">
       <DependentUpon>TrangChu.cs</DependentUpon>
     </Compile>
-    <Compile Include="Controls\ViewItem\Item.cs">
+    <Compile Include="Controls\ViewItem\ItemBanHang.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="Controls\ViewItem\Item.Designer.cs">
-      <DependentUpon>Item.cs</DependentUpon>
+    <Compile Include="Controls\ViewItem\ItemBanHang.Designer.cs">
+      <DependentUpon>ItemBanHang.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\ViewItem\itemHDNhapHang.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controls\ViewItem\itemHDNhapHang.Designer.cs">
+      <DependentUpon>itemHDNhapHang.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\ViewItem\ItemNhapHang.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controls\ViewItem\ItemNhapHang.Designer.cs">
+      <DependentUpon>ItemNhapHang.cs</DependentUpon>
     </Compile>
     <Compile Include="Controls\ViewItem\itemHD.cs">
       <SubType>UserControl</SubType>
@@ -147,6 +165,12 @@
     <Compile Include="Forms\InHoaDon.Designer.cs">
       <DependentUpon>InHoaDon.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\MiniForms\InputForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\MiniForms\InputForm.Designer.cs">
+      <DependentUpon>InputForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Models\ComboBoxItem.cs" />
     <Compile Include="Models\KhachHang.cs" />
     <Compile Include="Models\NhanVien.cs" />
@@ -156,6 +180,9 @@
     <Compile Include="SqlServerTypes\Loader.cs" />
     <EmbeddedResource Include="Controls\BanHang.resx">
       <DependentUpon>BanHang.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controls\NhapHang.resx">
+      <DependentUpon>NhapHang.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Controls\QLHoaDon.resx">
       <DependentUpon>QLHoaDon.cs</DependentUpon>
@@ -175,8 +202,14 @@
     <EmbeddedResource Include="Controls\TrangChu.resx">
       <DependentUpon>TrangChu.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Controls\ViewItem\Item.resx">
-      <DependentUpon>Item.cs</DependentUpon>
+    <EmbeddedResource Include="Controls\ViewItem\ItemBanHang.resx">
+      <DependentUpon>ItemBanHang.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controls\ViewItem\itemHDNhapHang.resx">
+      <DependentUpon>itemHDNhapHang.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controls\ViewItem\ItemNhapHang.resx">
+      <DependentUpon>ItemNhapHang.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Controls\ViewItem\itemHD.resx">
       <DependentUpon>itemHD.cs</DependentUpon>

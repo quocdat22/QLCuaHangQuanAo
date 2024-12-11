@@ -12,7 +12,7 @@ using System.IO;
 
 namespace QLCuaHangQuanAo.UserCotrols
 {
-    public partial class Item : UserControl
+    public partial class ItemNhapHang : UserControl
     {
         public string name;
         public string price;
@@ -22,7 +22,7 @@ namespace QLCuaHangQuanAo.UserCotrols
         public string color;
         public event EventHandler Selected =null;
       
-        public Item()
+        public ItemNhapHang()
         {
             InitializeComponent();
         }
@@ -32,12 +32,12 @@ namespace QLCuaHangQuanAo.UserCotrols
           
         }
 
-        public void SetSP(string ten, string anh, string gia,string size,string color)
+        public void SetSP(string ten, string anh,string size,string color)
         {
             this.SizeSP1 = size;
             this.color = color;
-           this.name = ten;
-            this.price = gia;
+            this.name = ten;
+            //this.price = gia;
             this.Imagess =anh;
             txt_SoLuong.Text = "0";
 
@@ -47,7 +47,8 @@ namespace QLCuaHangQuanAo.UserCotrols
             
 
             NameSP.Text = ten;
-            GiaSP.Text = gia;
+            
+            //gia = GiaSP.Text ;
             ColorSP.Text = color;
             SizeSP.Text = size;
         }
@@ -79,7 +80,11 @@ namespace QLCuaHangQuanAo.UserCotrols
 
         private void button1_Click(object sender, EventArgs e)
         {
-  
+            if (string.IsNullOrEmpty(price) || Count == 0)
+            {
+                MessageBox.Show("Vui lòng nhập giá và số lượng hợp lệ!");
+                return;
+            }
             OnAddItemHD?.Invoke(this, EventArgs.Empty);
         }
 
@@ -94,6 +99,11 @@ namespace QLCuaHangQuanAo.UserCotrols
             Count--;
             txt_SoLuong.Text= Count.ToString();
             
+        }
+
+        private void GiaSP_TextChanged(object sender, EventArgs e)
+        {
+            price = txt_GiaNhap.Text;
         }
     }
 }

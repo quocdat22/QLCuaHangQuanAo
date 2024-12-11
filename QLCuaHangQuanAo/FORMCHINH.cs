@@ -337,9 +337,14 @@ namespace QLCuaHangQuanAo
         {
 
         }
-        #endregion
-        
 
-        
+
+        #endregion
+
+        private void buttonNhapHang_Click_1(object sender, EventArgs e)
+        {
+            NhapHang nhapHang = new NhapHang();
+            AddUserControl(nhapHang);
+        }
     }
 }

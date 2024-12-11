@@ -11,7 +11,7 @@ using System.Windows.Forms;
 
 namespace QLCuaHangQuanAo.UserCotrols
 {
-    public partial class itemHD : UserControl
+    public partial class itemHDNhapHang : UserControl
     {
         public float ThanhTien;
         public string NameCTHD;
@@ -19,7 +19,7 @@ namespace QLCuaHangQuanAo.UserCotrols
         public string SizeCt;
         public decimal gia;
         public int soluong;
-        public itemHD()
+        public itemHDNhapHang()
         {
             InitializeComponent();
         }
@@ -29,7 +29,7 @@ namespace QLCuaHangQuanAo.UserCotrols
 
         }
 
-        public void getItem(string name,string gia,string anh,int soluong,string size,string color)
+        public void getItem(string name, string gia, string anh, int soluong, string size, string color)
         {
             this.lb_name.Text = name;
             this.NameCTHD = name;
@@ -37,16 +37,17 @@ namespace QLCuaHangQuanAo.UserCotrols
             this.SizeCt = size;
             this.soluong = soluong;
             this.gia = decimal.Parse(gia);
+
             lb_Gia.Text = gia;
-            //AnhSP.Image = Image.FromFile(anh);
             string imagePath = Path.GetFullPath(Path.Combine(Application.StartupPath, "../..", "Images", anh));
             AnhSP.Image = Image.FromFile(imagePath);
             lb_SL.Text = soluong.ToString();
-            SizeSP.Text = size.ToString();
-            ColorSP.Text = color.ToString();
-            this.ThanhTien= soluong * float.Parse(gia);
-            lb_TongTien.Text =( soluong*float.Parse(gia)).ToString();
+            SizeSP.Text = size;
+            ColorSP.Text = color;
+            this.ThanhTien = soluong * float.Parse(gia);
+            lb_TongTien.Text = (soluong * float.Parse(gia)).ToString();
         }
+
 
         private void SoLuong_Click(object sender, EventArgs e)
         {
