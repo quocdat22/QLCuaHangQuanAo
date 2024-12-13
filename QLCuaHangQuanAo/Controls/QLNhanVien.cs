@@ -33,8 +33,8 @@ namespace QLCuaHangQuanAo.UserCotrols
         private void NhanVien_Load(object sender, EventArgs e)
         {
             //list=ql.NhanViens.ToList();
-            uiButton5.Visible= false;
-            btn_QuayVe.Visible = false;
+            //uiButton5.Visible= false;
+            //btn_QuayVe.Visible = false;
             load_data();
             load_cbo_chuvu();
             load_cbo_gt();
@@ -284,16 +284,34 @@ namespace QLCuaHangQuanAo.UserCotrols
             //disable_button();
             //uiButton2.Disabled();
             //uiButton3.Disabled();
-            btn_QuayVe.Visible = true;
+            //btn_QuayVe.Visible = true;
         }
 
         private void btn_QuayVe_Click(object sender, EventArgs e)
         {
-            clearInput();
-            btn_QuayVe.Visible = false;
+            load_data();
+            //clearInput();
+            //btn_QuayVe.Visible = false;
 
             //uiButton2.SetEnabled();
             //uiButton3.SetEnabled();
+        }
+
+        private void textBox1_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void uiButtonTimKiem_Click(object sender, EventArgs e)
+        {
+            SqlParameter[] sqlParameters =
+            {
+                new SqlParameter("@Search", txt_TimKiem.Text)
+            };
+
+            DataTable dt = db.ExecuteStoredProcedure("timKiemNhanVien", sqlParameters);
+
+            dataGridView1.DataSource = dt;
         }
     }
 }

@@ -1,0 +1,56 @@
+﻿--nhap hang
+go
+CREATE or alter PROCEDURE ThemPhieuNhapHang
+	@MaNhaCungCap int,
+	@NgayNhapHang date,
+	@TongTien decimal
+as
+begin
+	insert into PhieuNhapHang values (@MaNhaCungCap, @NgayNhapHang, @TongTien);
+	SELECT SCOPE_IDENTITY() AS PhieuNhapHang; -- Trả về ID mới được chèn
+end
+exec ThemPhieuNhapHang @MaNhaCungCap = 1, @NgayNhapHang = '11/12/2024', @TongTien = 100000
+go
+create or alter proc CapNhatSoLuongSauNhapHang
+	@MaSanPham_NH int,
+	@SoLuong_NH int
+as
+begin
+	update SanPham set SoLuongTonKho = SoLuongTonKho + @SoLuong_NH where MaSanPham = 	@MaSanPham_NH;
+end
+go
+create or alter procedure ThemChiTietPhieuNhapHang
+	@MaPhieuNhap int,
+	@MaSanPham int,
+	@SoLuong int,
+	@DonGia decimal
+as
+begin
+	insert into ChiTietPhieuNhap values (@MaPhieuNhap, @MaSanPham, @SoLuong, @DonGia);
+
+	exec CapNhatSoLuongSauNhapHang @MaSanPham_NH = @MaSanPham, @SoLuong_NH = @SoLuong;
+end
+go
+CREATE TRIGGER trg_UpdateSoLuongTonKhoNhapHang
+ON ChiTietPhieuNhap
+AFTER INSERT
+AS
+BEGIN
+    SET NOCOUNT ON;
+    -- Cập nhật số lượng tồn kho trong bảng SanPham
+    UPDATE SanPham
+    SET SoLuongTonKho = SoLuongTonKho + i.SoLuong
+    FROM SanPham
+    INNER JOIN inserted i ON SanPham.MaSanPham = i.MaSanPham;
+END;
+DISABLE TRIGGER trg_UpdateSoLuongTonKhoNhapHang ON ChiTietPhieuNhap;
+GO
+create proc themNhaCungCap
+	@Ten nvarchar(50),
+	@NguoiLH nvarchar(50),
+	@DiaChi nvarchar(50),
+	@SDT nvarchar(11)
+as
+begin
+	insert into NhaCungCap values (@Ten, @NguoiLH, @DiaChi, @SDT);
+end

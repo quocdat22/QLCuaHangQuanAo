@@ -1,0 +1,92 @@
+﻿--quan ly nhan vien form
+go
+CREATE or alter PROCEDURE InsertNhanVien
+    @HoTen NVARCHAR(50),
+    @GioiTinh NVARCHAR(10),
+    @Email NVARCHAR(50),
+    @DiaChi NVARCHAR(100),
+    @SoDienThoai NVARCHAR(15),
+    @ChucVu NVARCHAR(50),
+    @NgayVaoLam DATETIME,
+    @Luong DECIMAL(18, 2),
+    @TrangThaiLamViec NVARCHAR(20)
+AS
+BEGIN
+    INSERT INTO NhanVien (HoTen, GioiTinh, Email, DiaChi, SoDienThoai, ChucVu, NgayVaoLam, Luong, TrangThaiLamViec)
+    VALUES (@HoTen, @GioiTinh, @Email, @DiaChi, @SoDienThoai, @ChucVu, @NgayVaoLam, @Luong, @TrangThaiLamViec);
+
+	SELECT SCOPE_IDENTITY() AS MaNhanVienMoi;
+END;
+
+EXEC InsertNhanVien 
+    @HoTen = N'Nguyen Van A', 
+    @GioiTinh = N'Male', 
+    @Email = N'nguyenvana@example.com', 
+    @DiaChi = N'123 Đường ABC, Quận 1, TP.HCM', 
+    @SoDienThoai = N'0901234567', 
+    @ChucVu = N'Nhân viên', 
+    @NgayVaoLam = '2024-12-10', 
+    @Luong = 10000000.00, 
+    @TrangThaiLamViec = N'Đang làm việc';
+
+	
+
+go
+CREATE PROCEDURE UpdateNhanVien
+    @MaNhanVien INT,
+    @HoTen NVARCHAR(50),
+    @GioiTinh NVARCHAR(10),
+    @Email NVARCHAR(50),
+    @DiaChi NVARCHAR(100),
+    @SoDienThoai NVARCHAR(15),
+    @ChucVu NVARCHAR(50),
+    @NgayVaoLam DATETIME,
+    @Luong DECIMAL(18, 2),
+    @TrangThaiLamViec NVARCHAR(20)
+AS
+BEGIN
+    UPDATE NhanVien
+    SET HoTen = @HoTen,
+        GioiTinh = @GioiTinh,
+        Email = @Email,
+        DiaChi = @DiaChi,
+        SoDienThoai = @SoDienThoai,
+        ChucVu = @ChucVu,
+        NgayVaoLam = @NgayVaoLam,
+        Luong = @Luong,
+        TrangThaiLamViec = @TrangThaiLamViec
+    WHERE MaNhanVien = @MaNhanVien;
+END;
+go
+CREATE or alter PROCEDURE DeleteNhanVien
+    @MaNhanVien INT
+AS
+BEGIN
+    SET NOCOUNT ON;
+
+    IF EXISTS (SELECT 1 FROM HoaDon WHERE MaNhanVien = @MaNhanVien)
+    BEGIN
+        -- Employee exists in HoaDon; cannot delete
+        RETURN -1;
+    END
+    ELSE
+    BEGIN
+        DELETE FROM NhanVien WHERE MaNhanVien = @MaNhanVien;
+        RETURN 0; -- Indicate success
+    END
+END
+
+exec DeleteNhanVien @MaNhanVien = 38
+go
+create or alter procedure timKiemNhanVien
+	@Search nvarchar(50)
+as
+begin
+	select *
+	from NhanVien
+	where MaNhanVien = TRY_CAST(@Search AS INT)
+		or HoTen LIKE '%' + @Search + '%'
+		or SoDienThoai = @Search
+end
+exec timKiemNhanVien @Search = N'Vũ'
+select * from NhanVien

@@ -1,0 +1,24 @@
+﻿--dang nhap form
+go
+CREATE or alter PROCEDURE ValidateUser
+    @TaiKhoan NVARCHAR(50),
+    @Password NVARCHAR(256)
+AS
+BEGIN
+    select nv.MaNhanVien,nv.HoTen, us.Quyen
+	from tbl_User us
+	join NhanVien nv on nv.MaNhanVien = us.MaNhanVien
+    WHERE TaiKhoan = @TaiKhoan AND PasswordSalt + PasswordHash = @Password
+END
+go
+
+
+exec ValidateUser @TaiKhoan = tranthid01, @Password = 'salt1hs'
+
+go
+CREATE PROCEDURE LayTenChucVu
+	@MaNhanVien int
+as
+begin
+	select ChucVu from NhanVien where MaNhanVien = 1
+end

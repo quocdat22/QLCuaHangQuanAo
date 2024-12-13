@@ -63,7 +63,7 @@ namespace QLCuaHangQuanAo.UserCotrols
             {
                 SqlParameter[] parameters = new SqlParameter[]
                 {
-                    new SqlParameter("@MaPhieuNhap", search)
+                    new SqlParameter("@Search", search)
                 };
 
                 DataTable dt = db.ExecuteStoredProcedure("timKiemPhieuNhapHang", parameters);

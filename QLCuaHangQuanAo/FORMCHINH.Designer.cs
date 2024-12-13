@@ -34,6 +34,7 @@
             this.PanelContainer = new System.Windows.Forms.Panel();
             this.panel3 = new System.Windows.Forms.Panel();
             this.button9 = new System.Windows.Forms.Button();
+            this.button10 = new System.Windows.Forms.Button();
             this.btn_PhieuNhap = new System.Windows.Forms.Button();
             this.button8 = new System.Windows.Forms.Button();
             this.button6 = new System.Windows.Forms.Button();
@@ -54,7 +55,7 @@
             this.button7 = new System.Windows.Forms.Button();
             this.hhhh = new System.Windows.Forms.Label();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.btn_SaoLuu = new System.Windows.Forms.Button();
+            this.btnSaoLuu = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.panel3.SuspendLayout();
             this.panel2.SuspendLayout();
@@ -92,8 +93,9 @@
             // panel3
             // 
             this.panel3.BackColor = System.Drawing.Color.SkyBlue;
-            this.panel3.Controls.Add(this.btn_SaoLuu);
             this.panel3.Controls.Add(this.button9);
+            this.panel3.Controls.Add(this.btnSaoLuu);
+            this.panel3.Controls.Add(this.button10);
             this.panel3.Controls.Add(this.btn_PhieuNhap);
             this.panel3.Controls.Add(this.button8);
             this.panel3.Controls.Add(this.button6);
@@ -126,6 +128,23 @@
             this.button9.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.button9.UseVisualStyleBackColor = false;
             this.button9.Click += new System.EventHandler(this.button9_Click_1);
+            // 
+            // button10
+            // 
+            this.button10.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.button10.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button10.ForeColor = System.Drawing.Color.Black;
+            this.button10.Image = global::QLCuaHangQuanAo.Properties.Resources.icons8_employees_16__2_;
+            this.button10.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.button10.Location = new System.Drawing.Point(3, 467);
+            this.button10.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.button10.Name = "button10";
+            this.button10.Size = new System.Drawing.Size(153, 41);
+            this.button10.TabIndex = 27;
+            this.button10.Text = "Nhà C.Cấp";
+            this.button10.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.button10.UseVisualStyleBackColor = false;
+            this.button10.Click += new System.EventHandler(this.buttonNhaCC_Click_1);
             // 
             // btn_PhieuNhap
             // 
@@ -181,7 +200,7 @@
             // button5
             // 
             this.button5.BackColor = System.Drawing.Color.White;
-            this.button5.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button5.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button5.ForeColor = System.Drawing.Color.Black;
             this.button5.Image = global::QLCuaHangQuanAo.Properties.Resources.icons8_customer_16__1_;
             this.button5.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -232,7 +251,7 @@
             // button3
             // 
             this.button3.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.button3.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button3.ForeColor = System.Drawing.Color.Black;
             this.button3.Image = global::QLCuaHangQuanAo.Properties.Resources.icons8_product_16__1_;
             this.button3.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -414,15 +433,22 @@
             this.pictureBox1.TabStop = false;
             this.pictureBox1.Click += new System.EventHandler(this.pictureBox1_Click);
             // 
-            // btn_SaoLuu
+            // btnSaoLuu
             // 
-            this.btn_SaoLuu.Location = new System.Drawing.Point(3, 468);
-            this.btn_SaoLuu.Name = "btn_SaoLuu";
-            this.btn_SaoLuu.Size = new System.Drawing.Size(147, 34);
-            this.btn_SaoLuu.TabIndex = 29;
-            this.btn_SaoLuu.Text = "Sao Lưu";
-            this.btn_SaoLuu.UseVisualStyleBackColor = true;
-            this.btn_SaoLuu.Click += new System.EventHandler(this.btn_SaoLuu_Click);
+            this.btnSaoLuu.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.btnSaoLuu.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnSaoLuu.ForeColor = System.Drawing.Color.Black;
+            this.btnSaoLuu.Image = global::QLCuaHangQuanAo.Properties.Resources.icons8_automatic_16;
+            this.btnSaoLuu.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnSaoLuu.Location = new System.Drawing.Point(4, 516);
+            this.btnSaoLuu.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btnSaoLuu.Name = "btnSaoLuu";
+            this.btnSaoLuu.Size = new System.Drawing.Size(153, 41);
+            this.btnSaoLuu.TabIndex = 27;
+            this.btnSaoLuu.Text = "Sao Lưu";
+            this.btnSaoLuu.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnSaoLuu.UseVisualStyleBackColor = false;
+            this.btnSaoLuu.Click += new System.EventHandler(this.btn_SaoLuu_Click);
             // 
             // FORMCHINH
             // 
@@ -476,6 +502,7 @@
         private System.Windows.Forms.Panel btn_dangxuat;
         private System.Windows.Forms.Button btn_PhieuNhap;
         private System.Windows.Forms.Button btnNhapHang;
-        private System.Windows.Forms.Button btn_SaoLuu;
+        private System.Windows.Forms.Button button10;
+        private System.Windows.Forms.Button btnSaoLuu;
     }
 }

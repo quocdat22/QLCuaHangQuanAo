@@ -1,0 +1,285 @@
+﻿CREATE DATABASE QuanLyCuaHangQuanAo2;
+GO
+USE QuanLyCuaHangQuanAo2;
+GO
+-- Bảng KhachHang
+CREATE TABLE KhachHang (
+    MaKhachHang  INT PRIMARY KEY IDENTITY(1,1),
+    HoTen NVARCHAR(100) NOT NULL,
+    Email NVARCHAR(100) UNIQUE,
+    SoDienThoai NVARCHAR(15),
+	GioiTinh NVARCHAR(5),
+	NgaySinh Date,
+    DiaChi NVARCHAR(255)
+);
+GO
+
+-- Bảng NhanVien
+CREATE TABLE NhanVien (
+    MaNhanVien  INT PRIMARY KEY IDENTITY(1,1),
+    HoTen NVARCHAR(100) NOT NULL,
+	GioiTinh NVARCHAR(5),
+    Email NVARCHAR(100) UNIQUE	NOT NULL,
+	DiaChi NVARCHAR(255),
+    SoDienThoai NVARCHAR(15),
+    ChucVu NVARCHAR(50),
+    NgayVaoLam DATE,
+	TrangThaiLamViec NVARCHAR(50),
+    Luong DECIMAL(18, 2)
+);
+GO
+
+-- Bảng LoaiSanPham
+CREATE TABLE LoaiSanPham (
+    MaLoai INT PRIMARY KEY IDENTITY(1,1),
+    TenLoai NVARCHAR(100) NOT NULL
+);
+GO
+
+
+-- Bảng SanPham
+CREATE TABLE SanPham (
+    MaSanPham INT PRIMARY KEY IDENTITY(1,1),
+    TenSanPham NVARCHAR(100) NOT NULL,
+    MaLoai INT,
+	MoTa NVARCHAR(255),
+	Size NVARCHAR(50) NOT NULL,
+    MauSac NVARCHAR(50) NOT NULL,
+	HinhAnh VARCHAR(100),
+    Gia DECIMAL(18, 2) NOT NULL,
+    SoLuongTonKho INT NOT NULL,
+    FOREIGN KEY (MaLoai) REFERENCES LoaiSanPham(MaLoai)
+);
+GO
+
+
+-- Bảng HoaDan
+CREATE TABLE HoaDon (
+    MaHoaDon INT PRIMARY KEY IDENTITY(1,1),
+    MaKhachHang  int not null,
+	MaNhanVien int not null,
+    NgayMuaHang DATE NOT NULL,
+    TongTien DECIMAL(18, 2) NOT NULL,
+    
+	TrangThaiThanhToan NVARCHAR(20),
+	FOREIGN KEY (MaNhanVien) REFERENCES NhanVien(MaNhanVien),
+    FOREIGN KEY (MaKhachHang) REFERENCES KhachHang(MaKhachHang)
+);
+GO
+
+-- Bảng ChiTietDonHang
+CREATE TABLE ChiTietHoaDon (
+    MaChiTietHoaDon INT PRIMARY KEY IDENTITY(1,1),
+    MaHoaDon INT,
+    MaSanPham INT,
+    SoLuong INT NOT NULL,
+    DonGia DECIMAL(18, 2) NOT NULL,
+	ChietKhau DECIMAL(18, 2) DEFAULT 0,  -- Phan tram (10 -> 10%)
+    GiaSauChietKhau AS (DonGia * (1 - ChietKhau / 100)), 
+    FOREIGN KEY (MaHoaDon) REFERENCES HoaDon(MaHoaDon),
+    FOREIGN KEY (MaSanPham) REFERENCES SanPham(MaSanPham)
+);
+GO
+
+-- Bảng NhaCungCap
+CREATE TABLE NhaCungCap (
+    MaNhaCungCap INT PRIMARY KEY IDENTITY(1,1),
+    TenNhaCungCap NVARCHAR(100) NOT NULL,
+    NguoiLienHe NVARCHAR(100),
+    DiaChi NVARCHAR(255),
+    SoDienThoai NVARCHAR(15)
+);
+
+
+-- Bảng PhieuNhapHang
+CREATE TABLE PhieuNhapHang (
+    MaPhieuNhap INT PRIMARY KEY IDENTITY(1,1),
+    MaNhaCungCap INT,
+    NgayNhapHang DATE NOT NULL,
+    TongTien DECIMAL(18, 2) NOT NULL,
+    FOREIGN KEY (MaNhaCungCap) REFERENCES NhaCungCap(MaNhaCungCap)
+);
+GO
+
+-- Bảng ChiTietPhieuNhap
+CREATE TABLE ChiTietPhieuNhap (
+
+    MaPhieuNhap INT not null,
+    MaSanPham INT not null,
+    SoLuong INT NOT NULL,
+    DonGia DECIMAL(18, 2) NOT NULL,
+    FOREIGN KEY (MaPhieuNhap) REFERENCES PhieuNhapHang(MaPhieuNhap),
+    FOREIGN KEY (MaSanPham) REFERENCES SanPham(MaSanPham)
+);
+GO
+
+
+
+
+CREATE TABLE tbl_User(
+    TaiKhoan VARCHAR(30) PRIMARY KEY,
+    MaNhanVien int NOT NULL,  -- Now only related to employees
+    PasswordHash VARCHAR(255),
+    PasswordSalt VARCHAR(255),
+    Quyen INT, -- 1: Quản lý, 2: Nhân viên
+    Status NVARCHAR(20) DEFAULT 'Active', -- 'Active', 'Locked', 'Suspended'
+    FOREIGN KEY (MaNhanVien) REFERENCES NhanVien(MaNhanVien)
+);
+
+
+
+---------------------
+INSERT INTO KhachHang ( HoTen, Email, SoDienThoai, GioiTinh, NgaySinh, DiaChi)
+VALUES 
+( N'Nguyễn Văn A', 'a.nguyen@gmail.com', '0912345678', N'Nam', '1990-01-15', N'123 Đường A, Hà Nội'),
+( N'Phạm Thị B', 'b.pham@yahoo.com', '0987654321', N'Nữ', '1985-05-20', N'456 Đường B, TP.HCM'),
+( N'Lê Văn C', 'c.le@gmail.com', '0903456789', N'Nam', '1992-03-10', N'789 Đường C, Đà Nẵng');
+INSERT INTO KhachHang ( HoTen, Email, SoDienThoai, GioiTinh, NgaySinh, DiaChi)
+VALUES 
+( N'Trần Thị H', 'h.tran@gmail.com', '0932123456', N'Nữ', '1994-08-22', N'10 Đường H, Hải Phòng'),
+( N'Nguyễn Văn K', 'k.nguyen@yahoo.com', '0917654321', N'Nam', '1990-12-15', N'23 Đường K, Huế');
+INSERT INTO KhachHang ( HoTen, Email, SoDienThoai, GioiTinh, NgaySinh, DiaChi)
+VALUES 
+(N'Hoàng Văn L', 'l.hoang@gmail.com', '0901234567', N'Nam', '1995-07-01', N'32 Đường L, Bình Dương'),
+(N'Lê Thị M', 'm.le@yahoo.com', '0987654322', N'Nữ', '1988-11-12', N'50 Đường M, Cần Thơ');
+
+SET IDENTITY_INSERT KhachHang ON;
+SET IDENTITY_INSERT KhachHang OFF;
+INSERT INTO KhachHang(MaKhachHang, HoTen) values (-1, 'Khách hàng tự do')
+
+INSERT INTO NhanVien ( HoTen, GioiTinh, Email, DiaChi, SoDienThoai, ChucVu, NgayVaoLam, TrangThaiLamViec, Luong)
+VALUES 
+( N'Trần Thị D', N'Nữ', 'd.tran@company.com', N'12 Đường D, Hà Nội', '0912341234', N'Quản lý', '2020-07-01', N'Đang làm việc', 15000000),
+(N'Ngô Văn E', N'Nam', 'e.ngo@company.com', N'34 Đường E, TP.HCM', '0934567890', N'Nhân viên', '2021-05-10', N'Đang làm việc', 8000000),
+(N'Hoàng Thị F', N'Nữ', 'f.hoang@company.com', N'56 Đường F, Đà Nẵng', '0945678901', N'Nhân viên', '2022-02-25', N'Đang làm việc', 7500000);
+INSERT INTO NhanVien ( HoTen, GioiTinh, Email, DiaChi, SoDienThoai, ChucVu, NgayVaoLam, TrangThaiLamViec, Luong)
+VALUES 
+( N'Phạm Văn G', N'Nam', 'g.pham@company.com', N'78 Đường G, Đà Nẵng', '0921345678', N'Nhân viên', '2023-03-01', N'Đang làm việc', 7000000),
+( N'Vũ Thị I', N'Nữ', 'i.vu@company.com', N'90 Đường I, TP.HCM', '0919876543', N'Nhân viên', '2022-09-12', N'Đang làm việc', 7200000);
+INSERT INTO NhanVien ( HoTen, GioiTinh, Email, DiaChi, SoDienThoai, ChucVu, NgayVaoLam, TrangThaiLamViec, Luong)
+VALUES 
+( N'Nguyễn Thị N', N'Nữ', 'n.nguyen@company.com', N'20 Đường N, Nha Trang', '0923456789', N'Nhân viên', '2023-07-15', N'Đang làm việc', 7800000),
+(N'Phan Văn O', N'Nam', 'o.phan@company.com', N'40 Đường O, Vũng Tàu', '0912345678', N'Nhân viên', '2023-08-01', N'Đang làm việc', 7500000);
+
+
+INSERT INTO LoaiSanPham (TenLoai)
+VALUES 
+(N'Áo'),
+(N'Quần '),
+(N'Đầm'),
+(N'Áo khoác')
+
+
+-- Sample for category 'Áo'
+INSERT INTO SanPham (TenSanPham, MaLoai, MoTa, Size, MauSac, HinhAnh, Gia, SoLuongTonKho)
+VALUES 
+(N'Áo thun họa tiết', 1, N'Áo thun họa tiết đẹp', 'M', N'Xanh lá', 'aothun_hoatiet.jpg', 250000, 20),
+(N'Áo cardigan', 1, N'Áo cardigan nhẹ nhàng', 'L', N'Be', 'ao_cardigan.jpg', 400000, 15),
+(N'Áo khoác bomber', 4, N'Áo khoác thời trang', 'M', N'Đen', 'aokhoac_bomber.jpg', 600000, 10),
+(N'Áo phông nữ', 1, N'Áo phông nữ, năng động', 'S', N'Trắng', 'aophong_nu.jpg', 180000, 25);
+
+-- Sample for category 'Quần'
+INSERT INTO SanPham (TenSanPham, MaLoai, MoTa, Size, MauSac, HinhAnh, Gia, SoLuongTonKho)
+VALUES 
+(N'Quần short thể thao', 2, N'Quần ngắn, thoải mái', 'M', N'Đen', 'quanshort_thethao.jpg', 200000, 30),
+(N'Quần tây công sở', 2, N'Quần tây lịch sự', 'L', N'Xám', 'quantay_congso.jpg', 450000, 20),
+(N'Quần lưng cao', 2, N'Quần lưng cao thời trang', 'S', N'Xanh', 'quanlungcao.jpg', 350000, 15),
+(N'Quần baggy', 2, N'Quần baggy thoải mái', 'M', N'Trắng', 'quan_baggy.jpg', 300000, 18);
+
+-- Sample for category 'Đầm'
+INSERT INTO SanPham (TenSanPham, MaLoai, MoTa, Size, MauSac, HinhAnh, Gia, SoLuongTonKho)
+VALUES 
+(N'Đầm Xòe', 3, N'Thiết kế đầm xòe cách điệu với cổ sen phối nơ vô cùng nữ tính', 'M', N'Đỏ', 'dam_xoe.jpg', 700000, 5),
+(N'Đầm xòe nữ tính', 3, N'Đầm xòe, điệu đà', 'L', N'Hồng', 'dam_xoe.jpg', 600000, 8),
+(N'Đầm dạo phố', 3, N'Đầm dạo phố, thoải mái', 'S', N'Xanh dương', 'dam_daophong.jpg', 550000, 12),
+(N'Đầm maxi hoa', 3, N'Đầm maxi hoa đẹp', 'M', N'Hồng', 'dam_maxi_hoa.jpg', 750000, 10);
+
+---Sample for áo khoác
+INSERT INTO SanPham (TenSanPham, MaLoai, MoTa, Size, MauSac, HinhAnh, Gia, SoLuongTonKho)
+VALUES 
+(N'Áo khoác gió', 4, N'Áo khoác gió, nhẹ nhàng và thoáng mát', 'M', N'Xám', 'aokhoac_gio.jpg', 550000, 20),
+(N'Áo khoác lông', 4, N'Áo khoác lông ấm áp cho mùa đông', 'L', N'Nâu', 'aokhoac_long.jpg', 900000, 10),
+(N'Áo khoác chần bông', 4, N'Áo khoác chần bông dày dạn', 'XL', N'Đen', 'aokhoac_chanbong.jpg', 1000000, 5),
+(N'Áo khoác jean', 4, N'Áo khoác jean phong cách', 'M', N'Xanh', 'aokhoac_jean.jpg', 700000, 15);
+
+delete HoaDon
+INSERT INTO HoaDon VALUES 
+(1, 2, '2023-09-10', 1500000, N'Đã thanh toán'),
+(2, 3, '2023-09-12', 750000,  N'Đã thanh toán'),
+(4, 4, '2023-09-20', 1250000,  N'Đã thanh toán'),
+(5, 5, '2023-09-25', 950000,  N'Đã thanh toán'),
+(6, 6, '2023-09-30', 1100000,  N'Đã thanh toán'),
+(7, 7, '2023-09-29', 850000, N'Đã thanh toánn'),
+(6, 6, '2023-10-30', 2100000,  N'Đã thanh toán'),
+(7, 7, '2023-09-30', 150000,  N'Đã thanh toán'),
+(7, 7, '2023-10-02', 250000, N'Đã thanh toán'),
+(7, 7, '2023-10-15', 550000,  N'Đã thanh toán'),
+(7, 7, '2023-09-02', 1000000, N'Đã thanh toán');
+
+DBCC CHECKIDENT ('HoaDon', RESEED, 0);
+delete ChiTietHoaDon
+DBCC CHECKIDENT ('ChiTietHoaDon', RESEED, 0);
+INSERT INTO ChiTietHoaDon (MaHoaDon, MaSanPham, SoLuong, DonGia)
+VALUES 
+( 1, 3,1, 200000 ),
+(2, 1,2, 500000),
+( 3, 4,3, 800000);
+INSERT INTO ChiTietHoaDon (MaHoaDon, MaSanPham, SoLuong, DonGia)
+VALUES 
+( 1, 1,1, 250000),
+(2, 6,1, 600000),
+(3, 6,1, 600000);
+INSERT INTO ChiTietHoaDon (MaHoaDon, MaSanPham, SoLuong, DonGia)
+VALUES 
+( 4, 6,1, 600000),
+( 5, 12,1, 500000),
+( 6, 5,1, 200000);
+
+
+
+INSERT INTO NhaCungCap (TenNhaCungCap, NguoiLienHe, DiaChi, SoDienThoai)
+VALUES 
+(N'Công ty TNHH Thời Trang A', N'Nguyễn Văn B', N'123 Đường H, Hà Nội', '0911234567'),
+(N'Công ty CP May Mặc B', N'Phạm Thị C', N'456 Đường I, TP.HCM', '0987654321');
+
+INSERT INTO PhieuNhapHang (MaNhaCungCap, NgayNhapHang, TongTien)
+VALUES 
+(1, '2023-09-01', 3000000),
+(2, '2023-09-05', 5000000);
+INSERT INTO PhieuNhapHang (MaNhaCungCap, NgayNhapHang, TongTien)
+VALUES 
+(1, '2023-09-18', 3500000),
+(2, '2023-09-21', 4800000);
+INSERT INTO PhieuNhapHang (MaNhaCungCap, NgayNhapHang, TongTien)
+VALUES 
+(1, '2023-09-30', 4000000),
+(2, '2023-09-29', 3200000);
+
+
+
+INSERT INTO ChiTietPhieuNhap (MaPhieuNhap, MaSanPham, SoLuong, DonGia)
+VALUES 
+(1, 5, 50, 100000),
+(2, 6, 30, 150000);
+INSERT INTO ChiTietPhieuNhap (MaPhieuNhap, MaSanPham, SoLuong, DonGia)
+VALUES 
+(3, 7, 40, 300000),
+(4, 8, 60, 400000);
+INSERT INTO ChiTietPhieuNhap (MaPhieuNhap, MaSanPham, SoLuong, DonGia)
+VALUES 
+(5, 7, 40, 300000),
+(5, 8, 60, 400000);
+
+INSERT INTO tbl_User (TaiKhoan,MaNhanVien, PasswordHash, PasswordSalt, Quyen, Status)
+VALUES 
+('tranthid01',1, 'hs', 'salt1', 1, 'Active'),
+('ngovane22',2, 'hs', 'salt2', 2, 'Active'),
+('hoangthif31',3, 'hs', 'salt3', 2, 'Active');
+INSERT INTO tbl_User (TaiKhoan, MaNhanVien, PasswordHash, PasswordSalt, Quyen, Status)
+VALUES 
+('phamvang04', 4, 'hs', 'salt4', 2, 'Active'),
+('vuthiI05', 5, 'hs', 'salt5', 2, 'Active');
+INSERT INTO tbl_User (TaiKhoan, MaNhanVien, PasswordHash, PasswordSalt, Quyen, Status)
+VALUES 
+('nguyenthN06', 6, 'hs', 'salt6', 2, 'Active'),
+('phanvanO07', 7, 'hs', 'salt7', 2, 'Active');

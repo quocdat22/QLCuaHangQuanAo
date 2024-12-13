@@ -1,0 +1,39 @@
+﻿--dang ky
+go
+CREATE PROCEDURE CheckUsernameExists
+    @TaiKhoan NVARCHAR(50)
+AS
+BEGIN
+    SELECT COUNT(*) 
+    FROM tbl_User 
+    WHERE TaiKhoan = @TaiKhoan
+END
+go
+
+CREATE or alter PROCEDURE ThemUser
+    @TaiKhoan NVARCHAR(50),
+	@MaNhanVien int,
+    @PasswordHash NVARCHAR(50),
+    @PasswordSalt NVARCHAR(50),
+    @Quyen INT,
+    @Status NVARCHAR(50)
+AS
+BEGIN
+    INSERT INTO tbl_User (TaiKhoan, MaNhanVien, PasswordHash, PasswordSalt, Quyen, Status)
+    VALUES (@TaiKhoan, @MaNhanVien, @PasswordHash, @PasswordSalt, @Quyen, @Status)
+END
+GO
+CREATE  or alter PROCEDURE ThemNhanVien
+    @HoTen NVARCHAR(50),
+    @ChucVu NVARCHAR(50),
+    @NgayVaoLam DATETIME,
+    @Email NVARCHAR(50),
+    @SoDienThoai NVARCHAR(20),
+    @GioiTinh NVARCHAR(10)
+AS
+BEGIN
+    INSERT INTO NhanVien (HoTen, ChucVu, NgayVaoLam, Email, SoDienThoai, GioiTinh)
+    VALUES (@HoTen, @ChucVu, @NgayVaoLam, @Email, @SoDienThoai, @GioiTinh)
+
+    SELECT SCOPE_IDENTITY() AS MaNhanVien
+END

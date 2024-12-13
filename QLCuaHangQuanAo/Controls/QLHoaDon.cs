@@ -61,6 +61,20 @@ namespace QLCuaHangQuanAo.UserCotrols
 
         private void btn_Seacrh_Click(object sender, EventArgs e)
         {
+            string searchValue = txt_TimKiem.Text;
+            if (string.IsNullOrWhiteSpace(searchValue))
+            {
+                MessageBox.Show("Vui lòng nhập từ khóa tìm kiếm.");
+                return;
+            }
+
+            SqlParameter[] sqlParameter =
+            {
+                new SqlParameter("@Search", searchValue)
+            };
+            DataTable dataTable = db.ExecuteStoredProcedure("timKiemHoaDonKHNV", sqlParameter);
+
+            dataGridView1.DataSource = dataTable;
 
         }
     }

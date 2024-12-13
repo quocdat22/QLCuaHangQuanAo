@@ -264,8 +264,18 @@ namespace QLCuaHangQuanAo.UserCotrols
             DataTable dt = db.ExecuteStoredProcedure("InsertHoaDon", parameters);
 
             int maHoaDon = Convert.ToInt32(dt.Rows[0]["MaHoaDon"]);
-            decimal chietKhau = decimal.Parse(txt_ChietKhau.Text);
-            
+
+            decimal chietKhau;
+            if(txt_ChietKhau.Text == "")
+            {
+                chietKhau = 0;
+            }
+            else
+            {
+                chietKhau = decimal.Parse(txt_ChietKhau.Text);
+
+            }
+
             foreach (var con in flowLayoutPanel3.Controls)
             {
                 itemHD i = con as itemHD;
@@ -477,19 +487,23 @@ namespace QLCuaHangQuanAo.UserCotrols
 
         private void txt_ChietKhau_TextChanged(object sender, EventArgs e)
         {
-            //cap nhat lai tong tien
             if (string.IsNullOrEmpty(txt_ChietKhau.Text))
             {
-                txt_TongTien.Text = TongTienHang.ToString();
-                return;
+                txt_ChietKhau.Text = "0";
+                txt_ChietKhau.SelectionStart = txt_ChietKhau.Text.Length; // Move cursor to the end
             }
-            else
-            {
 
-                float phanTramChietKhau = float.Parse(txt_ChietKhau.Text);
+            if (float.TryParse(txt_ChietKhau.Text, out float phanTramChietKhau))
+            {
                 float giaChietKhau = TongTienHang * phanTramChietKhau / 100;
                 float tongTien = TongTienHang - giaChietKhau;
                 txt_TongTien.Text = tongTien.ToString();
+            }
+            else
+            {
+                MessageBox.Show("Invalid discount value.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                txt_ChietKhau.Text = "0";
+                txt_ChietKhau.SelectionStart = txt_ChietKhau.Text.Length; // Move cursor to the end
             }
         }
     }

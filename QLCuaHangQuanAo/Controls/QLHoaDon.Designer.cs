@@ -32,7 +32,7 @@
             this.uiLabel1 = new Sunny.UI.UILabel();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.uiButton1 = new Sunny.UI.UIButton();
-            this.txt_TìmKiem = new Sunny.UI.UITextBox();
+            this.txt_TimKiem = new Sunny.UI.UITextBox();
             this.btn_Seacrh = new Sunny.UI.UIButton();
             this.uiButton2 = new Sunny.UI.UIButton();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
@@ -71,7 +71,7 @@
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.RowHeadersWidth = 51;
             this.dataGridView1.RowTemplate.Height = 24;
-            this.dataGridView1.Size = new System.Drawing.Size(1098, 558);
+            this.dataGridView1.Size = new System.Drawing.Size(1098, 717);
             this.dataGridView1.TabIndex = 28;
             this.dataGridView1.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellClick);
             // 
@@ -88,20 +88,20 @@
             this.uiButton1.TipsFont = new System.Drawing.Font("Microsoft Sans Serif", 9F);
             this.uiButton1.Click += new System.EventHandler(this.uiButton1_Click);
             // 
-            // txt_TìmKiem
+            // txt_TimKiem
             // 
-            this.txt_TìmKiem.Cursor = System.Windows.Forms.Cursors.IBeam;
-            this.txt_TìmKiem.Font = new System.Drawing.Font("Microsoft YaHei", 12F);
-            this.txt_TìmKiem.Location = new System.Drawing.Point(528, 16);
-            this.txt_TìmKiem.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.txt_TìmKiem.MinimumSize = new System.Drawing.Size(1, 16);
-            this.txt_TìmKiem.Name = "txt_TìmKiem";
-            this.txt_TìmKiem.Padding = new System.Windows.Forms.Padding(5);
-            this.txt_TìmKiem.ShowText = false;
-            this.txt_TìmKiem.Size = new System.Drawing.Size(263, 29);
-            this.txt_TìmKiem.TabIndex = 32;
-            this.txt_TìmKiem.TextAlignment = System.Drawing.ContentAlignment.MiddleLeft;
-            this.txt_TìmKiem.Watermark = "";
+            this.txt_TimKiem.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.txt_TimKiem.Font = new System.Drawing.Font("Microsoft YaHei", 12F);
+            this.txt_TimKiem.Location = new System.Drawing.Point(528, 16);
+            this.txt_TimKiem.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.txt_TimKiem.MinimumSize = new System.Drawing.Size(1, 16);
+            this.txt_TimKiem.Name = "txt_TimKiem";
+            this.txt_TimKiem.Padding = new System.Windows.Forms.Padding(5);
+            this.txt_TimKiem.ShowText = false;
+            this.txt_TimKiem.Size = new System.Drawing.Size(263, 29);
+            this.txt_TimKiem.TabIndex = 32;
+            this.txt_TimKiem.TextAlignment = System.Drawing.ContentAlignment.MiddleLeft;
+            this.txt_TimKiem.Watermark = "";
             // 
             // btn_Seacrh
             // 
@@ -135,13 +135,13 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.uiButton2);
             this.Controls.Add(this.btn_Seacrh);
-            this.Controls.Add(this.txt_TìmKiem);
+            this.Controls.Add(this.txt_TimKiem);
             this.Controls.Add(this.uiButton1);
             this.Controls.Add(this.uiTextBox1);
             this.Controls.Add(this.uiLabel1);
             this.Controls.Add(this.dataGridView1);
             this.Name = "QLHoaDon";
-            this.Size = new System.Drawing.Size(1375, 662);
+            this.Size = new System.Drawing.Size(1375, 810);
             this.Load += new System.EventHandler(this.QLHoaDon_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ResumeLayout(false);
@@ -153,7 +153,7 @@
         private Sunny.UI.UILabel uiLabel1;
         private System.Windows.Forms.DataGridView dataGridView1;
         private Sunny.UI.UIButton uiButton1;
-        private Sunny.UI.UITextBox txt_TìmKiem;
+        private Sunny.UI.UITextBox txt_TimKiem;
         private Sunny.UI.UIButton btn_Seacrh;
         private Sunny.UI.UIButton uiButton2;
     }

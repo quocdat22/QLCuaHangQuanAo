@@ -116,6 +116,12 @@
     <Compile Include="Controls\QLNhanVien.Designer.cs">
       <DependentUpon>QLNhanVien.cs</DependentUpon>
     </Compile>
+    <Compile Include="Controls\QLNhaCungCap.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controls\QLNhaCungCap.Designer.cs">
+      <DependentUpon>QLNhaCungCap.cs</DependentUpon>
+    </Compile>
     <Compile Include="Controls\QuanLyKho.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -228,6 +234,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Controls\QLNhanVien.resx">
       <DependentUpon>QLNhanVien.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controls\QLNhaCungCap.resx">
+      <DependentUpon>QLNhaCungCap.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Controls\QuanLyKho.resx">
       <DependentUpon>QuanLyKho.cs</DependentUpon>
@@ -377,6 +386,20 @@
     <Content Include="SqlServerTypes\x86\SqlServerSpatial140.dll">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <Content Include="SQL\ALL.txt" />
+    <Content Include="SQL\Backup.txt" />
+    <Content Include="SQL\BanHang.txt" />
+    <Content Include="SQL\DangKi.txt" />
+    <Content Include="SQL\DangNhap.txt" />
+    <Content Include="SQL\db.txt" />
+    <Content Include="SQL\HoaDon.txt" />
+    <Content Include="SQL\KhachHang.txt" />
+    <Content Include="SQL\NhaCungCap.txt" />
+    <Content Include="SQL\NhapHang.txt" />
+    <Content Include="SQL\PhieuNhapHang.txt" />
+    <Content Include="SQL\QuanLyKho.txt" />
+    <Content Include="SQL\QuanLyNhanVien.txt" />
+    <Content Include="SQL\TrangChu.txt" />
   </ItemGroup>
   <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

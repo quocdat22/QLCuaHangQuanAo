@@ -28,8 +28,8 @@ namespace QLCuaHangQuanAo.UserCotrols
 
         void disableInput()
         {
-            txt_tenTK.ReadOnly = true;
-            uiButton5.Visible = false;
+            //txt_tenTK.ReadOnly = true;
+            //uiButton5.Visible = false;
 
 
         }
@@ -135,7 +135,8 @@ namespace QLCuaHangQuanAo.UserCotrols
             db.ExecuteProcNonQuery("InsertUser", parameters);
             load_data();
             MessageBox.Show("Thêm tài khoản thành công");   
-            
+            txt_tenTK.Enabled = false;
+
         }
 
         private void txtMa_TextChanged(object sender, EventArgs e)
@@ -206,12 +207,14 @@ namespace QLCuaHangQuanAo.UserCotrols
         private void uiButton6_Click(object sender, EventArgs e)
         {
             clearInput();
+            txt_tenTK.Enabled = true;
         }
         void clearInput()
         {
             txt_tenTK.Text = "";
             txt_MatKhau.Text = "";
             cbB_NhanVien.SelectedIndex = -1;
+            cbB_NhanVien.Text = "";
             txt_hash.Text = "";
             cbo_role.SelectedIndex = 0;
             cbo_tt.SelectedIndex = 0;

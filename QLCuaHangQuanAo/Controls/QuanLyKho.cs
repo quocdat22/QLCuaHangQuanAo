@@ -396,11 +396,15 @@ namespace QLCuaHangQuanAo.UserCotrols
             inputForm.ShowDialog();
 
             string tenLoaiSanPhamMoi =  inputForm.InputValue;
-            SqlParameter[] parameters = {
+            if(tenLoaiSanPhamMoi != null)
+            {
+                SqlParameter[] parameters = {
                 new SqlParameter("@TEN_LOAI_SP", tenLoaiSanPhamMoi)
             };
-            db.ExecuteProcNonQuery("ThemLoaiSanPham", parameters);
-            loadComboBoxLoai();
+                db.ExecuteProcNonQuery("ThemLoaiSanPham", parameters);
+                loadComboBoxLoai();
+            }
+            
 
         }
     }

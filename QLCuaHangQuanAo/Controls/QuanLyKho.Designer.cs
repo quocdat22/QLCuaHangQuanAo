@@ -68,7 +68,7 @@
             this.dataGridView1.RowHeadersWidth = 51;
             this.dataGridView1.RowTemplate.Height = 24;
             this.dataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridView1.Size = new System.Drawing.Size(1268, 405);
+            this.dataGridView1.Size = new System.Drawing.Size(1268, 541);
             this.dataGridView1.TabIndex = 0;
             this.dataGridView1.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellClick);
             this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
@@ -276,9 +276,9 @@
             // 
             // textBox1
             // 
-            this.textBox1.Location = new System.Drawing.Point(1027, 146);
+            this.textBox1.Location = new System.Drawing.Point(960, 146);
             this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(133, 22);
+            this.textBox1.Size = new System.Drawing.Size(200, 22);
             this.textBox1.TabIndex = 54;
             this.textBox1.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
             // 
@@ -366,7 +366,7 @@
             this.btnThemLoai.Location = new System.Drawing.Point(309, 59);
             this.btnThemLoai.MinimumSize = new System.Drawing.Size(1, 1);
             this.btnThemLoai.Name = "btnThemLoai";
-            this.btnThemLoai.Size = new System.Drawing.Size(86, 24);
+            this.btnThemLoai.Size = new System.Drawing.Size(120, 24);
             this.btnThemLoai.TabIndex = 11;
             this.btnThemLoai.Text = "Thêm Loại";
             this.btnThemLoai.TipsFont = new System.Drawing.Font("Microsoft Sans Serif", 9F);

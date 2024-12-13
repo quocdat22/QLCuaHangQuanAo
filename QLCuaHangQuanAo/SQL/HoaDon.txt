@@ -1,0 +1,129 @@
+﻿--hoa don
+go
+CREATE OR ALTER PROCEDURE GetHoaDonKHNV
+AS
+BEGIN
+	select hd.MaHoaDon, kh.HoTen AS KhachHang, nv.HoTen AS NhanVien, hd.NgayMuaHang, hd.TongTien, hd.TrangThaiThanhToan
+	from HoaDon hd
+	join KhachHang kh on kh.MaKhachHang = hd.MaKhachHang
+	join NhanVien nv on nv.MaNhanVien = hd.MaNhanVien
+	order by hd.MaHoaDon desc
+END
+go
+CREATE or alter PROCEDURE GetChiTietHoaDonByMaHoaDon
+    @MaHoaDon INT
+AS
+BEGIN
+    SELECT cthd.MaChiTietHoaDon, cthd.MaHoaDon, sp.TenSanPham, SoLuong, DonGia, ChietKhau, GiaSauChietKhau
+	FROM ChiTietHoaDon cthd
+	join SanPham sp on sp.MaSanPham = cthd.MaSanPham 
+    WHERE MaHoaDon = @MaHoaDon
+	order by cthd.MaChiTietHoaDon desc
+END
+go
+CREATE OR ALTER PROCEDURE timKiemHoaDonKHNV
+    @Search NVARCHAR(50)
+AS
+BEGIN
+    SELECT hd.MaHoaDon, 
+           kh.HoTen AS KhachHang, 
+           nv.HoTen AS NhanVien, 
+           hd.NgayMuaHang, 
+           hd.TongTien, 
+           hd.TrangThaiThanhToan
+    FROM HoaDon hd
+    JOIN KhachHang kh ON kh.MaKhachHang = hd.MaKhachHang
+    JOIN NhanVien nv ON nv.MaNhanVien = hd.MaNhanVien
+    WHERE hd.MaHoaDon = TRY_CAST(@Search AS INT) 
+        OR kh.HoTen LIKE '%' + @Search + '%' 
+        OR nv.HoTen LIKE '%' + @Search + '%'
+    ORDER BY hd.MaHoaDon DESC;
+END;
+
+exec timKiemHoaDonKHNV @Search = N'Nguyễn'
+
+GO
+CREATE PROCEDURE SearchKhachHang
+    @SearchTerm NVARCHAR(50)
+AS
+BEGIN
+    SELECT * FROM KhachHang
+    WHERE HoTen LIKE '%' + @SearchTerm + '%'
+       OR MaKhachHang = TRY_CAST(@SearchTerm AS INT)
+END
+-- tai khoan
+GO
+CREATE PROCEDURE GetUsersWithName
+AS
+BEGIN
+	select ac.TaiKhoan, ac.MaNhanVien, nv.HoTen, ac.PasswordHash, ac.PasswordSalt, Quyen, ac.Status
+	from tbl_User ac
+	join NhanVien nv on nv.MaNhanVien = ac.MaNhanVien
+END
+go
+
+GO
+CREATE PROCEDURE GetMaVaTenKhongCoTKCuaNV
+AS
+BEGIN
+	SELECT nv.MaNhanVien, HoTen
+	FROM NhanVien nv
+	LEFT JOIN tbl_User u ON nv.MaNhanVien = u.MaNhanVien
+	WHERE u.MaNhanVien IS NULL;
+END
+go
+CREATE PROCEDURE InsertUser
+    @TaiKhoan NVARCHAR(50),
+    @PasswordHash NVARCHAR(50),
+    @PasswordSalt NVARCHAR(50),
+    @Status NVARCHAR(50),
+    @Quyen INT,
+    @MaNhanVien INT
+AS
+BEGIN
+    INSERT INTO tbl_User (TaiKhoan,MaNhanVien, PasswordHash, PasswordSalt,Quyen, Status)
+    VALUES (@TaiKhoan, @MaNhanVien, @PasswordHash, @PasswordSalt,@Quyen, @Status)
+END
+
+select * from tbl_User
+
+
+go
+CREATE PROCEDURE DeleteUser
+    @TaiKhoan NVARCHAR(50)
+AS
+BEGIN
+    DELETE FROM tbl_User WHERE TaiKhoan = @TaiKhoan
+END
+go
+CREATE or alter PROCEDURE UpdateUser
+    @TaiKhoan NVARCHAR(50),
+    @PasswordHash NVARCHAR(50),
+    @PasswordSalt NVARCHAR(50),
+    @Status NVARCHAR(50),
+    @Quyen INT,
+    @MaNhanVien INT
+AS
+BEGIN
+    UPDATE tbl_User
+    SET PasswordHash = @PasswordHash, PasswordSalt = @PasswordSalt, Status = @Status, Quyen = @Quyen, MaNhanVien = @MaNhanVien
+    WHERE TaiKhoan = @TaiKhoan
+END
+go
+-- tim kiem dua tren ten tai khoan hoac ten nhan vien
+select ac.TaiKhoan, ac.MaNhanVien, nv.HoTen, ac.PasswordHash, ac.PasswordSalt, Quyen, ac.Status
+from tbl_User ac
+join NhanVien nv on nv.MaNhanVien = ac.MaNhanVien
+where ac.TaiKhoan LIKE '%' + 'z' + '%' or
+	nv.HoTen LIKE '%' + 'Hoang' + '%'
+go
+CREATE or alter PROCEDURE TimKiemTKByTKVaHoTen
+	@Search NVARCHAR(50)
+as
+begin
+	select ac.TaiKhoan, ac.MaNhanVien, nv.HoTen, ac.PasswordHash, ac.PasswordSalt, Quyen, ac.Status
+	from tbl_User ac
+	join NhanVien nv on nv.MaNhanVien = ac.MaNhanVien
+	where ac.TaiKhoan LIKE '%' + @Search + '%' or
+		nv.HoTen LIKE '%' +@Search + '%'
+end

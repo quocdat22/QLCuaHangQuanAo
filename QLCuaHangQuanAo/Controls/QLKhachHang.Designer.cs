@@ -150,7 +150,7 @@
             this.dataGridView1.RowHeadersWidth = 51;
             this.dataGridView1.RowTemplate.Height = 24;
             this.dataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridView1.Size = new System.Drawing.Size(1234, 393);
+            this.dataGridView1.Size = new System.Drawing.Size(1234, 590);
             this.dataGridView1.TabIndex = 36;
             this.dataGridView1.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellClick);
             this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
@@ -346,7 +346,7 @@
             this.Controls.Add(this.uiLabel1);
             this.Controls.Add(this.dataGridView1);
             this.Name = "QLKhachHang";
-            this.Size = new System.Drawing.Size(1464, 584);
+            this.Size = new System.Drawing.Size(1464, 785);
             this.Load += new System.EventHandler(this.QLKhachHang_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ResumeLayout(false);

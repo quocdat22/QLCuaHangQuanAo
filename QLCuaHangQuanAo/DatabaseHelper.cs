@@ -15,6 +15,7 @@ namespace QLCuaHangQuanAo
         //public static string connectionString = ConfigurationManager.ConnectionStrings["QuanLyCuaHangQuanAo2"].ConnectionString;
 
         //public static string connectionString =
+       
         public static string connectionString = "Server=.;Database=QuanLyCuaHangQuanAo2;User Id=sa;Password=quocDat132002;";
 
         public SqlConnection GetConnection()

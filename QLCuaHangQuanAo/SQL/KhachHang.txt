@@ -1,0 +1,57 @@
+﻿--khach hang
+go
+CREATE PROCEDURE InsertKhachHang
+    @HoTen NVARCHAR(50),
+    @Email NVARCHAR(50),
+    @SoDienThoai NVARCHAR(20),
+    @GioiTinh NVARCHAR(10),
+    @NgaySinh DATETIME,
+    @DiaChi NVARCHAR(100)
+AS
+BEGIN
+    INSERT INTO KhachHang (HoTen, Email, SoDienThoai, GioiTinh, NgaySinh, DiaChi)
+    VALUES (@HoTen, @Email, @SoDienThoai, @GioiTinh, @NgaySinh, @DiaChi)
+END
+go
+CREATE PROCEDURE UpdateKhachHang
+    @MaKhachHang INT,
+    @HoTen NVARCHAR(50),
+    @Email NVARCHAR(50),
+    @SoDienThoai NVARCHAR(20),
+    @GioiTinh NVARCHAR(10),
+    @NgaySinh DATETIME,
+    @DiaChi NVARCHAR(100)
+AS
+BEGIN
+    UPDATE KhachHang
+    SET HoTen = @HoTen, Email = @Email, SoDienThoai = @SoDienThoai, GioiTinh = @GioiTinh, NgaySinh = @NgaySinh, DiaChi = @DiaChi
+    WHERE MaKhachHang = @MaKhachHang
+END
+go
+CREATE or alter PROCEDURE DeleteKhachHang
+    @MaKhachHang INT
+AS
+BEGIN
+    SET NOCOUNT ON;
+
+    IF EXISTS (SELECT 1 FROM HoaDon WHERE MaKhachHang = @MaKhachHang)
+    BEGIN
+        RETURN -1;
+    END
+    ELSE
+    BEGIN
+        DELETE FROM KhachHang WHERE MaKhachHang = @MaKhachHang;
+        RETURN 0; 
+    END
+END
+go
+CREATE or alter PROCEDURE SearchKhachHang
+    @SearchTerm NVARCHAR(50)
+AS
+BEGIN
+    SELECT * FROM KhachHang
+    WHERE HoTen LIKE '%' + @SearchTerm + '%'
+       OR MaKhachHang = TRY_CAST(@SearchTerm AS INT)
+	   or SoDienThoai = @SearchTerm
+END
+select * from KhachHang

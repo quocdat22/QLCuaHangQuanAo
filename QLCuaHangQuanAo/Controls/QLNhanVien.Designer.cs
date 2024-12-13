@@ -53,14 +53,18 @@
             this.uiLabel1 = new Sunny.UI.UILabel();
             this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
             this.btn_QuayVe = new Sunny.UI.UIButton();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.uiButton6 = new Sunny.UI.UIButton();
+            this.txt_TimKiem = new Sunny.UI.UITextBox();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // uiButton5
             // 
             this.uiButton5.Cursor = System.Windows.Forms.Cursors.Hand;
             this.uiButton5.Font = new System.Drawing.Font("Microsoft YaHei", 12F);
-            this.uiButton5.Location = new System.Drawing.Point(901, 161);
+            this.uiButton5.Location = new System.Drawing.Point(657, 161);
             this.uiButton5.MinimumSize = new System.Drawing.Size(1, 1);
             this.uiButton5.Name = "uiButton5";
             this.uiButton5.Size = new System.Drawing.Size(100, 35);
@@ -77,7 +81,7 @@
             this.dataGridView1.RowHeadersWidth = 51;
             this.dataGridView1.RowTemplate.Height = 24;
             this.dataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridView1.Size = new System.Drawing.Size(1219, 339);
+            this.dataGridView1.Size = new System.Drawing.Size(1219, 553);
             this.dataGridView1.TabIndex = 28;
             this.dataGridView1.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellClick);
             // 
@@ -85,7 +89,7 @@
             // 
             this.uiButton1.Cursor = System.Windows.Forms.Cursors.Hand;
             this.uiButton1.Font = new System.Drawing.Font("Microsoft YaHei", 12F);
-            this.uiButton1.Location = new System.Drawing.Point(219, 161);
+            this.uiButton1.Location = new System.Drawing.Point(61, 161);
             this.uiButton1.MinimumSize = new System.Drawing.Size(1, 1);
             this.uiButton1.Name = "uiButton1";
             this.uiButton1.Size = new System.Drawing.Size(100, 35);
@@ -98,7 +102,7 @@
             // 
             this.uiButton2.Cursor = System.Windows.Forms.Cursors.Hand;
             this.uiButton2.Font = new System.Drawing.Font("Microsoft YaHei", 12F);
-            this.uiButton2.Location = new System.Drawing.Point(378, 161);
+            this.uiButton2.Location = new System.Drawing.Point(206, 161);
             this.uiButton2.MinimumSize = new System.Drawing.Size(1, 1);
             this.uiButton2.Name = "uiButton2";
             this.uiButton2.Size = new System.Drawing.Size(100, 35);
@@ -111,7 +115,7 @@
             // 
             this.uiButton3.Cursor = System.Windows.Forms.Cursors.Hand;
             this.uiButton3.Font = new System.Drawing.Font("Microsoft YaHei", 12F);
-            this.uiButton3.Location = new System.Drawing.Point(558, 161);
+            this.uiButton3.Location = new System.Drawing.Point(348, 161);
             this.uiButton3.MinimumSize = new System.Drawing.Size(1, 1);
             this.uiButton3.Name = "uiButton3";
             this.uiButton3.Size = new System.Drawing.Size(100, 35);
@@ -124,12 +128,12 @@
             // 
             this.uiButton4.Cursor = System.Windows.Forms.Cursors.Hand;
             this.uiButton4.Font = new System.Drawing.Font("Microsoft YaHei", 12F);
-            this.uiButton4.Location = new System.Drawing.Point(58, 161);
+            this.uiButton4.Location = new System.Drawing.Point(822, 161);
             this.uiButton4.MinimumSize = new System.Drawing.Size(1, 1);
             this.uiButton4.Name = "uiButton4";
             this.uiButton4.Size = new System.Drawing.Size(100, 35);
             this.uiButton4.TabIndex = 34;
-            this.uiButton4.Text = "Thêm mới";
+            this.uiButton4.Text = "Dọn dẹp";
             this.uiButton4.TipsFont = new System.Drawing.Font("Microsoft Sans Serif", 9F);
             this.uiButton4.Click += new System.EventHandler(this.uiButton4_Click);
             // 
@@ -372,7 +376,7 @@
             // 
             this.btn_QuayVe.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btn_QuayVe.Font = new System.Drawing.Font("Microsoft YaHei", 12F);
-            this.btn_QuayVe.Location = new System.Drawing.Point(724, 161);
+            this.btn_QuayVe.Location = new System.Drawing.Point(504, 161);
             this.btn_QuayVe.MinimumSize = new System.Drawing.Size(1, 1);
             this.btn_QuayVe.Name = "btn_QuayVe";
             this.btn_QuayVe.Size = new System.Drawing.Size(100, 35);
@@ -381,10 +385,48 @@
             this.btn_QuayVe.TipsFont = new System.Drawing.Font("Microsoft Sans Serif", 9F);
             this.btn_QuayVe.Click += new System.EventHandler(this.btn_QuayVe_Click);
             // 
+            // panel1
+            // 
+            this.panel1.Controls.Add(this.uiButton6);
+            this.panel1.Controls.Add(this.txt_TimKiem);
+            this.panel1.Location = new System.Drawing.Point(962, 148);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(315, 48);
+            this.panel1.TabIndex = 76;
+            // 
+            // uiButton6
+            // 
+            this.uiButton6.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.uiButton6.Font = new System.Drawing.Font("Microsoft YaHei", 12F);
+            this.uiButton6.Location = new System.Drawing.Point(221, 13);
+            this.uiButton6.MinimumSize = new System.Drawing.Size(1, 1);
+            this.uiButton6.Name = "uiButton6";
+            this.uiButton6.Size = new System.Drawing.Size(91, 32);
+            this.uiButton6.TabIndex = 34;
+            this.uiButton6.Text = "TìmKiếm";
+            this.uiButton6.TipsFont = new System.Drawing.Font("Microsoft Sans Serif", 9F);
+            this.uiButton6.Click += new System.EventHandler(this.uiButtonTimKiem_Click);
+            // 
+            // txt_TimKiem
+            // 
+            this.txt_TimKiem.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.txt_TimKiem.Font = new System.Drawing.Font("Microsoft YaHei", 12F);
+            this.txt_TimKiem.Location = new System.Drawing.Point(4, 13);
+            this.txt_TimKiem.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.txt_TimKiem.MinimumSize = new System.Drawing.Size(1, 16);
+            this.txt_TimKiem.Name = "txt_TimKiem";
+            this.txt_TimKiem.Padding = new System.Windows.Forms.Padding(5);
+            this.txt_TimKiem.ShowText = false;
+            this.txt_TimKiem.Size = new System.Drawing.Size(205, 26);
+            this.txt_TimKiem.TabIndex = 68;
+            this.txt_TimKiem.TextAlignment = System.Drawing.ContentAlignment.MiddleLeft;
+            this.txt_TimKiem.Watermark = "";
+            // 
             // QLNhanVien
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.panel1);
             this.Controls.Add(this.dateTimePicker1);
             this.Controls.Add(this.txt_Email);
             this.Controls.Add(this.uiLabel9);
@@ -411,9 +453,10 @@
             this.Controls.Add(this.uiButton1);
             this.Controls.Add(this.dataGridView1);
             this.Name = "QLNhanVien";
-            this.Size = new System.Drawing.Size(1314, 579);
+            this.Size = new System.Drawing.Size(1365, 795);
             this.Load += new System.EventHandler(this.NhanVien_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            this.panel1.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -445,5 +488,8 @@
         private Sunny.UI.UILabel uiLabel1;
         private System.Windows.Forms.DateTimePicker dateTimePicker1;
         private Sunny.UI.UIButton btn_QuayVe;
+        private System.Windows.Forms.Panel panel1;
+        private Sunny.UI.UIButton uiButton6;
+        private Sunny.UI.UITextBox txt_TimKiem;
     }
 }

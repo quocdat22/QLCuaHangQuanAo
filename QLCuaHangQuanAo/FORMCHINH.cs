@@ -33,6 +33,9 @@ namespace QLCuaHangQuanAo
             InitializeLoginTimer();
 
             loadNhanVien(id, username, id_quyen, chucVu);
+
+            TrangChu tc = new TrangChu();
+            AddUserControl(tc);
         }
 
         void loadNhanVien(int id,string username, int id_quyen, string chucVu)
@@ -358,6 +361,21 @@ namespace QLCuaHangQuanAo
         {
             Backup backup = new Backup();
             AddUserControl(backup);
+        }
+
+        private void buttonNhaCC_Click_1(object sender, EventArgs e)
+        {
+            if(id_quyen == 1)
+            {
+                QLNhaCungCap qLNhaCungCap = new QLNhaCungCap();
+                AddUserControl(qLNhaCungCap);
+            }
+            else
+            {
+                MessageBox.Show("Bạn không có quyền truy cập chức năng này");
+            }
+            //QLNhaCungCap qLNhaCungCap = new QLNhaCungCap();
+            //AddUserControl(qLNhaCungCap);
         }
     }
 }

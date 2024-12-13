@@ -1,0 +1,68 @@
+﻿--quan ly kho form
+go
+CREATE or alter PROCEDURE AddSanPham
+    @TenSanPham NVARCHAR(50),
+	@MaLoai INT,
+	@MoTa NVARCHAR(100),
+	@Size NVARCHAR(10),
+    @MauSac NVARCHAR(20),
+	@HinhAnh NVARCHAR(200),
+    @Gia DECIMAL,
+    @SoLuongTonKho INT
+
+AS
+BEGIN
+    INSERT INTO SanPham (TenSanPham,MaLoai,MoTa,Size, MauSac,HinhAnh, Gia, SoLuongTonKho)
+    VALUES (@TenSanPham, @MaLoai,@MoTa, @Size, @MauSac, @HinhAnh, @Gia, @SoLuongTonKho);
+END;
+go
+CREATE PROCEDURE GetSanPhamById
+    @MaSanPham INT
+AS
+BEGIN
+    SELECT MaSanPham, TenSanPham,MaLoai,MoTa,Size, MauSac,HinhAnh, Gia, SoLuongTonKho
+    FROM SanPham
+    WHERE MaSanPham = @MaSanPham;
+END;
+go
+CREATE PROCEDURE DeleteSanPhamByID
+    @MaSanPham INT
+AS
+BEGIN
+    DELETE FROM SanPham WHERE MaSanPham = @MaSanPham;
+END;
+GO
+exec DeleteSanPhamByID @MaSanPham = 17
+go
+CREATE PROCEDURE UpdateSanPham
+    @MaSanPham INT,
+    @TenSanPham NVARCHAR(50),
+	@MaLoai INT,
+	@MoTa NVARCHAR(100),
+	@Size NVARCHAR(10),
+    @MauSac NVARCHAR(20),
+	@HinhAnh NVARCHAR(200),
+    @Gia DECIMAL,
+    @SoLuongTonKho INT
+AS
+BEGIN
+    UPDATE SanPham
+    SET 
+        TenSanPham = @TenSanPham,
+        MauSac = @MauSac,
+        Gia = @Gia,
+        MaLoai = @MaLoai,
+        SoLuongTonKho = @SoLuongTonKho,
+        MoTa = @MoTa,
+        Size = @Size,
+        HinhAnh = @HinhAnh
+    WHERE MaSanPham = @MaSanPham;
+END;
+go
+CREATE PROC SearchSanPhamByName
+	@TenSanPham Nvarchar(50)
+AS
+BEGIN
+	SELECT * FROM SanPham WHERE TenSanPham LIKE '%'+ @TenSanPham + '%';
+END
+EXEC SearchSanPhamByName @TenSanPham = 'áo';

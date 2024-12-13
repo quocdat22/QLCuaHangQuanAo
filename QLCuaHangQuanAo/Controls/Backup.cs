@@ -15,7 +15,7 @@ namespace QLCuaHangQuanAo.Controls
     {
         private DataGridView dgvBackupHistory;
         private Button btnBackup;
-        private Button btnRestore;
+        //private Button btnRestore;
         private Button btnBrowse;
         private TextBox txtBackupLocation;
         private ProgressBar progressBar;
@@ -37,7 +37,7 @@ namespace QLCuaHangQuanAo.Controls
             // Initialize Controls
             dgvBackupHistory = new DataGridView();
             btnBackup = new Button();
-            btnRestore = new Button();
+            //btnRestore = new Button();
             btnBrowse = new Button();
             txtBackupLocation = new TextBox();
             progressBar = new ProgressBar();
@@ -64,9 +64,9 @@ namespace QLCuaHangQuanAo.Controls
             this.Controls.Add(btnBackup);
 
             // Restore Button - For restoring from a backup (Optional)
-            btnRestore.Text = "Restore";
-            btnRestore.Location = new Point(220, 200);
-            this.Controls.Add(btnRestore);
+            //btnRestore.Text = "Restore";
+            //btnRestore.Location = new Point(220, 200);
+            //this.Controls.Add(btnRestore);
 
             // Backup Location TextBox
             txtBackupLocation.Location = new Point(20, 170);

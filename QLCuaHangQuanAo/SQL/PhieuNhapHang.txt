@@ -1,0 +1,33 @@
+﻿--phieu nhap hang
+go
+
+create or alter proc layPhieuNhapHang
+as
+begin
+	select pnh.MaPhieuNhap, ncc.TenNhaCungCap, NgayNhapHang, TongTien, sp.TenSanPham, ctpn.SoLuong, ctpn.Dongia
+	from PhieuNhapHang pnh
+	join NhaCungCap ncc on ncc.MaNhaCungCap = pnh.MaNhaCungCap
+	join ChiTietPhieuNhap ctpn on ctpn.MaPhieuNhap = pnh.MaPhieuNhap
+	join SanPham sp on sp.MaSanPham = ctpn.MaSanPham
+	order by NgayNhapHang desc
+end
+go
+create or alter proc timKiemPhieuNhapHang
+	@Search nvarchar(50)
+as
+begin
+	select pnh.MaPhieuNhap, ncc.TenNhaCungCap, NgayNhapHang, TongTien, sp.TenSanPham, ctpn.SoLuong, ctpn.Dongia
+	from PhieuNhapHang pnh
+	join NhaCungCap ncc on ncc.MaNhaCungCap = pnh.MaNhaCungCap
+	join ChiTietPhieuNhap ctpn on ctpn.MaPhieuNhap = pnh.MaPhieuNhap
+	join SanPham sp on sp.MaSanPham = ctpn.MaSanPham
+	where pnh.MaPhieuNhap = TRY_CAST(@Search AS INT) OR
+		ncc.TenNhaCungCap LIKE '%' + @Search + '%' OR
+		NgayNhapHang = TRY_CAST(@Search as date)
+end
+
+select * from ChiTietPhieuNhap
+
+select ctpn.MaPhieuNhap, sp.TenSanPham, SoLuong, DonGia
+from ChiTietPhieuNhap ctpn
+join SanPham sp on sp.MaSanPham = ctpn.MaSanPham

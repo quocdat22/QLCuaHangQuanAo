@@ -72,7 +72,7 @@ namespace QLCuaHangQuanAo.UserCotrols
 
             // Thêm tiêu đề
             chartTopNhanVien.Titles.Clear();
-            chartTopNhanVien.Titles.Add("Top 3 nhân viên có doanh số bán hàng cao nhất");
+            chartTopNhanVien.Titles.Add("Top doanh số bán hàng nhân viên");
             chartTopNhanVien.Titles[0].Font = new Font("Arial", 16, FontStyle.Bold);
 
             // Đảm bảo các cột không chồng chéo
@@ -170,7 +170,7 @@ namespace QLCuaHangQuanAo.UserCotrols
 
             // Thêm tiêu đề
             chartSLTonKho.Titles.Clear();
-            chartSLTonKho.Titles.Add("Biểu đồ số lượng tồn kho theo loại sản phẩm");
+            chartSLTonKho.Titles.Add("Số lượng tồn kho theo loại sản phẩm");
             chartSLTonKho.Titles[0].Font = new Font("Arial", 16, FontStyle.Bold);
 
             // Đảm bảo các cột không chồng chéo
@@ -202,6 +202,11 @@ namespace QLCuaHangQuanAo.UserCotrols
 
             chart1.Series.Add(series);
             chart1.Legends.Clear();
+
+            // Add title to the chart
+            chart1.Titles.Clear();
+            chart1.Titles.Add("Sản phẩm bán chạy");
+            chart1.Titles[0].Font = new Font("Arial", 16, FontStyle.Bold);
         }
 
 
@@ -245,6 +250,8 @@ namespace QLCuaHangQuanAo.UserCotrols
             chartDoanhThu.Titles.Add("Biểu Đồ Doanh Thu Theo Đơn Hàng");
             chartDoanhThu.ChartAreas[0].AxisX.Title = "Ngày Mua Hàng";
             chartDoanhThu.ChartAreas[0].AxisY.Title = "Doanh Thu (VNĐ)";
+
+            chartDoanhThu.Legends.Clear();
         }
 
 

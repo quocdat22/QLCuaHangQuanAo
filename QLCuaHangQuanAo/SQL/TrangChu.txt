@@ -1,0 +1,158 @@
+﻿--trang chu form
+go
+CREATE OR ALTER PROCEDURE GetBestSellers
+AS
+BEGIN
+    SELECT TOP 7 SanPham.TenSanPham, SUM(SoLuong) AS SoLuongBan
+    FROM ChiTietHoaDon
+	JOIN SanPham ON SanPham.MaSanPham = ChiTietHoaDon.MaSanPham
+    GROUP BY SanPham.TenSanPham
+    ORDER BY SoLuongBan DESC
+END
+go
+CREATE PROCEDURE GetSalesData
+AS
+BEGIN
+    SELECT MaSanPham AS ID, SUM(SoLuong) AS SoLuongBan
+    FROM ChiTietHoaDon
+    GROUP BY MaSanPham
+    ORDER BY SoLuongBan DESC
+END
+go
+CREATE PROCEDURE GetTodayOrdersCount
+AS
+BEGIN
+    SELECT COUNT(*) 
+    FROM HoaDon 
+    WHERE NgayMuaHang = CAST(GETDATE() AS DATE)
+END
+go
+CREATE PROCEDURE GetTodayTotalRevenue
+AS
+BEGIN
+    SELECT ISNULL(SUM(TongTien), 0) 
+    FROM HoaDon 
+    WHERE NgayMuaHang = CAST(GETDATE() AS DATE)
+END
+exec GetTodayTotalRevenue
+select * from HoaDon where NgayMuaHang = CAST(GETDATE() AS DATE)
+select * from HoaDon
+select * from SanPham
+go
+CREATE or alter PROCEDURE GetSalesRevenueData
+AS
+BEGIN
+    SELECT NgayMuaHang, TongTien
+    FROM HoaDon
+    WHERE NgayMuaHang IS NOT NULL
+    AND NgayMuaHang >= DATEADD(MONTH, -1, GETDATE())  -- Lọc dữ liệu trong 1 tháng qua
+    ORDER BY NgayMuaHang
+END
+go
+
+CREATE or alter PROCEDURE LayDoanhThuMoiThangNamHienTai
+AS
+BEGIN
+    -- Tạo bảng tạm thời chứa tất cả các tháng trong năm
+    DECLARE @ThangNam TABLE
+    (
+        Thang INT
+    );
+
+    -- Chèn các tháng vào bảng tạm thời
+    INSERT INTO @ThangNam (Thang)
+    VALUES (1), (2), (3), (4), (5), (6), (7), (8), (9), (10), (11), (12);
+
+    -- Truy vấn doanh thu từng tháng
+    SELECT 
+        tn.Thang, 
+        ISNULL(SUM(hd.TongTien), 0) AS DoanhThu
+    FROM 
+        @ThangNam tn
+    LEFT JOIN 
+        HoaDon hd ON tn.Thang = MONTH(hd.NgayMuaHang) AND YEAR(hd.NgayMuaHang) = YEAR(GETDATE())
+    GROUP BY 
+        tn.Thang
+    ORDER BY 
+        tn.Thang;
+END
+
+exec LayDoanhThuMoiThangNamHienTai;
+go
+
+CREATE  PROCEDURE LayTongTienNhapHangHangThangTrongNamHienTai
+AS
+BEGIN
+    -- Tạo bảng tạm thời chứa tất cả các tháng trong năm
+    DECLARE @ThangNam TABLE
+    (
+        Thang INT
+    );
+
+    -- Chèn các tháng vào bảng tạm thời
+    INSERT INTO @ThangNam (Thang)
+    VALUES (1), (2), (3), (4), (5), (6), (7), (8), (9), (10), (11), (12);
+
+    -- Truy vấn tổng số tiền nhập hàng từng tháng
+    SELECT 
+        tn.Thang, 
+        ISNULL(SUM(pn.TongTien), 0) AS TongTienNhapHang
+    FROM 
+        @ThangNam tn
+    LEFT JOIN 
+        PhieuNhapHang pn ON tn.Thang = MONTH(pn.NgayNhapHang) AND YEAR(pn.NgayNhapHang) = YEAR(GETDATE())
+    GROUP BY 
+        tn.Thang
+    ORDER BY 
+        tn.Thang;
+END
+go
+CREATE PROCEDURE LayTop3NhanVienBanHang
+AS
+BEGIN
+    SELECT TOP 3 
+        nv.HoTen, 
+        SUM(hd.TongTien) AS DoanhSo
+    FROM 
+        HoaDon hd
+    JOIN 
+        NhanVien nv ON hd.MaNhanVien = nv.MaNhanVien
+	Where nv.TrangThaiLamViec = N'Đang làm việc'
+    GROUP BY 
+        nv.HoTen
+    ORDER BY 
+        DoanhSo DESC
+END
+go
+LayTop3NhanVienBanHang
+go
+SELECT 
+    sp.TenSanPham, 
+    SUM(cthd.SoLuong) AS TongSoLuong
+	FROM ChiTietHoaDon cthd
+	JOIN SanPham sp ON cthd.MaSanPham = sp.MaSanPham
+	GROUP BY sp.TenSanPham
+	ORDER BY TongSoLuong DESC;
+
+--Số lượng tồn kho theo loại sản phẩm
+GO
+create proc SO_LUONG_TON_KHO_LOAI_SP
+AS
+BEGIN
+	SELECT 
+    lsp.TenLoai, 
+    SUM(sp.SoLuongTonKho) AS TongSoLuongTon
+	FROM SanPham sp
+	JOIN LoaiSanPham lsp ON sp.MaLoai = lsp.MaLoai
+	GROUP BY lsp.TenLoai;
+END
+GO
+
+select * from ChiTietHoaDon
+select * from SanPham
+select * from NhanVien
+exec GetBestSellers
+exec GetSalesData
+exec GetTodayOrdersCount
+exec GetSalesRevenueData
+exec GetTodayTotalRevenue
